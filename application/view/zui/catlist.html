@@ -1,0 +1,89 @@
+<!--{template header}-->
+
+<div class="container   mar-b-1 ">
+
+<div class="row">
+<div class="col-sm-2  side-box">
+
+  <!--子分类信息开始-->
+           <div class="sub-nav "><h3 class="font-12 mar-l-1"><a href="{url topic/catlist/$catmodel['id']}">{$catmodel['name']}</a> &gt;</h3>
+          <hr>
+           <ul class="nav">
+             <!--{loop $catlist $index $cat}-->
+           <li class="b-b-line"><a data-type="$index" href="{url topic/catlist/$cat['id']}"  <!--{if $cat['id']==$catid}--> class="current"  <!--{/if}-->>{$cat['name']}</a></li>
+          
+             <!--{/loop}-->
+           </ul></div>
+            <!--子分类信息结束-->
+
+<hr>
+
+
+</div>
+
+<div class="col-sm-9 b-l-line side-box">
+      <!--{if $topiclist==null}-->
+        
+         <div id="msg_tabs_content" class="tab-boxs">
+
+            <div class="box" style="display:block;">
+            
+                <p class="empty">该栏目暂时没有文章哟
+                
+                <a href="{url topic/default}" class="text-danger" style="line-height:20px;height:20px;">去看看别的吧</a>
+                 
+                
+                </p>
+            </div>
+            </div>
+        <!--{/if}-->
+          <!--{loop $topiclist $index $topic}-->          
+  <div class="row mar-t-1 b-b-line" >
+    <div class="col-sm-4" style="    height: 142px;overflow:hidden;">
+    
+       <a target="_blank" href="{url topic/getone/$topic['id']}">
+                       {eval $index=strpos($topic['image'],'http');}
+                       {if $index==0 }
+                            
+                             <img src="{$topic['image']}" alt="">
+                            {else}
+                            <img   src="{SITE_URL}{$topic['image']}" alt="">
+                            
+                            {/if}
+                    </a>
+    </div>
+    
+    <div class="col-sm-8">
+     <h3 class="font-15"><a target="_blank" href="{url topic/getone/$topic['id']}">{$topic['title']}</a></h3>
+                <p  class="mar-t-05 mar-b-1 height-80 clear c-hui ">{eval echo cutstr(strip_tags(str_replace('&nbsp;','',$topic['describtion'])),150,'..');}<a class="text-success" href="{url topic/getone/$topic['id']}">查看更多</a></p>
+                
+                <p class="tag-info ">
+                     <span class="tag pull-left">
+                              <!--{if $user['grouptype']==1||$user['uid']==$topic['authorid']}-->
+                         <a class="mar-r-03" target="_blank" title="编辑文章" href="{url user/editxinzhi/$topic['id']}">编辑</a> 
+                             <a target="_blank" title="删除文章" href="{url user/deletexinzhi/$topic['id']}">删除</a> 
+                          <!--{/if}-->         
+<!--{if $topic['tags']}-->  
+                       标签：
+                        
+<!--{loop $topic['tags'] $tag}-->
+<span><a target="_blank" title="{$tag}" href="{url topic/search/$tag}">{$tag}</a></span>
+                
+                <!--{/loop}--><!--{else}--><!--{/if}-->
+                </span>
+                <span class="pull-right">
+               {$topic['views']}浏览
+                
+                </span>
+                </p>
+    </div>
+  
+  </div>         
+  <!--{/loop}-->
+    <div class="pages">{$departstr}</div>    
+        
+</div>
+</div>
+
+</div>
+<!--{template footer}-->

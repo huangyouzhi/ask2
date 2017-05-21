@@ -1,0 +1,287 @@
+<!--{template header}-->
+
+<div class="xm-register-box">
+    <div class="mod-head">
+       
+        <h1>注册新用户{$code}</h1>
+    </div>
+    <div class="mod-body">
+    <div class="alert alert-warning alert-dismissable hide">
+ 
+  <p class="xm-tip"></p>
+</div>
+        <form class="xm-register-form">
+                     
+    <input type="hidden" name="usersid" value='{$_SESSION["userid"]}'/>
+      <input type="hidden" id="apikey" name="apikey" value='{$_SESSION["apikey"]}'/>  
+            <ul>
+                <li class="alert alert-danger collapse error_message text-left">
+                    <i class="icon icon-delete"></i> <em></em>
+                </li>
+                <li>
+                    <input class="xm-register-name form-control" type="text"  id="username" name="user_name" placeholder="用户名" onblur="check_username();"  value="">
+                </li>
+                <li>
+                    <input class="xm-register-email form-control" type="text" id="email" placeholder="邮箱" name="email"  onblur="check_email();">
+                </li>
+                <li>
+                    <input class="xm-register-pwd form-control" type="password"  id="password" name="password" placeholder="密码" onblur="check_passwd();" maxlength="20">
+                </li>
+           <li>
+                    <input class="xm-register-pwd form-control" type="password" id="repassword" name="repassword" placeholder="确认密码"  onblur="check_repasswd();" maxlength="20">
+                </li>
+               
+         
+                       <li class="xm-register-verify">
+                    <img class="pull-right" src="{url user/code}" onclick="javascript:updatecode();" id="verifycode">
+
+                    <input type="text" class="form-control" id="seccode_verify" name="seccode_verify" placeholder="验证码">
+                </li>
+                
+             
+                
+
+                           
+                              
+                                <li class="last">
+                    <label><input type="checkbox" checked="checked" value="agree" name="agreement_chk"> 我同意</label> <a href="javascript:;" class="xm-agreement-btn">用户协议</a>
+                    <a href="javascript:login();" class="pull-right">已有账号?</a>
+                    <div class="xm-register-agreement collapse nopadding mar-r-05">
+                        <div class="xm-register-agreement-txt" id="register_agreement">当您申请用户时，表示您已经同意遵守本规章。<br>
+欢迎您加入本站点参与交流和讨论，本站点为社区，为维护网上公共秩序和社会稳定，请您自觉遵守以下条款：<br>
+<br>
+一、不得利用本站危害国家安全、泄露国家秘密，不得侵犯国家社会集体的和公民的合法权益，不得利用本站制作、复制和传播下列信息：<br>
+　（一）煽动抗拒、破坏宪法和法律、行政法规实施的；<br>
+　（二）煽动颠覆国家政权，推翻社会主义制度的；<br>
+　（三）煽动分裂国家、破坏国家统一的；<br>
+　（四）煽动民族仇恨、民族歧视，破坏民族团结的；<br>
+　（五）捏造或者歪曲事实，散布谣言，扰乱社会秩序的；<br>
+　（六）宣扬封建迷信、淫秽、色情、赌博、暴力、凶杀、恐怖、教唆犯罪的；<br>
+　（七）公然侮辱他人或者捏造事实诽谤他人的，或者进行其他恶意攻击的；<br>
+　（八）损害国家机关信誉的；<br>
+　（九）其他违反宪法和法律行政法规的；<br>
+　（十）进行商业广告行为的。<br>
+<br>
+二、互相尊重，对自己的言论和行为负责。<br>
+三、禁止在申请用户时使用相关本站的词汇，或是带有侮辱、毁谤、造谣类的或是有其含义的各种语言进行注册用户，否则我们会将其删除。<br>
+四、禁止以任何方式对本站进行各种破坏行为。<br>
+五、如果您有违反国家相关法律法规的行为，本站概不负责，您的登录信息均被记录无疑，必要时，我们会向相关的国家管理部门提供此类信息。</div>
+                    </div>
+
+                </li>
+                <li class="clearfix">
+                    <button class="btn btn-large btn-success btn-block" id="regsubmit" onclick="cheklogin()" type="button">注册</button>
+                </li>
+            
+            </ul>
+        </form>
+    </div>
+    <div class="mod-footer"></div>
+</div>
+
+<script>
+
+$('.xm-agreement-btn').click(function()
+	    {
+	        if ($('.xm-register-agreement').is(':visible'))
+	        {
+	            $('.xm-register-agreement').hide();
+	        }
+	        else
+	        {
+	            $('.xm-register-agreement').show();
+	        }
+	    });
+</script>
+      <script type="text/javascript">
+    var usernameok = 1;
+    var password = 1;
+    var repasswdok = 1;
+    var emailok = 1;
+    var codeok = 1;
+    function check_username() {
+        var username = $.trim($('#username').val());
+        var length = bytes(username);
+      
+        if (length < 3 || length > 15) {
+        	$('.xm-tip').html("用户名请使用3到15个字符").parent().removeClass("hide");
+        
+           
+           
+            usernameok = false;
+        } else {
+            $.post("{SITE_URL}index.php?user/ajaxusername", {username: username}, function(flag) {
+                if (-1 == flag) {
+                	
+                	 $('.xm-tip').html("此用户名已经存在").parent().removeClass("hide");
+                    usernameok = false;
+                } else if (-2 == flag) {
+            
+                	 $('.xm-tip').html("用户名含有禁用字符").parent().removeClass("hide");
+                   
+                    usernameok = false;
+                } else {
+                
+                	  $('.xm-tip').html("&nbsp;").parent().addClass("hide");
+                   
+                    usernameok = true;
+                }
+            });
+        }
+    }
+
+    function check_passwd() {
+        var passwd = $('#password').val();
+        if (bytes(passwd) < 6 || bytes(passwd) > 16) {
+        
+        	 $('.xm-tip').html("密码最少6个字符，最长不得超过16个字符").parent().removeClass("hide");
+            password = false;
+        } else {
+       
+        	  $('.xm-tip').html("&nbsp;").parent().addClass("hide");
+            password = 1;
+        }
+    }
+
+    function check_repasswd() {
+        repasswdok = 1;
+        var repassword = $('#repassword').val();
+        if (bytes(repassword) < 6 || bytes(repassword) > 16) {
+    
+        	 $('.xm-tip').html("密码最少6个字符，最长不得超过16个字符").parent().removeClass("hide");
+            repasswdok = false;
+        } else {
+            if ($('#password').val() == $('#repassword').val()) {
+            	
+            	 $('.xm-tip').html("&nbsp;").parent().addClass("hide");
+                repasswdok = true;
+            } else {
+            
+            	 $('.xm-tip').html("两次密码输入不一致").parent().removeClass("hide");
+                repasswdok = false;
+            }
+        }
+    }
+
+    function check_email() {
+        var email = $.trim($('#email').val());
+        if (!email.match(/^[\w\.\-]+@([\w\-]+\.)+[a-z]{2,4}$/ig)) {
+        	
+        	 $('.xm-tip').html("邮件格式不正确").parent().removeClass("hide");
+            usernameok = false;
+        } else {
+            $.post("{SITE_URL}index.php?user/ajaxemail", {email: email}, function(flag) {
+                if (-1 == flag) {
+                	
+                	 $('.xm-tip').html("此邮件地址已经注册").parent().removeClass("hide");
+                    emailok = false;
+                } else if (-2 == flag) {
+                	
+                	 $('.xm-tip').html("邮件地址被禁止注册").parent().removeClass("hide");
+                    emailok = false;
+                } else {
+                    emailok = true;
+                    $('.xm-tip').html("&nbsp;").parent().addClass("hide");
+                  
+                }
+            });
+        }
+    }
+
+   
+
+
+    function cheklogin(){
+
+    	
+        var _uname=$("#username").val();
+        var _upwd=$("#password").val();
+        var _rupwd=$("#repassword").val();
+        var _code=$("#seccode_verify").val();
+        var _email=$("#email").val();
+     
+        var _apikey=$("#apikey").val();
+        
+   
+        var _data={uname:_uname,upwd:_upwd,rupwd:_rupwd,email:_email,apikey:_apikey,seccode_verify:_code};
+      
+      
+        $.ajax({
+            //提交数据的类型 POST GET
+            type:"POST",
+            //提交的网址
+            url:"{SITE_URL}?api_user/registerapi",
+            //提交的数据
+            data:_data,
+            //返回数据的格式
+            datatype: "text",//"xml", "html", "script", "json", "jsonp", "text".
+
+            //成功返回之后调用的函数
+            success:function(data){
+              
+            	data=$.trim(data);
+                if(data=='reguser_ok'){
+                	
+              
+                	
+                	
+                	
+                  window.location.href="{SITE_URL}?user/default";
+                  
+                 
+                	
+                }else if(data=='reguser_ok1'){
+                	
+                	alert("注册成功，系统已发送注册邮件，24小时之内请进行邮箱验证，在您没激活邮件之前你不能发布问题和文章等操作！");
+                	   window.location.href="{SITE_URL}?user/default";
+                }else{
+                	switch(data){
+                	
+                
+                	case 'reguser_cant_null':
+                		
+                		
+                		 $('.xm-tip').html("用户名或者密码不能为空").parent().removeClass("hide");
+                		break;
+                	case 'regemail_Illegal':
+                		
+                		 $('.xm-tip').html("注册邮箱不合法").parent().removeClass("hide");
+                		break;
+                	case 'regemail_has_exits':
+                		
+                		 $('.xm-tip').html("邮箱已注册").parent().removeClass("hide");
+                		break;
+                	case 'regemail_cant_use':
+                		
+                		 $('.xm-tip').html("此邮箱不能注册使用").parent().removeClass("hide");
+                		break;
+                	case 'reguser_has_exits':
+                	
+                		 $('.xm-tip').html("注册用户名已经存在").parent().removeClass("hide");
+                		break;
+                	case 'Illegal':
+                		
+                		 $('.xm-tip').html("用户名或者密码包含特殊字符").parent().removeClass("hide");
+                		break;
+                	default:
+                		
+                	 $('.xm-tip').html(data).parent().removeClass("hide");
+                		break;
+                	}
+                }
+            }   ,
+           
+            //调用出错执行的函数
+            error: function(){
+                //请求出错处理
+            }
+        });
+    }
+
+   
+
+    
+    
+</script>
+
+<!--{template footer}-->

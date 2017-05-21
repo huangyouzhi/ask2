@@ -1,0 +1,251 @@
+<!--{eval global $starttime,$querynum;$mtime = explode(' ', microtime());$runtime=number_format($mtime[1] + $mtime[0] - $starttime,6); $setting=$this->setting;$user=$this->user;$headernavlist=$this->nav;$regular=$this->regular;}-->
+<div class="poploginform">
+
+ <div id="user_error" class="alert alert-danger hide">
+ 
+ </div>
+    <form  class="form-horizontal" name="loginform"   method="post"    >
+
+        
+         <div class="form-group">
+          <label class="col-md-2 control-label">用户名</label>
+          <div class="col-md-7">
+             <input type="text" id="popusername" name="username" value="" placeholder="邮箱 / 用户名/手机号" class="form-control">
+          </div>
+        </div>
+           <div class="form-group">
+          <label class="col-md-2 control-label">密码</label>
+          <div class="col-md-7">
+             <input  type="password"  id="poppassword" name="password" value="" placeholder="密码" class="form-control">
+          </div>
+        </div>
+       
+                <div class="form-group">
+          <label class="col-md-2 control-label">验证码</label>
+          <div class="col-md-4">
+             <input type="text"  id="login_code" name="code" onblur="check_login_code();"  value="" class="form-control">
+           
+          </div>
+              <div class="col-md-2">
+            <span class="verifycode"><img class="hand" src="{url user/code}" onclick="javascript:popupdatecode();" id="popverifycode">
+                        </span>
+          </div>
+          <div class="col-md-2">
+              <a class="changecode" href="javascript:popupdatecode();">&nbsp;看不清?</a>
+          </div>
+        </div>
+        <div class="form-group">
+         <span class="col-md-2">
+           
+                        </span>
+                          <div class="col-md-7">
+           <div  id="logincodetip" class="help-block alert alert-warning hide">验证码不能为空</div>
+        </div>
+         </div>
+        
+     
+          
+         <div class="form-group">
+          <label class="col-md-2 control-label"></label>
+          <div class="col-md-4">
+             <input type="checkbox" id="cookietime" name="cookietime" value="2592000" />下次自动登录 
+          </div>
+        </div>
+   
+        
+         <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+             <input type="button" onclick="checkform();" id="submit" class="btn btn-danger width-120" value="登陆" data-loading="稍候..."> 
+             
+            <input type="hidden" name="usersid" value='{$_SESSION["userid"]}'/>
+          <input type="hidden" id="popapikey" name="apikey" value='{$_SESSION["apikey"]}'/>
+            <input type="hidden" id="popforward" name="forward" value="{$forward}"/>
+            
+            <a href="{url user/getpass}" class="text-danger mar-l-1">忘记密码?</a>
+            <a href="{url user/register}" class="text-danger mar-l-1">注册新账号</a>
+          </div>
+        </div>
+        
+       
+        <div class="thirdpart_login mar-t-05 mar-l-1">
+            其他账号登陆：
+            <!--{if $setting['sinalogin_open']}-->
+             <a href="{SITE_URL}plugin/sinalogin/index.php"><img src="http://www.ask2.cn/static/css/default/sina_login_btn.png" alt="Connect_logo_3.png"></a>
+         
+           
+            <!--{/if}-->
+            <!--{if $setting['qqlogin_open']}-->
+              <a href="{SITE_URL}plugin/qqlogin/index.php"><img src="http://www.ask2.cn/static/css/default/qq_login_btn.png" alt="Connect_logo_3.png"></a>
+            <!--{/if}-->
+        </div>
+    </form>
+
+    <script type="text/javascript">
+        function checkform() {
+            var username = $("#popusername").val();
+            var password = $("#poppassword").val();
+            var _logincode = $("#login_code").val();
+            
+           
+            var _forward=$("#popforward").val();
+            var _apikey=$("#popapikey").val();
+            
+            
+            if ($.trim(username) === '') {
+            	 new $.zui.Messager("请输入您的账号", {
+            		   type: 'danger',
+            		   close: true,
+            		   time:"1000",
+               	    placement: 'center' // 定义显示位置
+               	}).show();
+               
+                $("#username").focus();
+                return false;
+            }
+            if (password === '') {
+            	
+            	 new $.zui.Messager("请输入您的密码", {
+          		   type: 'danger',
+          		 time:"1000",
+          		   close: true,
+             	    placement: 'center' // 定义显示位置
+             	}).show();
+              
+                $("#password").focus();
+                return false;
+            }
+            $("#user_error").html("").addClass("hide");
+            
+            <!--{if $setting['code_login']}-->
+            check_login_code();
+            if (!$('#logincodetip').hasClass("hide")) {
+                $("#code").focus();
+                return false;
+            }
+            <!--{/if}-->
+            
+            $.ajax({
+                type: "POST",
+                async: false,
+                cache: false,
+               
+                //提交的网址
+                url:"{SITE_URL}/?api_user/loginapi",
+                //提交的数据
+                data:{uname:$.trim(username),upwd:password,apikey:_apikey,seccode_verify:_logincode},
+                //返回数据的格式
+                datatype: "text",//"xml", "html", "script", "json", "jsonp", "text".
+                
+                success: function(data) {
+                	data=$.trim(data);
+                   
+                    if(data=='login_ok'){
+                 
+                    	
+                    	
+                    	
+                    	
+                      window.location.href=_forward;
+                      
+                  
+                      
+                      
+                    }else{
+                    	  switch(data){
+                    	  case 'login_null':
+                    		
+                    		   new $.zui.Messager("用户名或者密码为空", {
+                    			   type: 'danger',
+                        		   close: true,
+                        		   time:"1000",
+                           	    placement: 'center' // 定义显示位置
+                           	}).show();
+                    		   return false;
+                    		  break;
+         case 'login_user_or_pwd_error':
+        	   new $.zui.Messager("用户名或者密码错误", {
+        		   type: 'danger',
+        		   close: true,
+        		   time:"1000",
+           	    placement: 'center' // 定义显示位置
+           	}).show();
+        	   return false;
+                    		  break;
+                    		  default:
+                    			   new $.zui.Messager(data, {
+                    				   type: 'danger',
+                            		   close: true,
+                            		   time:"1000",
+                               	    placement: 'center' // 定义显示位置
+                               	}).show();
+                    		  return false;
+                    		  break;
+
+                    	  }
+                    }
+                    
+                }
+            });
+            return false;
+            if (!$("#user_error").hasClass("hide")) {
+                return false;
+            } else {
+                return true;
+            }
+
+        }
+          //验证码
+            function popupdatecode() {
+              var img = g_site_url + "index.php" + query + "user/code/" + Math.random();
+              $('#popverifycode').attr("src", img);
+            }
+            
+        function refresh_code() {
+            var img = g_site_url + "index.php" + query + "user/code/" + Math.random();
+            $('#verifylogincode').attr("src", img);
+        }
+        function check_login_code() {
+        	
+            var code = $.trim($('#login_code').val());
+            
+          
+            if ($.trim(code) == '') {
+            	
+            	   new $.zui.Messager("验证码错误", {
+            		   type: 'danger',
+            		   close: true,
+            		   time:"1000",
+               	    placement: 'center' // 定义显示位置
+               	}).show();
+               
+                return false;
+            }
+        
+            $.ajax({
+                type: "POST",
+                async: false,
+                cache: false,
+                url: "{SITE_URL}index.php?user/ajaxcode/"+code,
+                success: function(flag) {                   
+                    if (1 == flag) {
+                       // $('#logincodetip').html("验证码正确").removeClass("hide");
+                       
+                        return true;
+                    } else {
+                    	 new $.zui.Messager("验证码错误", {
+                    		 type: 'danger',
+                  		   close: true,
+                  		   time:"1000",
+                     	    placement: 'center' // 定义显示位置
+                     	}).show();
+                      
+                       
+                        return false;
+                    }
+
+                }
+            });
+        }
+    </script>
+
+</div>

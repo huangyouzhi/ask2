@@ -1,0 +1,118 @@
+<!--{template header}-->
+<style>
+.side-box em{
+	color:red;
+}
+</style>
+<div class="container   mar-b-1 ">
+
+<div class="row ">
+<div class="col-sm-9 ">
+  <div class="side-box">
+         <ul class="nav nav-secondary">
+        <li class="active">
+         <a href="{url question/search/$word}">问题</a>
+        </li>
+        <li >
+         <a href="{url topictag-$word}">文章</a>
+        </li>
+       
+      </ul>
+
+  <!--{if $questionlist}-->
+  
+  <ul class="nav">
+    <!--{loop $questionlist $question}-->
+    <li class="b-b-line">
+    <h4>
+<a  target="_blank" href="{url question/view/$question['id']}">
+{$question['title']}
+<!--{if in_array($question['status'],array(2,6))}-->
+<i class="icon icon-chevron-sign-down text-danger mar-l-1"></i>
+<!--{/if}-->
+</a></h4>
+    <div class="description mar-t-03">
+    {eval echo cutstr($question['description'],150,'...');}
+    
+    </div>
+    
+    <p class="mar-t-1">
+    <span><a target="_blank" href="{url category/view/$question['cid']}">{$question['category_name']}</a> 
+    </span>
+    
+    <span>
+    提问人:{if $question['hidden']}<span>匿名</span>{else}<a href="{url user/space/$question['authorid']}">{$question['author']}</a>{/if}
+    </span>
+      <span>
+    {$question['answers']}个回答
+    </span>
+      <span>
+    提问时间: {$question['format_time']}
+    </span>
+    
+    
+    </p>
+    </li>
+    
+   <!--{/loop}-->
+  
+  
+  </ul>
+    <!--{else}-->
+            <div id="no-result">
+                <p>抱歉，未找到和您搜索相关的内容。</p>
+                <strong>建议您：</strong>
+                <ul class="nav">
+                    <li><span>检查输入是否正确</span></li>
+                    <li><span>简化查询词或尝试其他相关词</span></li>
+                </ul>
+            </div>
+            <!--{/if}-->
+<!--{if $departstr}-->
+
+<p class="pages">  {$departstr}</p>
+
+<!--{/if}-->
+
+</div>
+</div>
+<div class="col-sm-3">
+<!--{template hot_new_question}-->
+</div>
+</div>
+<div class="row">
+<div class="col-sm-9">
+  <h4 class="font-12">相关搜索</h4>
+  <hr>
+  <ul class="nav navbar-nav clearfix">
+    <!--{loop $related_words $index $word}-->
+             
+                              
+                                
+                                
+                                
+  <li><a href="{url question/search/$word}">{$word}</a></li>
+    <!--{/loop}-->
+  </ul>
+</div>
+<div class="col-sm-9">
+  <h4 class="font-12">热门搜索</h4>
+  <hr>
+  <ul class="nav navbar-nav clearfix">
+    
+   <!--{if $hot_words}-->
+                    <!--{loop $hot_words $hostword}-->
+                    <li><a href="{url question/search/$hostword}">{$hostword}</a></li>
+                    <!--{/loop}-->
+                    <!--{else}-->
+                    <!--{eval $wordslist = unserialize($this->setting['hot_words']);}-->
+                    <!--{loop $wordslist $hotword}-->
+                    <li><a {if $hotword['qid']}href="{url q={$hotword['w']}}" {else}href="{url question/search/$hotword['w']}"{/if}>{$hotword['w']}</a></li>
+                    <!--{/loop}-->    
+                    <!--{/if}-->
+  </ul>
+</div>
+
+</div>
+</div>
+<!--{template footer}-->

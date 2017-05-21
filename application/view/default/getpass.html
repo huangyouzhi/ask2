@@ -1,0 +1,48 @@
+<!--{template meta}-->
+<link rel="stylesheet" media="all" href="{SITE_URL}static/css/bianping/css/login.css" />
+<body class="no-padding reader-black-font">
+<div class="sign">
+    <div class="logo"><a href="/"><img src="{$setting['site_logo']}" alt="Logo"></a></div>
+    <div class="main">
+      
+
+
+<h4 class="title">
+找回密码
+</h4>
+<div class="js-sign-up-container">
+  <form class="new_user" name="getpassform"  action="{url user/getpass}" method="post">
+         <input type="hidden" class="form-control"  name="authcode"  value="{$authcode}" />  
+
+
+     
+               
+             
+       <div class="input-prepend ">
+      <input type="text" class="form-control" id="username" name="username" placeholder="用户名"/>
+      <i class="fa fa-user"></i>
+    </div>
+      <div class="input-prepend">
+      <input type="text" class="form-control" id="email" name="email" placeholder="邮箱"/>
+      <i class="fa fa-envelope"></i>
+    </div>
+      <div class="input-prepend">
+         <img class="pull-right" src="{url user/code}" onclick="javascript:updatecode();" id="verifycode">
+
+                    
+             <input type="text" class="form-control" id="code" name="code" placeholder="输入验证码" onblur="check_code();"/>
+			  <i class="fa fa fa-get-pocket"></i>
+			  </div>				 
+    <input type="submit" name="submit" id="regsubmit"  value="提交" class="sign-up-button">
+   
+</form>
+<!--{template openlogin}-->
+</div>
+
+    </div>
+  </div>
+
+
+
+<!--{template footer}-->
+

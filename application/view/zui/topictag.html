@@ -1,0 +1,96 @@
+<!--{template header}-->
+<style>
+.side-box em{
+	color:red;
+}
+</style>
+<div class="container   mar-b-1 ">
+
+<div class="row">
+<div class="col-sm-8 b-r-line ">
+  <div class="side-box">
+              <ul class="nav nav-secondary">
+        <li>
+         <a href="{url question/search/$word}">问题</a>
+        </li>
+        <li class="active">
+         <a href="{url topictag-$word}">文章</a>
+        </li>
+       
+      </ul>
+
+
+<hr>
+     {if $topiclist==null}
+            <div class="text-center mar-t-1">
+            <h3 class="font-18">
+                     暂无相关文章
+            </h3>
+            </div>
+            {/if}
+    <!--{loop $topiclist $index $topic}-->          
+  <div class="row mar-t-1 b-b-line" >
+ 
+    
+    <div class="col-sm-12">
+     <h3 class="font-15"><a target="_blank" href="{url topic/getone/$topic['id']}">{$topic['title']}</a></h3>
+               {eval $str = preg_replace('/(.*?style=\\").*?(\\".*?)/i','$1$2',$topic['describtion']);}
+               
+                <p  class="mar-t-05 mar-b-1 height-80 clear ">{eval echo strip_tags($str );}</p>
+                
+                <p class="tag-info c-hui">
+                     <span class="tag pull-left">
+                            
+<!--{if $topic['tags']}--> 
+                       标签：
+                    
+<!--{loop $topic['tags'] $tag}-->
+<span><a class="c-hui" target="_blank" title="{$tag}" href="{url topic/search/$tag}">{$tag}</a></span>
+                
+                <!--{/loop}--><!--{else}--><!--{/if}-->
+                </span>
+                <span class="pull-right c-hui">
+               {$topic['views']}浏览
+                
+                </span>
+                </p>
+    </div>
+  
+  </div>         
+  <!--{/loop}-->
+    <div class="pages">{$departstr}</div>    
+       </div>
+</div>
+
+<div class="col-sm-4 ">
+ <!--热门问题一周热点-->
+
+
+    
+       <div class="side-box">
+   <h3>一周热点</h3>
+   
+   <div class="side-content">
+    <ul class="nav right-ul">
+                <!--{eval $attentionlist=$this->fromcache('attentionlist');}-->
+                    <!--{loop $attentionlist $index $question}-->
+                    
+                       <li class="b-b-line"> <i class="quan"></i>                 <a  title="{$question['title']}" target="_blank" href="{url question/view/$question['id']}">{eval echo cutstr($question['title'],40,'');}</a></li>
+                       <!--{/loop}-->
+               
+
+
+            </ul>
+   </div>
+   </div>
+   
+    <!--一周热点结束-->
+     <!--广告位3-->
+        <!--{if (isset($adlist['doing']['right2']) && trim($adlist['doing']['right2']))}-->
+        <div style="margin-top: 5px;">{$adlist['doing']['right1']}</div>
+        <!--{/if}-->
+</div>
+</div>
+
+</div>
+<!--{template footer}-->

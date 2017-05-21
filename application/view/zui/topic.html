@@ -1,0 +1,147 @@
+
+<!--{template header}-->
+
+
+<div class="container   mar-b-1">
+<div class="row">
+<div class="col-md-2" >
+
+   <div class="side-box" >
+     <h3>站内文章分类</h3>
+   
+   <div class="side-content">
+    <ul class="nav right-ul">
+                    
+
+   
+        <!--{eval $categorylist=$this->fromcache('categorylist');}-->
+                <!--{loop $categorylist  $category1}-->
+                {eval $num=rand(0,$cout);$vpic=$arr[$num];}
+         
+               
+                 
+                  <li class="b-b-line"><a target="_blank" href="{url cat-$category1['id']}"><i class="$vpic"></i>{$category1['name']}</a></li>
+                 
+                
+                   <!--{/loop}-->
+            </ul>
+   </div>
+   </div>
+</div>
+
+
+
+
+<div class="col-sm-7 b-l-line side-box">
+    <h3>最新文章</h3>
+    <hr>
+      <!--{if $topiclist==null}-->
+        
+         <div id="msg_tabs_content" class="tab-boxs">
+
+            <div class="box" style="display:block;">
+            
+                <p class="empty">站内还没有最新文章！
+                
+              
+                 
+                
+                </p>
+            </div>
+            </div>
+        <!--{/if}-->
+          <!--{loop $topiclist $index $topic}-->          
+  <div class="row mar-t-1 b-b-line" >
+    <div class="col-sm-4" style="    height: 142px;overflow:hidden;">
+    
+       <a target="_blank" href="{url topic/getone/$topic['id']}">
+                       {eval $index=strpos($topic['image'],'http');}
+                       {if $index==0 }
+                            
+                             <img src="{$topic['image']}" alt="">
+                            {else}
+                            <img   src="{SITE_URL}{$topic['image']}" alt="">
+                            
+                            {/if}
+                    </a>
+    </div>
+    
+    <div class="col-sm-8">
+     <h3 class="font-15"><a target="_blank" href="{url topic/getone/$topic['id']}">{$topic['title']}</a></h3>
+                <p  class="mar-t-05 mar-b-1 height-80 c-hui clear ">{eval echo cutstr(strip_tags(str_replace('&nbsp;','',$topic['describtion'])),150,'..');}<a class="text-success" href="{url topic/getone/$topic['id']}">查看更多</a></p>
+                
+                <p class="tag-info ">
+                     <span class="tag pull-left">
+                              <!--{if $user['grouptype']==1||$user['uid']==$topic['authorid']}-->
+                         <a class="mar-r-03" target="_blank" title="编辑文章" href="{url user/editxinzhi/$topic['id']}">编辑</a> 
+                             <a target="_blank" title="删除文章" href="{url user/deletexinzhi/$topic['id']}">删除</a> 
+                          <!--{/if}-->         
+<!--{if $topic['tags']}-->  
+                  
+                        
+<!--{loop $topic['tags'] $tag}-->
+<span ><a  target="_blank" title="{$tag}" href="{url topic/search/$tag}">{$tag}</a></span>
+                
+                <!--{/loop}--><!--{else}--><!--{/if}-->
+                </span>
+                <span class="pull-right">
+               {$topic['views']}浏览
+                
+                </span>
+                </p>
+    </div>
+  
+  </div>         
+  <!--{/loop}-->
+    <div class="pages">{$departstr}</div>    
+        
+
+</div>
+
+<div class="col-md-3">
+   <div class="side-box">
+   <h3>站长推荐</h3>
+   <hr>
+   <div class="side-content">
+    <ul class="nav right-ul">
+                    <!--{eval $topiclist=$this->fromcache('hottopiclist');}-->
+
+  <!--{loop $topiclist $nindex $topic}-->
+                       <li class="b-b-line"> <i class="quan"></i> <a target="_blank" href="{url topic/getone/$topic['id']}" text="{$topic['title']}">{$topic['title']}</a></li>
+                       <!--{/loop}-->
+               
+
+
+            </ul>
+   </div>
+</div>
+</div>
+</div>
+</div>
+<div id="bottom_ask" class="bottom-fixed" style="">
+        <a class="bottom-close" href="javascript:void(0)"></a>
+        <div class="bd">
+            <i class="left"></i>
+            <span class="center ">
+           
+               
+                
+                             <span class="text-danger font-18 bold">  来一篇原创,上千网友给你打赏，也许下一个作家就是你 </span>
+                             
+                  <a class="btn btn-danger" href="{url user/addxinzhi}">我要发表</a>
+              
+             
+            </span>
+        </div>
+    </div>
+
+<script type="text/javascript">
+
+
+$("#bottom_ask .bottom-close").click(function(){
+	document.getElementById('bottom_ask').style.display='none';
+})
+
+</script>
+
+<!--{template footer}-->

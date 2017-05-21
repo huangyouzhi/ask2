@@ -1,0 +1,140 @@
+<!--{template header}-->
+<style>
+.zthead {
+    position: relative;
+    min-height: 60px;
+    padding: 10px 10px 0px 70px;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #fff;
+}
+.zthead .img, .zthead .img {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.img img {
+    border-radius: 4px;
+}
+.zthead .title
+{
+    display: table;
+    content: " ";
+	margin:0px;
+
+}
+.zthead h1, .zthead h1 {
+    margin: 3px 0 5px 0;
+    font-size: 17px;
+    color: #333;
+}
+.zthead p, .zthead p {
+    margin: 0;
+  font-size:12px;
+}
+.c-hui {
+    color: #999999;
+}
+.fl {
+    float: left!important;
+}
+</style>
+<div class="zthead ui-clear">
+			<a class="img"><img width="50" src="$category['bigimage']" alt="{$category['name']}"></a>
+			<div class="title ui-clear">
+				<h1 class="fl">{$category['name']}</h1>
+							</div>
+			<p class="c-hui">  收录了{$trownum}篇文章 ·{$category['questions']}个问题 · {$category['followers']}人关注</p>
+		</div>
+  <section class="sec-result">
+ <div class="ui-tab" id="tab1">
+    <ul class="ui-tab-nav ui-border-b">
+         <li >
+        <a href="{url category/view/$cid/all}">全部问题</a>
+        </li>
+       
+          <li <!--{if 4==$status}-->class="current"<!--{/if}--> >
+       <a href="{url category/view/$cid/4}">悬赏问题</a>
+        </li>
+          <li <!--{if 1==$status}-->class="current"<!--{/if}--> >
+      <a href="{url category/view/$cid/1}">待解决</a>
+        </li>
+          <li <!--{if 2==$status}-->class="current"<!--{/if}--> >
+       <a href="{url category/view/$cid/2}">已解决</a>
+        </li>
+           <li>
+       <a href="{url topic/catlist/$cid}">相关文章</a>
+        </li>
+      
+    </ul>
+  <div id="list-container">
+        <!-- 文章列表模块 -->
+<ul class="note-list" >
+     
+                <!--{loop $questionlist $index $question}-->
+                
+    <li id="note-{$question['id']}" data-note-id="{$question['id']}" {if $question['image']!=null}  class="have-img" {else}class="" {/if}>
+    {if $question['image']!=null}  
+      <a class="wrap-img" {if $question['articleclassid']!=null} href="{url topic/getone/$question['id']}"  {else}  href="{url question/view/$question['id']}" {/if} target="_blank">
+            <img src="{$question['image']}">
+        </a>
+            {/if}
+        <div class="content">
+            <div class="author">
+            
+            
+               
+                
+                   
+        {if $question['hidden']==1}
+  
+          <a class="avatar"  href="javascript:void(0)">
+                    <img src="{$question['avatar']}" alt="96">
+                </a>      <div class="name">
+                <a class="blue-link"  href="javascript:void(0)">匿名用户</a>
+                
+                
+        {else}
+        <a class="avatar" target="_blank" href="{url user/space/$question['authorid']}">
+                    <img src="{$question['avatar']}" alt="96">
+                </a>      <div class="name">
+                <a class="blue-link" target="_blank" href="{url user/space/$question['authorid']}">{$question['author']}</a>
+                
+        {/if}
+        
+                
+                <span class="time" data-shared-at="{$question['format_time']}">{$question['format_time']}</span>
+            </div>
+            </div>
+            <a class="title" target="_blank"  {if $question['articleclassid']!=null} href="{url topic/getone/$question['id']}"  {else}  href="{url question/view/$question['id']}" {/if} >{$question['title']}</a>
+          
+            <div class="meta">
+               
+                <a target="_blank" {if $question['articleclassid']!=null} href="{url topic/getone/$question['id']}"  {else}  href="{url question/view/$question['id']}" {/if}>
+                    <i class="fa fa-eye"></i> {$question['views']}
+                </a>        <a target="_blank" {if $question['articleclassid']!=null} href="{url topic/getone/$question['id']}#comments"  {else}  href="{url question/view/$question['id']}#comments" {/if}>
+                <i class="fa fa-comment-o"></i> {$question['answers']}
+            </a>      <span><i class=" fa fa-heart-o"></i>  {$question['attentions']}</span>
+            </div>
+        </div>
+    </li>
+
+    <!--{/loop}-->
+ 
+
+</ul>
+ <div class="pages">{$departstr}</div>
+      </div>
+</div>
+  
+</section>
+<section class="fixed-bar" id="fixed-bar">
+    <div class="bar-zhezao">
+
+    </div>
+    <div class="ui-row-flex ui-whitespace ui-row-flex-ver bar-items">
+   
+        <div class="ui-col"><i class="ui-icon-home"></i></div>
+        <div class="ui-col"><i class="ui-icon-gototop"></i></div>
+    </div>
+</section>
+<!--{template footer}-->

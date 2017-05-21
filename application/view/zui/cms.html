@@ -1,0 +1,16 @@
+                       <!-- 第三方cms调用 -->  
+       <h3 class="font-18 mar-t-05">
+资讯浏览
+</h3>
+<hr>
+  <ul class="nav">
+                <!--{eval $articlelist=$this->fromcache('articlelist');}-->
+                <!--{loop $articlelist $index $article}-->
+                <!--{eval $index++;}-->
+                <li class="b-b-line">
+                   
+                   <i class="quan"></i>
+                    <a  title="{$article['title']}" target="_blank" href="{$article['href']}"> {$article['title']}</a>
+                </li>
+                <!--{/loop}-->
+            </ul>

@@ -1,0 +1,76 @@
+<!--{template header}-->
+
+<!--{eval $adlist = $this->fromcache("adlist");}-->
+<!--内容部分--->
+<div class="content-body">
+<div class="container  ">
+
+<div class="row">
+<div class="col-sm-8 side-box">
+<ol class="breadcrumb ">
+  <li><a class="first" href="{SITE_URL}">{$setting['site_name']}</a></li>
+
+  <li class="active">公告列表</li>
+</ol>
+ <!--广告位1-->
+        <!--{if (isset($adlist['common']['left1']) && trim($adlist['common']['left1']))}-->
+        <div>{$adlist['common']['left1']}</div>
+        <!--{/if}-->
+        
+                <table class="table ">
+                        <tbody>
+                            <tr class=""><th class="s0">标题</th><th class="s1">评论/浏览</th><th class="s2">时间</th></tr>
+                            <!--{loop $notelist $index $note}-->
+                            <tr>
+                                <td class="title">
+                                    <div class="tit-full">
+                                        <div class="wrap">
+                                            <a {if $note['url']} href="{$note['url']}"  {else}  href="{url note/view/$note['id']}" {/if} target="_blank" title="{$note['title']}">{eval echo cutstr($note['title'],50);}</a>&nbsp;
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{$note['comments']}/{$note['views']}</td>
+                                <td>{$note['format_time']}</td>
+                            </tr>
+                            <!--{/loop}-->
+                        </tbody>
+                    </table>
+                     <div class="pages">{$departstr}</div>
+
+</div>
+
+<div class="col-sm-4 b-l-line side-box">
+  <!-- 关注问题排行榜 -->
+<h3 class="font-18 mar-t-05">
+一周热点问题
+</h3>
+<hr>
+  <ul class="nav">
+                <!--{eval $attentionlist=$this->fromcache('attentionlist');}-->
+                <!--{loop $attentionlist $index $question}-->
+                <!--{eval $index++;}-->
+                <li class="b-b-line">
+                   
+                      <i class="quan"></i>
+                    <a  title="{$question['title']}" target="_blank" href="{url question/view/$question['id']}"> {$question['title']}</a>
+                </li>
+                <!--{/loop}-->
+            </ul>
+        
+            <!--广告位2-->
+              <div class="mar-t-1">
+        <!--{if (isset($adlist['common']['right1']) && trim($adlist['common']['right1']))}-->
+        <div style="margin-top:5px;">{$adlist['common']['right1']}</div>
+         </div>  
+        <!--{/if}-->
+         
+            
+</div>
+
+</div>
+
+</div>
+
+</div>
+<!--内容部分结束--->
+<!--{template footer}-->

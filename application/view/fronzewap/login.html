@@ -1,0 +1,223 @@
+<!--{template header}-->
+<style>
+.loginicon{
+	width:100px;
+    height:24px;
+line-height:24px;
+display:inline-block;
+
+color:#fff;
+font-size:14px;
+text-align:center;
+margin-left:5px;
+}
+.sinalogon{
+	background:#b92e2e;
+}
+.weixinlogon{
+	background:#1aac5b;
+}
+.qqlogon{
+	background:#0aaff3;
+}
+.loginicon .fa{
+	margin-right:10px;
+}
+</style>
+
+<section class="ui-container mar-t-01">
+    <div class="ui-form ui-border-t">
+        <form id="login_form">
+        <input type="hidden"  id="forward" name="return_url" value="{$forward}">
+            <div class="ui-form-item ui-form-item-pure ui-border-b">
+                <input id="xm-login-user-name" name="user_name" type="text" placeholder="注册时候的账号">
+                <a href="#" class="ui-icon-close"></a>
+            </div>
+            <div class="ui-form-item ui-form-item-pure ui-border-b">
+                <input id="xm-login-user-password" type="password" placeholder="密码" name="password">
+                <a href="#" class="ui-icon-close"></a>
+            </div>
+         
+            <div class="ui-form-item ui-form-item-switch ui-border-b">
+                <p>
+                    记住密码
+                </p>
+                <label class="ui-switch">
+                    <input type="checkbox" value="1" id="keeppwd" name="net_auto_login"/>
+                </label>
+            </div>
+            <div class="ui-btn-wrap">
+              <!-- 若按钮不可点击则添加 disabled 类 -->
+                <button id="login_submit"  class="ui-btn-lg ui-btn-primary">
+                    确定
+                </button>
+            </div>
+        </form>
+    </div>
+   <ul class="ui-row mar-t-05">
+    <li class="ui-col ui-col-67">
+    <a class="mar-lr-05" href="{url user/register}">立即注册</a>
+    </li>
+    <li class="ui-col ui-col-33">
+
+<div class="ui-flex ui-flex-pack-end">
+    <div><a class="mar-lr-05" href="{url user/getpass}">忘记密码</a></div>
+</div>
+   </li>
+    </ul>
+    <div class="ui-flex ui-flex-pack-start">
+     <!--{if $setting['sinalogin_open']}-->
+       <a href="{SITE_URL}plugin/sinalogin/index.php"> 
+       <div  class="loginicon sinalogon">
+        <i class="fa fa-weibo"></i>新浪微博
+        </div>
+        </a>
+       <!--{/if}-->
+     
+     
+      
+         
+                <!--{if $setting['qqlogin_open']}-->
+        <div class="mar-lr-05">
+             <!--{if $setting['wap_domain']}-->
+               <a href="{SITE_URL}plugin/wapqqlogin/index.php">
+                <div  class="loginicon qqlogon">
+        <i class="fa fa-qq"></i>QQ登录
+        </div>
+        </a>
+        
+
+           <!--{else}-->
+            <a href="{SITE_URL}plugin/qqlogin/index.php">
+            <div  class="loginicon qqlogon">
+        <i class="fa fa-qq"></i>QQ登录
+        </div>
+            </a>
+             <!--{/if}-->
+        </div>
+        
+          <!--{/if}-->
+            <!--{if $wxbrower}-->
+          <div class="mar-lr-05">
+        
+                <a href="{SITE_URL}?plugin_weixin/wxauth">
+            <div  class="loginicon weixinlogon">
+        <i class="fa fa-weixin"></i>微信登录
+        </div>
+ </a>
+              
+               
+          </div>
+             <!--{/if}-->
+    </div>
+
+</section>
+ <script>
+ var uname_tmp=window.localStorage.getItem("username");
+ var upwd_tmp=window.localStorage.getItem("userpwd");
+ if(uname_tmp!=null){
+	 $("#xm-login-user-name").val(uname_tmp);
+	 $("#xm-login-user-password").val(upwd_tmp);
+	 $("#keeppwd").attr("checked",'true');
+ }
+ function keepuserinfo(){
+	 var _pwdkeep=$("#keeppwd").attr("checked");
+	 var _uname=$("#xm-login-user-name").val();
+	    var _upwd=$("#xm-login-user-password").val();
+	if(_pwdkeep){
+		window.localStorage.setItem("username",_uname);
+		window.localStorage.setItem("userpwd",_upwd);
+	}else{
+	
+		window.localStorage.removeItem("username");
+		window.localStorage.removeItem("userpwd");
+	}
+ }
+ $("#keeppwd").change(function(){
+	 keepuserinfo();
+ })
+$("#login_submit").bind("click",function(event){
+	 var _forward=$("#forward").val();
+    var _uname=$("#xm-login-user-name").val();
+    var _upwd=$("#xm-login-user-password").val();
+    var _apikey=$("#apikey").val();
+    var _code=$("#seccode_verify").val();
+    var el='';
+    $.ajax({
+        //提交数据的类型 POST GET
+        type:"POST",
+        //提交的网址
+        url:"{SITE_URL}/?api_user/loginapi",
+        //提交的数据
+        data:{uname:_uname,upwd:_upwd,apikey:_apikey,seccode_verify:_code},
+        //返回数据的格式
+        datatype: "text",//"xml", "html", "script", "json", "jsonp", "text".
+      //在请求之前调用的函数
+        beforeSend:function(){
+     	    el=$.loading({
+     	        content:'加载中...',
+     	    })
+        },
+        //成功返回之后调用的函数
+        success:function(data){
+          
+        	 el.loading("hide");
+            if(data=='login_ok'){
+            
+            	keepuserinfo();
+             	
+             	
+             	
+               window.location.href="{$forward}";
+               
+             
+            	
+            	
+            
+            }else{
+            	  switch(data){
+            	  case 'login_null':
+            		 
+            		  el2=$.tips({
+            	            content:'用户名或者密码为空',
+            	            stayTime:1000,
+            	            type:"info"
+            	        });
+            		  break;
+ case 'login_user_or_pwd_error':
+	
+	  el2=$.tips({
+          content:'用户名或者密码错误',
+          stayTime:1000,
+          type:"info"
+      });
+            		  break;
+default:
+
+el2=$.tips({
+    content:data,
+    stayTime:1000,
+    type:"info"
+});
+	break;
+            	  }
+            }
+        }   ,
+        
+        //调用执行后调用的函数
+        complete: function(XMLHttpRequest, textStatus){
+     	    el.loading("hide");
+        },
+       
+        //调用出错执行的函数
+        error: function(){
+            //请求出错处理
+        }
+    });
+    event.stopPropagation();    //  阻止事件冒泡
+    return false;
+});
+
+
+</script>
+<!--{template footer}-->

@@ -1,0 +1,55 @@
+<link rel="stylesheet" type="text/css" href="{SITE_URL}static/js/wangeditor/mobile/dist/css/wangEditor-mobile.css">
+<script type="text/javascript" src="{SITE_URL}static/js/wangeditor/mobile/dist/js/lib/zepto.js"></script> 
+<script type="text/javascript" src="{SITE_URL}static/js/wangeditor/mobile/dist/js/lib/zepto.touch.js"></script>   
+<script type="text/javascript" src="{SITE_URL}static/js/wangeditor/mobile/dist/js/wangEditor-mobile.js"></script> 
+<style>
+	.editor_container {
+			 
+			height:160px; 
+			
+			background-color: #fff;
+			text-align: left;
+			box-shadow: 0 0 10px #ccc;
+			text-shadow: none; 
+            margin:10px 10px;
+		}
+</style>
+<div class="editor_container">
+  <textarea  id="editor" name="content"  style="width:100%;height:200px;">
+ 
+               {if $this->get[1]!='view'&&$this->get[0]=='question'}
+               
+             <p>
+        
+           {if $navtitle=='编辑问题'}  {$question['description']} {/if}
+             {$topic['describtion']}
+             
+           {if $user['uid']==$answer['authorid']&&$this->get[1]=='editanswer'&&$this->get[0]=='question'}    {$answer['content']} {/if}</p>
+           {/if}
+          
+            </textarea>
+</div>
+<script type="text/javascript">
+var testeditor='999';
+var editor=null;
+	$(function () {
+
+		// 全局配置
+		// ___E.config.menus = ['bold', 'color', 'quote'];
+
+		// 生成编辑器
+		 editor = new ___E('editor');
+
+		
+		// 自定义配置
+		editor.config.uploadImgUrl = g_site_url+"index.php?attach/upimg" ;
+     // console.log(g_site_url+"index.php?attach/upimg");
+		 editor.config.menus = ['bold', 'quote', 'list','img'];
+       
+		// 初始化
+		editor.init();
+		 var _txt = editor.wang_txt;
+		// _txt.html('添加内容');
+		//console.log(editor.$txt);
+	});
+	</script>

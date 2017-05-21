@@ -1,0 +1,89 @@
+<style>
+.fixedbottom{
+	position:fixed;
+     bottom:0px;
+     left:0px;
+     right:0px;
+    opacity:0.8;
+    background:#000;
+height:200px;
+}
+.fixedbottom .fa-close{
+	font-size:15px;
+    color:#fff;
+    position:absolute;
+  top:10px;
+ right:10px;
+cursor:pointer;
+}
+.fixedbottom .fixedbottom-text{
+	font-size:18px;
+    font-weight:600;
+   
+    text-align:center;
+margin-top:20px;
+height:25px;
+line-height:25px;
+}
+.fix-c-bai{
+	 color:#fff;
+}
+.fix-c-lu{
+	 color:#70CE1A;
+}
+.btn-buy,.btn-buy:hover{
+	 
+    width: 100px;
+    height: 38px;
+    line-height: 24px;
+    margin: 9px 15px 0;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #70CE1A;
+    position:fixed;
+    bottom:10px;
+    left:40%;
+    margin-left:-50px;
+z-index:2;
+}
+.btn-down,.btn-down:hover{
+	 
+    width: 140px;
+    height: 38px;
+    line-height: 24px;
+    margin: 9px 15px 0;
+    border-radius: 4px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #70CE1A;
+    position:fixed;
+    bottom:10px;
+    left:55%;
+    margin-left:-50px;
+z-index:2;
+}
+</style>
+<div class="fixedbottom hide">
+ <i class="fa fa-close"></i>
+ <div class="fixedbottom-text fix-c-bai">
+ 我们每天不断完善产品，不断改进，只为追求更符合企业和个人站长需求的产品，<span style="color:#70CE1A">官网QQ群:370431002</span>
+</div>
+ <div class="fixedbottom-text fix-c-bai">
+从3.0到3.5每一次改变都是质的飞跃，开源问答里，我们无论从功能，seo还有性能，UI都已经做到行业No.1
+</div>
+ <div class="fixedbottom-text fix-c-bai">
+采集，语音，付费悬赏，付费偷看，打赏，充值，短信接口，对专家提问，全文检索，集成第三方网站我们都有！
+</div>
+
+
+</div>
+<a href="{url buy}" class="btn btn-buy hide"><i class="fa fa-buysellads mar-ly-1"></i>购买</a>
+
+<a data-toggle="tooltip" data-html="true" data-placement="right" data-original-title="最后更新于2017/4/24" href="http://www.ask2.cn/downloads/ask2V3.5sns.zip" class="btn btn-down hide"><i class="fa fa-arrow-circle-o-down mar-ly-1"></i>下载源码</a>
+
+<script>
+$(".fixedbottom .fa-close").click(function(){
+	$(".fixedbottom,.btn-down,.btn-buy").hide();
+})
+</script>

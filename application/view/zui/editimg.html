@@ -1,0 +1,105 @@
+<!--{template header}-->
+<!--用户中心大背景--->
+<div class="row nopadding nomargin">
+  <!--{template user_banner}-->
+
+</div>
+
+
+<!--用户中心大背景结束标记-->
+
+<!--用户中心-->
+
+<div class="user-home bg-white">
+    <div class="container">
+
+        <div class="row ">
+            <div class="col-sm-9">
+            <!-- 用户title部分导航 -->
+              <!--{template user_title}-->
+             <!-- title结束标记 -->
+       <!-- 内容页面 -->  
+    <div class="row">
+                 <div class="col-sm-12">
+                     <div class="dongtai">
+                         <p>
+                             <strong class="font-18">修改头像</strong>
+                         </p>
+                          
+                          <ul class="nav nav-secondary">
+        <li><a href="{url user/profile}">个人资料</a></li>
+                    <li><a href="{url user/uppass}">修改密码</a></li>
+                     <li><a href="{url user/editemail}">修改邮箱</a></li>
+                    <li class="active"><a href="{url user/editimg}">修改头像</a></li>
+                    <li>
+                    <a href="{url user/mycategory}">我的设置</a>
+                    </li>
+             </ul>
+                         <hr>
+                      
+  <!--{if isset($imgstr)}-->
+                {$imgstr}
+                <!--{else}-->
+                <p> 说明：</p>
+                <ul class="nav">
+                <li>
+                  1、支持jpg、gif、png、jpeg四种格式图片上传
+                </li>
+                 <li>
+                   2、图片大小不能超过2M;
+                </li>
+                 <li>
+                3、图片长宽大于165*165px时系统将自动压缩
+                </li>
+                </ul>
+        
+ <form class="form-horizontal"  action="{url user/editimg/$user['uid']}" method="post"  enctype="multipart/form-data">
+  <div class="form-group">
+          
+          <div class="col-md-12 mar-t-1">
+              <img class="avatar" alt="{$user['username']}" src="{$user['avatar']}" />
+          </div>
+            <div class="col-md-12 mar-t-1">
+             <input id="file_upload" name="userimage" type="file"/>
+                            <button type="submit" name="uploadavatar" id="uploadavatar" class="btn btn-danger mar-t-1" >
+                            保&nbsp;存 </button>
+          </div>
+        </div>
+ </form>
+                 <!--{/if}-->
+                   
+                     </div>
+                 </div>
+
+
+             </div>
+            </div>
+           
+            <!--右侧栏目-->
+            <div class="col-sm-3 mar-t-2">
+
+
+              
+
+                <!--导航列表-->
+
+               <!--{template user_menu}-->
+
+                <!--结束导航标记-->
+
+
+                <div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--{template footer}-->

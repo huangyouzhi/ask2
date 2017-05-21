@@ -1,0 +1,177 @@
+
+<!--{template meta}-->
+<link rel="stylesheet" media="all" href="{SITE_URL}static/css/bianping/css/login.css" />
+<body class="no-padding reader-black-font">
+<div class="sign">
+    <div class="logo"><a href="/"><img src="{$setting['site_logo']}" alt="Logo"></a></div>
+    <div class="main">
+      
+
+
+<h4 class="title">
+  <div class="normal-title">
+    <a class="" href="{url user/login}">登录</a>
+    <b>·</b>
+    <a id="js-sign-up-btn" class="active" href="{url user/register}">注册</a>
+  </div>
+</h4>
+<div class="js-sign-up-container">
+  <form class="new_user" method="post">
+      <input type="hidden" name="usersid" value='{$_SESSION["userid"]}'/>
+      <input type="hidden" id="apikey" name="apikey" value='{$_SESSION["apikey"]}'/>  
+    <div class="input-prepend ">
+        <input placeholder="你的昵称" type="text" value="" id="username" name="user_name" >
+      <i class="fa fa-user"></i>
+    </div>
+    <div class="input-prepend ">
+        <input placeholder="你的邮箱" type="text" value="" id="email"  name="email"  >
+      <i class="fa fa-envelope"></i>
+    </div>
+
+      <div class="input-prepend  no-radius js-normal ">
+                    <img  src="{url user/code}" onclick="javascript:updatecode();" id="verifycode">
+
+                    <input type="text" class="form-control" id="seccode_verify" name="seccode_verify" placeholder="验证码">
+              <i class="fa fa fa-get-pocket"></i>
+                  </div>
+               
+       <div class="input-prepend ">
+      <input placeholder="设置密码" type="password" id="password" name="password" autocomplete="off" maxlength="20">
+      <i class="fa fa-lock"></i>
+    </div>
+      <div class="input-prepend">
+      <input placeholder="确认密码" type="password" id="repassword" name="repassword" autocomplete="off" maxlength="20">
+      <i class="fa fa-lock"></i>
+    </div>
+    
+    <input type="button" id="regsubmit" onclick="cheklogin()"  value="注册" class="sign-up-button">
+    <p class="sign-up-msg">点击 “注册” 即表示您同意并愿意遵守协议<br> <a target="_blank" href="#">用户协议</a> 和 <a target="_blank" href="#">隐私政策</a> 。</p>
+</form>
+<!--{template openlogin}-->
+</div>
+
+    </div>
+  </div>
+
+
+
+      <script type="text/javascript">
+    var usernameok = 1;
+    var password = 1;
+    var repasswdok = 1;
+    var emailok = 1;
+    var codeok = 1;
+   
+   
+
+	 function listerphone(){
+    	 var _phone=$("#userphone").val();
+    	 if(_phone.length>0){
+    		
+    		 $(".js-security-number").removeClass("hide");
+    	 }else{
+    		 $(".js-security-number").addClass("hide");
+    	 }
+    }
+
+   
+
+    function cheklogin(){
+
+    	
+        var _uname=$("#username").val();
+        var _upwd=$("#password").val();
+        var _rupwd=$("#repassword").val();
+        var _code=$("#seccode_verify").val();
+        var _email=$("#email").val();
+     
+        var _apikey=$("#apikey").val();
+        
+ 
+        var _data={uname:_uname,upwd:_upwd,rupwd:_rupwd,email:_email,apikey:_apikey,seccode_verify:_code};
+       
+      
+        $.ajax({
+            //提交数据的类型 POST GET
+            type:"POST",
+            //提交的网址
+            url:"{SITE_URL}?api_user/registerapi",
+            //提交的数据
+            data:_data,
+            //返回数据的格式
+            datatype: "text",//"xml", "html", "script", "json", "jsonp", "text".
+            beforeSend: function () {
+                
+                ajaxloading("提交中...");
+             },
+            //成功返回之后调用的函数
+            success:function(data){
+              
+            	data=$.trim(data);
+                if(data=='reguser_ok'){
+                	
+              
+                
+                	
+                	
+                  window.location.href="{SITE_URL}?user/default";
+                  
+                 
+                	
+                }else if(data=='reguser_ok1'){
+                	
+                	alert("注册成功，系统已发送注册邮件，24小时之内请进行邮箱验证，在您没激活邮件之前你不能发布问题和文章等操作！");
+                	   window.location.href="{SITE_URL}?user/default";
+                }else{
+                	switch(data){
+                	
+                
+                	case 'reguser_cant_null':
+                		
+                		
+                		alert("用户名或者密码不能为空");
+                		break;
+                	case 'regemail_Illegal':
+                		
+                		alert("注册邮箱不合法");
+                		break;
+                	case 'regemail_has_exits':
+                		
+                		alert("邮箱已注册");
+                		break;
+                	case 'regemail_cant_use':
+                		
+                		alert("此邮箱不能注册使用");
+                		break;
+                	case 'reguser_has_exits':
+                	
+                		alert("注册用户名已经存在");
+                		break;
+                	case 'Illegal':
+                		
+                		alert("用户名或者密码包含特殊字符");
+                		break;
+                	default:
+                		
+                		alert(data);
+                		break;
+                	}
+                }
+            }   ,
+            complete: function () {
+                removeajaxloading();
+             },
+            //调用出错执行的函数
+            error: function(){
+                //请求出错处理
+            }
+        });
+    }
+
+   
+
+    
+    
+</script>
+
+<!--{template footer}-->

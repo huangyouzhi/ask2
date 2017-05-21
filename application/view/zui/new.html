@@ -1,0 +1,73 @@
+<!--{template header}-->
+<!--{template banner}-->
+<div class="container  mar-t-1 mar-b-1 bg-white">
+
+<div class="row">
+<div class="col-sm-8">
+<ol class="breadcrumb">
+  <li><a class="first" href="{SITE_URL}">{$setting['site_name']}</a></li>
+
+  <li class="active">最近更新</li>
+</ol>
+
+
+<hr>
+
+<div class="row newlist">
+        <div class="col-sm-12">
+
+            <div class="answer_contents">
+   <!--{loop $questionlist $index $question}-->
+            
+              
+                <ul class="answer_content clear">
+                    <li class="answer_num">
+                        <span class="span_01">{$question['answers']}</span>
+                        <span class="span_02">回答</span>
+                    </li>
+                    <li class="answer_con">
+                        <ul>
+                            <li class="question_li"><a href="{url question/view/$question['id']}" target="_blank"
+                                                       title="{$solve['title']}"><h2>{$question['title']}</h2>
+                            </a></li>
+
+                            <li class="answer_li">
+                               {$question['description']}
+                            </li>
+                            <li class="answer_label mar-b-2 clear">
+                                <span class="mar-l-1 answer_time text-success pull-left">{$question['format_time']}</span>
+                                <div class="pull-right">
+                                
+                                
+                                <!--{if $question['tags']}-->  
+                       
+                        
+<!--{loop $question['tags'] $tag}-->
+<span><a target="_blank" title="$tag" href="{url question/search/$tag}">{$tag}</a></span>
+                
+                <!--{/loop}--><!--{else}--><!--{/if}-->
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+  <!--{/loop}-->
+               
+
+            </div>
+        </div>
+
+    </div>
+     <div class="pages">
+                           {$departstr}
+                        </div>
+</div>
+
+<div class="col-sm-4">
+
+</div>
+</div>
+
+</div>
+<!--{template footer}-->

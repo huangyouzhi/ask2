@@ -1,0 +1,135 @@
+<!--{template header}-->
+<script>
+
+var _topictitle="{$topicone['title']}";
+
+{eval $indexx=strstr($topicone['image'],'http');}
+
+{if $indexx>=0 }
+     var imgurl="{$topicone['image']}";
+   
+     {else}
+     var imgurl="{SITE_URL}{$topicone['image']}";
+    
+     
+     {/if}
+    	
+var topicdescription="";
+var topiclink="{url topic/getone/$topicone['id']}";
+
+</script>
+<section class="ui-container ">
+<article class="article">
+    <h1 class="title">{$topicone['title']}</h1>
+    <div class="article-info ui-clear">
+
+        <ul class="ui-row">
+
+            <li class="ui-col ui-col-80">
+
+                <span >
+               
+                  <a class="ui-txt-highlight" href="{url user/space/{$topicone['authorid']}}">
+                   {$topicone['author']}
+                  </a>
+                </span>
+                
+                <span class="pad-lr-05">{$topicone['viewtime']}</span>
+
+            </li>
+            <li class="ui-col ui-col-20">
+                <span class="f-size-set ui-fr ui-txt-warning">大</span>
+                <i class="ui-icon-hall"></i>
+
+            </li>
+
+        </ul>
+
+
+
+    </div>
+    <div class="article-content art-content">
+         
+         
+       
+       {eval    echo replacewords($topicone['describtion']);    }     
+    </div>
+   
+</article>
+    <section class="article-jingxuan ui-panel">
+        <h2 class="ui-txt-warning">猜你喜欢</h2>
+        <ul class="ui-list ui-list-link ui-border-tb">
+          <!--{loop $ctopiclist $index $topic}-->   
+            <li class="ui-border-t" onclick="window.location.href='{url topic/getone/$topic['id']}'">
+                <div class="ui-list-img">
+                             
+                 {eval $indexx=strstr($topic['image'],'http');}
+
+                       {if $indexx>=0 }
+                         <span style="background-image:url({$topic['image']})"></span>
+                        {else}
+                          <span style="background-image:url({SITE_URL}{$topic['image']})"></span>
+                           {/if}
+                 
+                </div>
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap"><a class="ui-txt-default" href="{url topic/getone/$topic['id']}">{$topic['title']}</a></h4>
+                    <p class="ui-nowrap">
+                     {if $topic['price']!=0}
+                     <style>
+                .thiefbox::before {
+    border-width: 8px;
+    margin-top: -8px;
+}
+</style>
+                         <div class="box_toukan ">
+											
+										
+											<a  class="thiefbox font-12" style="font-size:14px;color:#fff;"><i class="icon icon-lock font-12"></i> &nbsp;阅读需支付&nbsp;$topic['price']&nbsp;&nbsp;积分……</a>
+											
+											
+										    
+										</div>
+                   {else}
+                  {eval echo cutstr(strip_tags(str_replace('&nbsp;','',$topic['describtion'])),110,'...');}
+                    {/if}
+                    
+                  
+                    </p>
+                </div>
+            </li>
+             <!--{/loop}-->
+           
+        </ul>
+    </section>
+    
+<section class="fixed-bar">
+    <div class="bar-zhezao">
+
+    </div>
+    <div class="ui-row-flex ui-whitespace ui-row-flex-ver bar-items">
+        
+        <div class="ui-col"><i class="ui-icon-home"></i></div>
+        <div class="ui-col"><i class="ui-icon-gototop"></i></div>
+    </div>
+</section>
+<script type="text/javascript" src="{SITE_URL}static/ckplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript" src="{SITE_URL}static/ckplayer/video.js" charset="utf-8"></script>
+
+<script src="fronze/js/main.js"></script>
+<script>
+$('.article .article-content').find('br').remove();
+    $(".f-size-set").bind("click",function(event){
+
+        $(".article-content").toggleClass("art-font");
+        if( $(".article-content").hasClass("art-font")){
+            $(this).html("小");
+        }else{
+            $(this).html("大");
+        }
+    })
+    
+</script>
+
+</section>
+<!--{template footer}-->

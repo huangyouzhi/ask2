@@ -1,0 +1,20 @@
+    <div class="split-line"></div>
+       <div class="recommend">
+   <div class="title"><span>推荐文章</span></div>
+   <ul class="list">
+
+
+  <!--{eval $topiclist=$this->fromcache('hottopiclist');}-->
+ 
+        <!--{loop $topiclist $nindex $topic}-->
+                       <li ><a  class="li-a-title" target="_blank" href="{url topic/getone/$topic['id']}" title="{$topic['title']}">{$topic['title']}</a></li>
+                       <!--{/loop}-->
+
+
+      </ul>
+       <a href="{url topic/hotlist}" target="_blank" class="find-more">
+    查看全部<i class="fa fa-angle-right mar-ly-1"></i>
+    </a>
+    
+
+    </div>

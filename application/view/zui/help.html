@@ -1,0 +1,666 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+{eval $setting=$this->setting;}
+<head>
+<title>帮助中心--{$setting['site_name']}</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="{SITE_URL}css/dist/css/normalize.css" rel="stylesheet">
+    <!-- zui -->
+    <link href="{SITE_URL}css/dist/css/zui.min.css" rel="stylesheet">
+<script language="javascript">
+<!--
+function h(obj,url){
+obj.style.behavior='url(#default#homepage)';
+obj.setHomePage(url);
+}
+-->
+</script>
+<style type="text/css">.bgcnt {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; PADDING-BOTTOM: 10px; PADDING-TOP: 10px; BACKGROUND-COLOR: #ffffff
+}
+.bgbdy {
+	BACKGROUND-COLOR: #ffffff
+}
+.style1 {
+	FONT-SIZE: 12px
+}
+.style3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px
+}
+.f14B {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+.f14 {
+	FONT-SIZE: 14px; LINE-HEIGHT: 22px
+}
+.style4 {
+	COLOR: #ffffff
+}
+.style5 {
+	COLOR: #000000
+}
+.style6 {
+	FONT-WEIGHT: bold; COLOR: #0000cc
+}
+.style7 {
+	FONT-WEIGHT: bold; COLOR: #000000
+}
+</style>
+</head>
+
+<body text="#000000" vlink="#0033cc" alink="#800080" link="#0033cc" bgcolor="#ffffff" topmargin="0">
+
+<a name="n"></a>
+<table class="table">
+	<tr height="60">
+		<td valign="top" width="139" height="69">
+		<a href="{SITE_URL}">
+		<img src="{SITE_URL}css/default/logo.png" border="0"></a></td>
+		<td valign="bottom">
+		<table class="table">
+			<tr bgcolor="#e5ecf9">
+				<td height="24">&nbsp;<b class="p1">Tipask帮助</b></td>
+				<td class="p2" height="24">
+					<div align="right">
+						<a href="{SITE_URL}">返回{$setting['site_name']}</a>&nbsp;
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="p2" colspan="2" height="20"></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<table class="table">
+	<tr>
+		<td colspan="3" height="5"></td>
+	</tr>
+	<tr>
+		<td class="padd10" colspan="3" height="19"><b>
+		<a href="{url index/help}#如何提问">如何提问</a></b>　<b><a href="{url index/help}#如何回答">如何回答</a></b><b>
+		</b><span class="style5"><span class="style6">&nbsp;</span></span><b><a href="{url index/help}#如何处理问题">如何处理问题</a></b>　<b><a href="{url index/help}#如何处理过期问题">如何处理过期问题</a></b>　<b><a href="{url index/help}#问题为何被关闭">问题为何被关闭</a></b>　<b><a href="{url index/help}#如何获得积分">如何获得积分</a></b>　<b><a href="{url index/help}#如何选择头衔">如何升级会员组</a></b>　<b><a href="{url index/help}#如何避免问答被删">如何避免问答被删</a></b>
+		<b><a href="{url index/help}#{$setting['site_name']}协议">{$setting['site_name']}协议</a></b><br>
+		&nbsp;</td>
+	</tr>
+</table>
+<br>
+<hr width="95%" color="#dddddd" size="1">
+<table class="table">
+	<tr>
+		<td>
+		<table class="table">
+			<tr>
+				<td width="750" bgcolor="#e5ecf9">&nbsp;<b class="p1">如何使用Tipask</b></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">我们提醒您注意，您需要注册并登陆，才能享受我们的完整服务进行各项操作，否则您只有
+				部分浏览的权限。<br>
+				</span></td>
+			</tr>
+		</table>
+		<span class="bgbdy"></span><a id="n1" name="n1"></a><br>
+		<table class="table">
+			<tr>
+				<td width="750" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a name="如何提问">如何提问</a></b></td>
+			</tr>
+			<tr>
+				<td class="padd10">
+				<table class="table">
+					<tr>
+						<td class="padd10" valign="top"><a id="zn1" name="zn1">
+						</a><br>
+						<span class="p2"><b>在输入框输入提问</b><br>
+						每个页面的顶端都可以看到“我要提问”的提问输入框，在提问输入框中输入您的问题。<br>
+						例如输入“哪些食物不宜存放在冰箱中？”，并点击“我要提问”<a id="zn2" name="zn2"></a><br>
+						</span></td>
+					</tr>
+				</table>
+				<hr width="100%" color="#dddddd" size="1">
+				<p><b>填写提问细节并悬赏</b></p>
+				<p class="p2">接下来，您进入到一个提问细节处理页面，在这里您可以进一步对您的提问进行细节处理： </p>
+				<table class="table">
+					<tr>
+						<td class="f14B" valign="top" width="20"><b>A:</b></td>
+						<td class="padd10"><span class="p2">详细说明问题：<br>
+						您可以详细描述您所遇到的难题，以得到网友最好最有针对性的回答。<br>
+						例如“杀毒软件并没有发出警报说我已经中毒，而且我也查不到任何的毒，也没有开很多程序，但是今天频繁死机，是什么原因呢”。</span><br>
+						<br>
+						</td>
+						<td class="f14" valign="top" align="middle" width="304" rowspan="6">
+						　</td>
+					</tr>
+					<tr>
+						<td class="f14B" valign="top"><b>B:</b></td>
+						<td class="padd10"><span class="p2">设置问题分类<br>
+						请您切记为您的问题选择一个最恰当的分类，因为只有这样，您的问题才能在第一时间内得到正确解答。<br>
+						我们的系统会对您的提问进行自动分析并进行分类，但是很可能您对我们的分类并不满意，您可以在此修改已有的分类。</span>
+						<br>
+						<br>
+						</td>
+					</tr>
+					<tr>
+						<td class="f14B" valign="top"><b>C:</b></td>
+						<td class="padd10"><span class="p2">设置悬赏分<br>
+						设置悬赏分，可以让您的问题得到更多的关注，当然悬赏分越高，受关注度也越高。<br>
+						请您注意，设置了悬赏分，悬赏分便将从您的积分中扣除，并在您选择了最佳答案后，赠送给最佳答案的回答者</span>。 
+						<br>
+						<br>
+						</td>
+					</tr>
+					<tr>
+						<td class="f14B" valign="top"><b>D:</b></td>
+						<td class="padd10"><span class="p2">设定匿名<br>
+						当某些提问属于您的个人隐私，您可以设定匿名提问，这样，您的用户名便不会出现在问题页面上，取而代之的将会是“匿名”二字。</span>
+						<br>
+						<br>
+						</td>
+					</tr>
+					<tr>
+						<td class="f14B" valign="top"><b>E:</b></td>
+						<td class="padd10"><span class="p2">点击页面底端的“提交问题”按钮，ok，您的问题便提交成功。</span></td>
+					</tr>
+				</table>
+				<br>
+				<span class="p2">请注意您的提问不要违背“<a href="{url index/help}#{$setting['site_name']}协议">{$setting['site_name']}协议</a>”的内容，否则提问将被编辑删除，并扣除
+				积分，情节严重者，</span><span class="f14">“{$setting['site_name']}”有权对其做出关闭部分权限、暂停直至删除其帐号等处罚。</span>
+				<br>
+				<a id="zn3" name="zn3"></a>
+				<hr width="100%" color="#dddddd" size="1">
+				<p class="p2"><strong>等待答复</strong><br>
+				<br>
+				剩下的，就等着热心网友来解答您的问题吧。</p>
+				<p class="f14"><span class="p2">查看您的提问，可以有以下途径：<br>
+				1. 到个人中心的“我的提问”进行查看，这是比较方便快捷的方法<br>
+				2. 到您的提问所在的分类浏览查找<br>
+				3. 在页面顶端的搜索框输入您的提问标题，进行搜索。</span><br>
+				</p>
+				<div align="right">
+					<a class="p3" href="{url index/help}#n">
+					返回顶部</a> </div>
+				</td>
+			</tr>
+		</table>
+		<a id="n3" name="n3"></a><a id="zn4" name="zn4"></a>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a name="如何回答">如何回答</a></b></td>
+			</tr>
+			<tr>
+				<td>
+				<table id="table4" class="table">
+					<tr>
+						<td class="padd10">　 
+						<p><span class="p2">A: 浏览问题页面时，您可以直接进行回答； </span></p>
+						<p class="p2">对一个问题，您只能回答一次；在问题转入已解决状态前，您可以修改您的回答。<br>
+						<br>
+						B: 如果您的回答内容参照了其他书籍, 网页等他人文章,请务必标明出处；如有知识产权等纠纷, 需回答者本人承担相应法律责任。</p>
+						<p class="p2"><br>
+						查看您的回答，有如下途径：<br>
+						<span class="p2">1. </span>到个人中心的“我的回答”进行查看，这是比较方便快捷的方法<br>
+						<span class="p2">2. </span>到您回答的问题所在的分类浏览查找<br>
+						<span class="p2">3. </span>在页面顶端的搜索框输入您回答的问题的标题，或您的回答中包含的关键词，进行搜索</p>
+						<p class="f14"><span class="p2">请注意您回答不要违背“<a href="{url index/help}#{$setting['site_name']}协议">{$setting['site_name']}协议</a>”的内容，否则回答将被编辑删除，并扣除
+						您的积分，情节严重者， 
+						“{$setting['site_name']}”有权对其做出关闭部分权限、暂停直至删除其帐号等处罚。</span> </p>
+						<div align="right">
+							<a class="p3" href="{url index/help}#n">
+							返回顶部</a> </div>
+						</td>
+					</tr>
+				</table>
+				</td>
+			</tr>
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a id="n2" name="n2"></a><a name="如何处理问题">如何处理问题</a></b></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">提问后，请您切记在{$setting['overdue_days']}天内处理您的问题，否则将辜负回答您问题的热心网友，作为惩罚，我们会扣除您<span lang="zh-cn">的</span>积分，您可以有如下选择：<br>
+				<br>
+				1. <strong>采纳答案：</strong>选择一个您最满意的回答为最佳答案，结束提问；<br>
+&nbsp;&nbsp; 1）被采纳的回答就被您选为问题的答案；这时问题的状态变为“已解决”，形成“{$setting['site_name']}”的新知识；<br>
+&nbsp;&nbsp; 2）被采纳的回答者可获得{$setting['credit2_answer']}分系统奖励和您悬赏出去的积分。<br>
+&nbsp;&nbsp; 3）您采纳回答时，可对答案发表评价，当您想对回答者表示更多的感谢，可以追加悬赏分。<br>
+				<br>
+				2. <strong>问题补充：</strong>可以对您的提问补充细节，以得到更准确的答案。<br>
+				<br>
+				3. <strong>提高悬赏：</strong>提高悬赏分，以提高问题的关注度，此时：<br>
+&nbsp;&nbsp; 1）系统自动延长该问题的有效期 3 天；<br>
+&nbsp;&nbsp; 2）如果您一次追加悬赏 20 分以上（含 20 分），系统会将问题在所在分类的“待解决问题”列表中显示为最新，类似于新提出的问题。<br>
+				<br>
+				4. <strong><span lang="zh-cn">结束问题</span>：</strong>当您觉得没有满意的回答，还可直接结束提问，关闭问题。<br>
+&nbsp;&nbsp; 我们提醒您注意，如果您选择了“结束问题”操作，出于保护回答者利益的考虑，问题的悬赏分将不再返还。<br>
+&nbsp;&nbsp; 如果因此造成您的积分损失，我们希望能得到您的理解。</span> <br>
+				<div align="right">
+					<a class="p3" href="{url index/help}#n">
+					返回顶部</a> </div>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9"><b>&nbsp;<a name="问题为何被关闭">问题为何被关闭</a></b></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">1.如果提问者在15天内没有处理问题（选择最佳答案、通过提高悬赏延期问题有效时间、设置投票和
+				结束问题），而该问题的回答少于等于三个且最长回答不超过30字，则问题会过期并被系统自动关闭。<br>
+				2. 如果提问者选择进入投票流程的问题在5天后投票数不足4票，则问题会被系统自动关闭。<br>
+				3. 如果提问者对某问题选择无满意答案，则该问题被系统自动关闭。</span>
+				<p align="right">
+				<a class="p3" href="{url index/help}#n">
+				返回顶部</a></p>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<a name="如何处理过期问题"><b>如何处理过期问题</b></a></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">1. 如果提问者在{$setting['overdue_days&#39;]}天内没有处理您的问题（选择最佳答案、通过提高悬赏延期问题有效时间、设置投票和选择
+				结束问题），且该问题有一个或以上的回答，并不满足自动关闭条件，则问题会过期。对于有2个或以上回答的过期问题，会自动转入投票，对于只有一个回答的过期问题，会自动进入“已解决”状态。<br>
+				2. 如果投票未能选出最佳答案，则时间过期后会自动关闭。<br>
+				&nbsp;</span><p align="right">
+				<a class="p3" href="{url index/help}#n">
+				返回顶部</a></p>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<a id="n9" name="n9"></a><a name="如何订阅和展示{$setting['site_name']}"><b>如何订阅和展示{$setting['site_name']}</b></a></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">1. 想订阅“{$setting['site_name']}”上的回答，请了解RSS订阅<br>
+				2. 想在自己的网站上展示“{$setting['site_name']}”，请获取<a href="{SITE_URL}?rss/list/0.html" target="_blank">免费代码</a>。 
+				</span>
+				<p align="right">
+				<a class="p3" href="{url index/help}#n">
+				返回顶部</a></p>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a id="n4" name="n4"></a><a name="如何获得积分">如何获得积分</a></b></td>
+			</tr>
+			<tr>
+				<td class="padd10">
+				<p class="f14"><br>
+				<span class="style5">“{$setting['site_name']}”里的积分体系分为经验值和财富值两部分，您会付出财富值，也会获得经验值和财富值。随着经验值的增加您也可以晋级并获得更高的<span lang="zh-cn">会员组</span>。</span></p>
+				<p class="style5"><a name="什么是经验值"></a>什么是经验值？</p>
+				<p class="style5">经验值反映了用户在{$setting['site_name']}的贡献，同时也决定着用户在{$setting['site_name']}的等级。 <br>
+				用户在{$setting['site_name']}上改变经验值的操作包括日常操作、 奖励获得、 违规处罚。 
+				</p>
+				<p class="style5"><a name="什么是财富值"></a>什么是财富值？</p>
+				<p class="style5">用户可以通过在{$setting['site_name']}上的优质贡献来获取财富值，其中回答被采纳是获得财富值的主要途径，
+				此外，用户日常操作、 奖励获得 、违规处罚 、悬赏付出等都会改变用户的财富值。</p>
+				<p class="p2"><a name="积分明细"></a>“{$setting['site_name']}”的具体经验值和财富值得失规则如下：</p>
+				<p class="f14"><strong>积分增加:</strong></p>
+				<center>
+				<table cellspacing="1" cellpadding="5" width="70%" bgcolor="#e1e1e1" border="0">
+					<tr bgcolor="#fdfadf">
+						<td class="style1" width="140" bgcolor="#fdfadf" height="19" f14b>
+						<strong>操作</strong></td>
+						<td class="style1" width="119" height="19" f14b><strong>
+						获得经验值</strong></td>
+						<td class="style1" width="119" f14b><strong>获得财富值</strong></td>
+						<td class="style1" width="362" bgcolor="#fdfadf" height="19" f14b>
+						<strong>说明</strong></td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td class="style1" colspan="4" f12b><strong>日常操作</strong></td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td><span class="style1">新用户首次登陆</span></td>
+						<td><span class="style1">{$setting['credit1_register']}</span></td>
+						<td class="style1">{$setting['credit2_register']}</td>
+						<td valign="top"><span class="style1">完成帐户的激活</span></td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td><span class="style1">每日登陆</span></td>
+						<td><span class="style1">{$setting['credit1_login']}</span></td>
+						<td><span class="style1">{$setting['credit2_login']}</span></td>
+						<td valign="top"><span class="style1">每日只在第一次登陆加分</span></td>
+					</tr>
+					<tr bgcolor="#ffffff">
+						<td><span class="style1">提出问题</span></td>
+						<td><span class="style1">{$setting['credit1_ask']}</span></td>
+						<td><span class="style1">{$setting['credit2_ask']}</span></td>
+						<td valign="top"><span class="style1">提问之后获得</span></td>
+					</tr>
+					
+					<tr bgcolor="#ffffff">
+						<td><span class="style1">回答问题</span></td>
+						<td><span class="style1">{$setting['credit1_answer']}</span></td>
+						<td><span class="style1">{$setting['credit2_answer']}</span></td>
+						<td valign="top"><span class="style1">回答问题之后获得</span></td>
+					</tr>
+
+					<tr bgcolor="#ffffff">
+						<td><span class="style1">回答被采纳</span></td>
+						<td><span class="style1">{$setting['credit1_adopt']}</span></td>
+						<td><span class="style1">{$setting['credit2_adopt']}</span></td>
+						<td valign="top"><span class="style1">回答被采纳之后获得</span></td>
+					</tr>					
+					
+					<tr bgcolor="#ffffff">
+						<td><span class="style1">发站内消息</span></td>
+						<td><span class="style1">{$setting['credit1_message']}</span></td>
+						<td><span class="style1">{$setting['credit2_message']}</span></td>
+						<td valign="top">&nbsp;</td>
+					</tr>
+					</table>
+				</center>
+				<p><br>
+				</p>
+				<div align="right">
+					<a class="p3" href="{url index/help}#n">
+					返回顶部</a> </div>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a id="n5" name="n5"></a><a name="如何选择头衔">如何升级会员组</a></b></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">您可以通过问答等操作不断增加积分，您的等级会随积分不断晋升。 
+				<p></p>
+				</span>
+				<table class="style1" cellspacing="0" cellpadding="0" width="70%" align="center" border="1">
+					<tr>
+						<td width="49">
+						<p align="center"><strong>等级 </strong><strong></strong>
+						</p>
+						</td>
+						<td width="110">
+						<p align="center"><strong>积分体系 </strong><strong>
+						</strong></p>
+						</td>
+						<td width="83">
+						<p align="center"><strong>会员组</strong></td>
+					</tr>
+					
+					<!--{loop $usergrouplist $index $usergroup}-->
+                                        <!--{eval $index++}-->
+							<tr>
+								<td width="49">
+								<p align="center">$index </p>
+								</td>
+								<td width="110">
+								<p align="center">$usergroup['creditslower'] - $usergroup['creditshigher']</p>
+								</td>
+								<td width="83">
+								<p align="center">$usergroup['grouptitle'] </p>
+								</td>
+							</tr>
+					<!--{/loop}-->
+					
+
+				</table>
+				<div align="center">
+				</div>
+				<div align="center">
+				</div>
+				<p class="p2">&nbsp;</p>
+				<p class="f14"><br>
+				</p>
+				<div align="right">
+					<a class="p3" href="{url index/help}#n">
+					返回顶部</a> </div>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a id="n6" name="n6"></a><a name="如何避免问答被删">如何避免问答被删</a></b></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">要避免问答、评论被删除，请注意您的提问、回答或评论不违反<a href="{url index/help}#{$setting['site_name']}协议">“{$setting['site_name']}协议”</a>，凡文章出现以下情况之一，“{$setting['site_name']}”管理人员有权不提前通知用户直接删除，并依照有关规定作相应处罚，情节严重者，“{$setting['site_name']}”有权对其做出关闭部分权限、暂停直至删除其帐号的处罚。</span><br>
+				<div align="right">
+					<a class="p3" href="{url index/help}#n">
+					返回顶部</a> </div>
+				</td>
+			</tr>
+		</table>
+		<table class="table">
+			<tr>
+				<td width="49%" bgcolor="#e5ecf9">&nbsp;<b class="p1"><a id="n8" name="n8"></a><a id="{$setting['site_name']}协议" name="{$setting['site_name']}协议"></a>{$setting['site_name']}协议</b></td>
+			</tr>
+			<tr>
+				<td class="padd10"><br>
+				<span class="p2">欢迎光临Tipask，请您仔细阅读以下条款，如果您对本协议的任何条款表示异议，您可以选择不进入Tipask，您进入Tipask，则意味着您将自愿遵守以下规则，并完全服从于Tipask的统一管理。 
+				</span>
+				<p class="p2"><strong>一 “{$setting['site_name']}”礼仪</strong></p>
+				<span class="p2"><LU></LU></span>
+				<ol>
+					<li><span class="p2">标题要正确<br>
+					在提问或答复的时候不要写无意义或模糊的题目，为了别人解答时理解的方便请正确书写标题。 </span></li>
+					<li><span class="p2">对问题进行具体的说明<br>
+					在提问或答复的时候，内容要具体详细地书写。问题内容越详细别人的答复也就越正确，答复越详细也就越让人容易理解。 
+					</span></li>
+					<li><span class="p2">检查问题是否重复<br>
+					在提问之前，请先对问题进行搜索，或者在提问的时候，先关注一下提问页面右侧的“相关问题”列表，其中是否已经有过得到解决的类似问题。在确认没有令您满意的答案后再提问。 
+					</span></li>
+					<li><span class="p2">检查问题的分类是否正确<br>
+					提交问题之前请确认问题的分类是否正确，提问的正确归类可以让你更快地得到满意的回答。 </span></li>
+					<li><span class="p2">及时处理问题<br>
+					在提问后的15天之内，如果有满意的答复一定要作出选择，以免伤害热心回答的网友。如果有答案而过期不对问题进行处理，我们将扣除您的积分以示惩戒。具体方法参见<a href="{url index/help}#如何处理问题">如何处理问题</a>。 
+					</span></li>
+					<li><span class="p2">学会表示感谢<br>
+					对所有解答自己问题的会员表示感谢。选出最佳答案后也请给予回答者一些友好的评价，尊重他人的劳动成果。 </span>
+					</li>
+					<li class="p2">互相尊重<br>
+					提问者提问时的语气请尽量友好，避免给他人以责问、逼问的不良感受。回答者在答复时候也不要小看或嘲笑提问者，要有诚意地解答，正确地书写。 
+					<br>
+					在我们的共同努力下，“{$setting['site_name']}”一定能成为充满温馨和智慧的知识社区！ </li>
+				</ol>
+				<p class="p2"><strong>二 审核与处罚</strong></p>
+				<table cellspacing="0" cellpadding="0" width="94%" align="center" border="0">
+					<tr>
+						<td class="f14"><span class="p2"><strong>1 作弊行为与处罚方法</strong><br>
+						1）作弊的定义<br>
+						通过非公平不正当途径获取积分。对于作弊行为的判断，{$setting['site_name']}公司保留最终解释权。<br>
+						特别注意：任何形式的自问自答，刷票，转分，送分等都属于作弊行为。<br>
+						2) 作弊的处罚 <br>
+						·所有通过非正当行为获得的积分，将被全部扣除。 <br>
+						·作弊行为一经确认，涉及该作弊行为的所有相关用户的登陆帐号将被酌情扣分和有限期封禁，情节严重者会被永久封禁。 
+						<br>
+						·涉及作弊行为的提问者的所有提问将被严肃处理，情节严重者会被删除提问。</span>
+						<p class="p2"><strong>2 问答、评论、文档、知识删除原则与处罚方法</strong></p>
+						<p class="p2">1）特别注意以下行为，将被删除<br>
+						·无意义的提问，将被删除。 <br>
+						<font color="#ff9933">&nbsp; 例：1+1=？</font> <br>
+						·提交不构成问题的提问，将被删除。 <br>
+						<font color="#ff9933">&nbsp; 例：今天天气真好。</font> <br>
+						·征友类的问题，将被删除。 <br>
+						<font color="#ff9933">&nbsp; 例：想找个朋友聊天，加我QQ：2343454546
+						</font><br>
+						·寻人的问题，将被删除。 <br>
+						<font color="#ff9933">&nbsp; 例：找我的小学同学。</font> <br>
+						·提交的回答无实际意义，将被删除。 <br>
+						<font color="#ff9933">&nbsp; 例：顶 ，同上，赞同等回答 </font><br>
+						·有交易，赠送等倾向的提问和回答，将被删除。<br>
+						<font color="#ff9933">&nbsp; 例：有人想买小狗吗？</font><br>
+						·涉及求租，转让的提问和回答将被删除。<br>
+						<font color="#ff9933">&nbsp; 例：有转让中关村附近的住房的吗？</font><br>
+						·如果上下楼有明显抄袭的行为，那么按时间顺序后提交的回答，将被删除。 <br>
+						·求网络游戏的内测帐号和游戏帐号的问题，将被删除。<br>
+						·涉及少数民族的一些有歧视、误导等的提问的回答，将被删除。<br>
+						·如果同一用户用相同的答案，回答大量不同的问题，该用户的回答将被删除。<br>
+						·任何指定某一网友(知识专家例外)进行回答的问题将被删除,{$setting['site_name']}的特殊活动除外。<br>
+						·私服外挂类问题将被删除。<br>
+						·多次将个人空间地址作为参考或者回答按广告处理。 <br>
+						·大量使用{$setting['site_name']}链接作为回答按灌水处理。 <br>
+						·没有正面回答问题，只留有QQ号按灌水处理。 <br>
+						·如何盗取别人QQ号或其他隐私的问题按灌水处理。 <br>
+						·短时间提交大量相同类型的简单提问将按灌水处理。 <br>
+						·企业招聘或个人求职问题按灌水处理。 <br>
+						·短时间内大量提问都采纳同一回答者将按作弊处理。<br>
+						·选择无意义回答作为最佳答案按作弊处理。 </p>
+						<p class="p2"><a id="other2" name="other2"></a>2）其他问题、回答、评论、文档、知识的删除原则<br>
+						凡符合下列任何情况的提问、回答、评论、文档、知识，都将被删除<br>
+						A．含有色情、暴力、恐怖内容 <br>
+						·详细描写性器官、性行为和性心理<br>
+						·传播色情图片或其他色情内容<br>
+						·详细描写暴力行为过程和身心体验<br>
+						·详细描写恐怖事件和主观感受 <br>
+						·引诱他人见面发生性关系或卖淫<br>
+						·雇佣、引诱他人从事暴力活动<br>
+						·恐吓他人 <br>
+						·提供符合上述特点的链接<br>
+						<br>
+						B．具有广告性质<br>
+						·大量或重复发布指向同一网站的链接<br>
+						·为了增加流量而故意引导他人到某个网站或论坛<br>
+						·为某盈利性的组织或个人广告 <br>
+						·从事任何物品（包括虚拟物品，如虚拟货币等）的交易<br>
+						·宣传、发展传销活动<br>
+						·提供符合上述特点的链接<br>
+						<br>
+						C．含有反动内容<br>
+						·恶意评价国家现行制度<br>
+						·破坏社会公共秩序<br>
+						·挑起民族、种族、宗教、地域等争端<br>
+						·恶意攻击政府机构与政府官员<br>
+						·宣传迷信活动和邪教组织<br>
+						·提供符合上述特点的链接<br>
+						<br>
+						D．含有人身攻击内容<br>
+						·诽谤他人，散布虚假信息<br>
+						·侵犯他人肖像权、隐私权等其他合法权益<br>
+						·用粗言秽语侮辱他人，造成身心伤害 <br>
+						·损害社会团体或组织的名誉<br>
+						·提供符合上述特点的链接<br>
+						<br>
+						E．含有违背伦理道德内容<br>
+						·包含违反社会公共道德的内容<br>
+						·宣扬颓废、消极的人生观<br>
+						·劝诱自杀，描写自杀方法和过程<br>
+						·歧视和贬低弱势群体，如残疾、老龄和经济状况较差等<br>
+						·教授侵犯他人权益的方法，如黑客、诈骗等 <br>
+						·宣传或劝诱师生恋、外遇、乱伦等违反伦常的行为<br>
+						·包含其他可能导致他人反感或不快内容的<br>
+						·提供符合上述特点的链接<br>
+						<br>
+						F．具有恶意、无聊和灌水性质<br>
+						·出现真实姓名（非公众人物）和提供具体联系方式的提问和回答<br>
+						·具有聊天、寻人、征友、评论等特点的提问<br>
+						·属于恶意、无聊、灌水范畴的讨论式提问<br>
+						·直接索取作文、论文或作业答案等类似的提问<br>
+						·标题和补充中提供的信息不足以构成一个问题的提问<br>
+						·问答或评论内容包含有严重影响网友浏览的内容或格式<br>
+						·短时间内多次重复的提问<br>
+						·恶意大量关闭有较好答案的问题<br>
+						·同一内容被用作多个提问的答复，且完全不针对提问<br>
+						·明显抄袭他人答案<br>
+						·没有任何意义的提问和回答<br>
+						·其他可判断为灌水的无价值内容<br>
+						<br>
+						G. 涉及违法犯罪的内容<br>
+						·宣扬刑事犯罪<br>
+						·引诱或召集聚众赌博<br>
+						·宣扬行贿受贿<br>
+						·行骗欺诈<br>
+						·其他违反我国法律法规的行为<br>
+						·提供符合上述特点的链接 <br>
+						</p>
+						<p class="p2">H.其他违反法律的内容</p>
+						<p class="p2">如违反《计算机信息网络国际联网安全保护管理办法》、《互联网信息服务管理办法》、《互联网电子公告服务管理规定》、《维护互联网安全的决定》、《互联网新闻信息服务管理规定》等相关法律规定，发布、传播或以其它方式传送含有下列内容之一的信息： 
+						</p>
+						·反对宪法所确定的基本原则的； <br>
+						·危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；<br>
+						·损害国家荣誉和利益的； <br>
+						·煽动民族仇恨、民族歧视、破坏民族团结的；<br>
+						·破坏国家宗教政策，宣扬邪教和封建迷信的；<br>
+						·散布谣言，扰乱社会秩序，破坏社会稳定的；<br>
+						·散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的； <br>
+						·侮辱或者诽谤他人，侵害他人合法权利的； <br>
+						·煽动非法集会、结社、游行、示威、聚众扰乱社会秩序的；<br>
+						·以非法民间组织名义活动的；<br>
+						·含有虚假、有害、胁迫、侵害他人隐私、骚扰、侵害、中伤、粗俗、猥亵、或其它道德上令人反感的内容； <br>
+						·含有中国法律、法规、规章、条例以及任何具有法律效力之规范所限制或禁止的其它内容的。<br>
+						<p class="p2"><br>
+						I．其他{$setting['site_name']}公司认为不恰当的情况<br>
+						<br>
+						<a id="other3" name="other3"></a>3）相应处罚方法<br>
+						·问题被删除后，提问者的积分将被酌情扣除0到20分。<br>
+						·回复被删除后，回答者的积分将被酌情扣除0到10分。<br>
+						·评论被删除后，评论者的积分将被酌情扣除0到5分。<br>
+						·由于问题被删除而导致的回复、评论删除不单独扣分。<br>
+						·情节严重者，将酌情对其进行加倍扣分、有限期封禁和永久封禁等处罚。<br>
+						<br>
+						<strong>3 对帐号的管理原则</strong><br>
+						凡含有下列行为之一者，“{$setting['site_name']}”有权删除其相应帐号，情节严重者，将酌情封禁对应IP。<br>
+						·<font color="#ff9933">作弊</font><br>
+						·<font color="#ff9933">广告</font><br>
+						·<font color="#ff9933">黄反</font><br>
+						·<font color="#ff9933">灌水</font><br>
+						·<font color="#ff9933">不文明</font><br>
+						·<font color="#ff9933">抄袭</font><br>
+						·<font color="#ff9933">恶意关闭问题(反复关闭有合适答案的问题的ID)</font><br>
+						·<font color="#ff9933">模仿{$setting['site_name']}管理人员ID，用以假冒管理人员或破坏管理人员形象</font><br>
+						·<font color="#ff9933">模仿或盗用他人ID</font><br>
+						·<font color="#ff9933">个人签名包含有严重影响网友浏览的内容或格式</font><br>
+						·<font color="#ff9933">其他扰乱Tipask秩序行为的情况</font></p>
+						</td>
+					</tr>
+				</table>
+				<p class="p2"><strong>三 对“{$setting['site_name']}”用户和第三方的知识产权的保护</strong></p>
+				<ol>
+					<li><span class="p2">Tipask的用户不能侵犯包括他人的著作权在内的知识产权以及其他权利。一旦由于用户的相关帖子发生知识产权问题，其责任在于用户本人。<br>
+					1) 未得到著作者的同意对他人的著作物进行全部或部分的复制，传播，拷贝，有可能侵害到他人的著作权时，不要把相关内容复制刊登到Tipask上来。<br>
+					2) Tipask的用户可以对著作物进行报道，批评，教育，研究，在正当的范围内可以对其引用，但是一定要标明其出处。但是在引用的时候不允许侵犯著者的人格，这种情况即使标明出处也看作是侵犯著作权。<br>
+					<br>
+					</span></li>
+					<li><span class="p2">对于用户发表到Tipask上的任何内容，用户同意{$setting['site_name']}在全世界范围内具有免费的、永久性的、不可撤销的、非独家的和完全再许可的权利和许可，以使用、复制、修改、改编、出版、翻译、据以创作衍生作品、传播、表演和展示此等内容（整体或部分），和/或将此等内容编入当前已知的或以后开发的其他任何形式的作品、媒体或技术中。<br>
+					<br>
+					</span></li>
+					<li><span class="p2">Tipask用户的言论侵犯了第三方的著作权或其他权利，第三方提出异议的时候，Tipask有权删除相关的内容，提出异议者和帖子发表者之间结束解决了诉讼，协议等相关法律问题后，以此为依据，Tipask在得到有关申请后可以恢复被删除的内容。<br>
+					<br>
+					</span></li>
+					<li><span class="p2">用户从Tipask的服务中获得的信息在没有得到事先许可的情况下，个人或提供给第三方利用复制，发送，传播等手段用于盈利目的时，将追究相关当事人的法律责任。<br>
+					<br>
+					</span></li>
+					<li><span class="p2">当第三方要使用Tipask上的提问、回答或评论的时候一定要事先从相关用户那里得到同意后才能使用。<br>
+					<br>
+					</span></li>
+					<li class="p2">Tipask不能对用户发表的回答或评论的正确性进行保证。 </li>
+					<li class="p2">当著作权人和 / 或依法可以行使著作权的权利人（权利人）发现Tipask的内容侵犯其著作权时，权利人应事先向{$setting['site_name']}发出 
+					“ 权利通知 ” ，{$setting['site_name']}将根据中国法律法规和政府规范性文件采取措施移除相关内容或屏蔽相关链接。请按照具体步骤发出权利通知书。 
+					</li>
+				</ol>
+				<p class="p2"><strong>四 {$setting['site_name']}对于本协议内容拥有最终解释权和修订权 </strong></p>
+				<div align="right">
+					<a class="p3" href="{url index/help}#n">
+					返回顶部</a> </div>
+				</td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+<table class="table">
+	<tr>
+		<td class="p1" align="middle">
+		<hr width="99%" color="#d6e0ef" size="1">
+		<a href="mailto:{$setting['admin_email']}">联系我们</a> - {$setting['site_name']}&nbsp;&nbsp; 
+		Powered by <a href="http://www.tipask.com/" target="_blank">Tipask</a> {TIPASK_VERSION}	&copy; 2009-2010.
+		<label><a href="http://www.miibeian.gov.cn/" target="_blank">{$setting['site_icp']} </a> </label>
+		</td>
+	</tr>
+</table>
+
+{$setting['site_statcode']}
+</body>
+
+</html>

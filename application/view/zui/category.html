@@ -1,0 +1,208 @@
+<!--{template header}-->
+<!--{eval $adlist = $this->fromcache("adlist");}-->
+
+<div class="container  mar-b-05 ">
+<div class="row">
+  <div class="col-sm-8 side-box">
+   <ol class="breadcrumb">
+  <li> <a class="first" href="{url category/view/all}">全部分类</a></li>
+  
+   <!--{loop $navlist $nav}-->
+    <li> <a href="{url category/view/$nav['id']}">{$nav['name']}</a> </li>
+    
+    <!--{/loop}-->
+    <!--{if $cid!='all'}--><li class="active">{$category['name']}</li> <!--{/if}-->
+    
+    
+ 
+  
+</ol>
+<hr>
+<h3 class=" mar-l-1 font-15">
+ <!--{if $cid!='all'}-->
+                {$category['name']}
+                <!--{else}-->
+                全部分类
+                <!--{/if}-->
+</h3>
+
+  <ul class="nav navbar-nav clearfix">
+                <!--{loop $sublist $index $sub}-->
+                <!--{if $sub['id']==$cid}-->
+                <li>
+                <a  title="{$sub['name']}"  href="{url category/view/$sub['id']}">
+                 <span class="text-danger bold"> {eval echo cutstr($sub['name'],20,'');}</span>
+
+                <span class="label  label-danger">{$sub['questions']}</span>
+                
+                </a>
+               </li>
+                <!--{else}-->
+                <li><a title="{$sub['name']}"  href="{url category/view/$sub['id']}">
+                {eval echo cutstr($sub['name'],20,'');} <span class="label  ">{$sub['questions']}</span></a>
+         
+                 
+                </li>
+                <!--{/if}-->
+                <!--{/loop}-->
+            </ul>
+            
+             <!--广告位1-->
+        <!--{if (isset($adlist['category']['left1']) && trim($adlist['category']['left1']))}-->
+        <div class="clearfix mar-t-05" >{$adlist['category']['left1']}</div>
+        <!--{/if}-->
+        
+        <ul class="nav nav-secondary clearfix" >
+         <li <!--{if all==$status}-->class="active"<!--{/if}--> >
+        <a href="{url category/view/$cid/all}">全部问题</a>
+        </li>
+          <li <!--{if 6==$status}-->class="active"<!--{/if}--> >
+     <a class="recommand" href="{url category/view/$cid/6}">推荐问题</a>
+        </li>
+          <li <!--{if 4==$status}-->class="active"<!--{/if}--> >
+       <a href="{url category/view/$cid/4}">悬赏问题</a>
+        </li>
+          <li <!--{if 1==$status}-->class="active"<!--{/if}--> >
+      <a href="{url category/view/$cid/1}"><i class="icon icon-question-sign text-danger"></i>待解决</a>
+        </li>
+          <li <!--{if 2==$status}-->class="active"<!--{/if}--> >
+       <a href="{url category/view/$cid/2}"><i class="icon icon-check-circle text-danger"></i>已解决</a>
+        </li>
+        
+                  
+                </ul>   
+        <hr class="clear">
+           <table class="table table-hover ">
+                        <tbody>
+                            <tr class=""><th class="s0 b-b-line">标题</th><th class="s1 b-b-line">回答/浏览</th><th class="s2">时间</th></tr>
+                            <!--{loop $questionlist $question}-->
+                            <tr>
+                                <td class="title b-b-line">
+                                    <div class="tit-full">
+                                        <div class="wrap">
+                                            
+                                   
+                                            <span class="gold">                
+                                               
+                                                {if $question['shangjin']!=0}
+                      <span class="icon_hot">悬赏$question['shangjin']元</span>
+                    {/if}
+                                              
+                                            </span>
+                                            <a href="{url question/view/$question['id']}" target="_blank" title="{$question['title']}">
+                                            {eval echo cutstr($question['title'],50);}
+                                            </a>&nbsp;<span class="cate">[<a target="_blank" href="{url category/view/$question['cid']}" title="{$question['category_name']}" class="lei">{eval echo cutstr($question['category_name'],14,'');}</a>]</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{$question['answers']}/{$question['views']}</td>
+                                <td>{$question['format_time']}</td>
+                            </tr>
+                            <!--{/loop}-->
+                        </tbody>
+                    </table>        
+                
+                 <div class="pages">{$departstr}</div>
+            
+  </div>
+  
+   <div class="col-sm-4 b-l-line">
+   
+   <!--{if $expertlist}-->
+      <div class="side-box">
+  <h3 class="font-15 mar-t-05">
+推荐专家
+</h3>
+<hr>
+
+      
+      
+            <ul class="nav mar-b-1">
+                <!--{loop $expertlist $expert}-->
+             
+                
+                     <li class="b-b-line mar-t-1">
+                <div class="row">
+                <div class="col-sm-2">
+                 <div class="pic"><a title="{$expert['name']}" target="_blank" href="{url user/space/$expert['uid']}"><img width="40" height="40" class="img-rounded" alt="{$expert['username']}" src="{$expert['avatar']}"  onmouseover="pop_user_on(this, '{$expert[uid]}', '');"  onmouseout="pop_user_out();"/></a></div>
+                                     
+                </div>
+                <div class="col-sm-10 ">
+                 <p class="pull-left"><a title="{$expert['name']}" target="_blank" href="{url user/space/$expert['uid']}" onmouseover="pop_user_on(this, '{$expert[uid]}', 'text');"  onmouseout="pop_user_out();">{$expert['username']}</a></p>
+                    <p class="pull-right mar-t-05"><a href="{url question/add/$expert['uid']}" class="text-danger">向TA求助</a></p>
+                   <p class="clear mar-t-05" >
+                    <!--{if $expert['category']}-->
+          
+                <!--{loop $expert['category'] $category}-->
+               <a class="label" target="_blank" href="{url category/view/$category['cid']}">{$category['categoryname']}</a>
+                <!--{/loop}-->
+          
+            <!--{/if}-->
+                  </p>
+                   
+                </div>
+                
+                </div>
+                   
+                   
+                   
+                </li>
+                
+                <!--{/loop}-->
+            </ul>
+</div>
+        <!--{/if}-->
+        
+            
+ <!--广告位2-->
+        <!--{if (isset($adlist['category']['right1']) && trim($adlist['category']['right1']))}-->
+        <div>{$adlist['category']['right1']}</div>
+        <!--{/if}-->
+         <!--{eval $attentionlist=$this->fromcache('attentionlist');}-->
+         <!--{if $attentionlist}-->
+            <div class="side-box">
+          <!-- 关注问题排行榜 -->
+           <h3 class="font-15 mar-t-1">
+一周热点问题
+</h3>
+<hr>
+     <ul class="nav clearfix">
+               
+                <!--{loop $attentionlist $index $question}-->
+                <!--{eval $index++;}-->
+                <li class="b-b-line">
+                     <i class="quan"></i>
+                    <a  title="{$question['title']}" target="_blank" href="{url question/view/$question['id']}">{$question['title']}</a>
+                </li>
+                <!--{/loop}-->
+            </ul>
+            </div>
+              <!--{/if}-->
+              
+               <!--{if $topiclist}-->
+                 <div class="side-box">
+            <!-- 相关文章 -->
+             <h3 class="font-15 mar-t-05 pull-left">
+相关文章
+</h3>
+<a class="pull-right mar-t-05" target="_blank" href="{url  cat-$category['id']}" text="查看更多关于{$category['name']}">查看更多</a>
+<hr class="clearfix mar-t-05">
+
+        <ul class="nav">
+                  <!--{loop $topiclist $index $article}-->
+                                            <li class=" b-b-line clearfix">
+                    <a href="{url topic/getone/$article['id']}" target="_blank" class="title" title="{$article['title']}">
+                     
+                     <span class="label label-badge label-danger">{$index}</span> {$article['title']}
+                    </a>
+                  
+                </li>
+                       <!--{/loop}-->
+                      
+                    </ul>
+                    </div>
+                      <!--{/if}-->
+  </div>
+</div>
+</div>
+<!--{template footer}-->

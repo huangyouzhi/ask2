@@ -1,0 +1,45 @@
+.tmp_table ul li{
+    list-style:none;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+ border-bottom:solid 1px #c0c0c0;
+}
+.colorbg{
+
+    background: rgba(36, 65, 63, 0.46);
+}
+.tpl_textarea{
+    text-align: center;
+    width: 700px;
+    height: 700px;
+    margin: 0 auto;
+}
+.tmp_table ul{
+    width: 100%;
+    border: solid 1px #c0c0c0;
+    height: 500px;
+    float: left;
+}
+.tmp_table{
+    width: 100%;
+
+}
+.tp_tr{
+
+}
+.tplist{
+    width: 100%;
+    vertical-align: top;
+}
+.tpl_td1{
+    width: 200px;
+}
+.tpl_td{
+    width: 800px;
+    text-align: center;
+
+    padding-left: 40px;
+    padding-top: 48px;
+}

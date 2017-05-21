@@ -1,0 +1,77 @@
+
+                                        <div class="row  user-bar">
+                <div class="col-xs-4">
+                  <a target="_blank" href="javascript:void(0)" title="点击修改头像" style="margin:0 auto; text-algin:center;" >
+                          <img src="{$member['avatar']}" width="48" height="48"
+                         class="img-rounded " style="margin-bottom:10px;"/>
+                        </a>
+                </div>
+               <div class="col-xs-4">
+                     <!--{if $is_followed}-->
+                     <button style="height:30px;" class="button_followed btn btn-success  pull-right mar-r-2" onclick="attentto_user($member['uid'])" id="attenttouser_{$member['uid']}" >取消关注</button>
+                    <!--{else}-->
+
+                     <button style="height:30px;" class="btn btn-success button_attention  pull-right mar-r-2" onclick="attentto_user($member['uid'])" id="attenttouser_{$member['uid']}" >关注</button>
+                     <!--{/if}-->
+               
+               </div>
+               
+               <div class="col-xs-4">
+                <button style="height:30px;" class="btn btn-success button_attention  pull-right mar-r-2" onclick="window.location.href='{url message/send/$member['uid']}'"  >私信Ta</button>
+               
+               </div>
+               </div>
+ <h2>基本情况</h2>
+                             <hr>
+                     <div class="row mar-t-1">
+                <div class="col-sm-12 ">
+                 
+                      <div class="text-left user-infolist clearfix basicinfo">
+                        <p><label>经验：</label><i>{$member['credit1']}</i></p>
+                          <p><label>财富：</label><i>{$member['credit2']}</i></p>
+                        <!--{if $member['introduction']}-->
+                        <p><label>身份：</label><i>{$member['introduction']}</i></p>
+                        <!--{/if}-->
+                        <p>
+                            <label>擅长：</label>
+                            <!--{if $member['category']}-->
+                            <!--{loop $member['category'] $category}-->
+                            <i class="expert-field"><a target="_blank" href="{url category/view/$category['cid']}">{$category['categoryname']}</a></i>
+                            <!--{/loop}-->
+                            <!--{else}-->
+                            博主很懒，没有添加擅长领域
+                            <!--{/if}-->
+                        </p>
+                        <!--{if $member['mobile']}-->
+                        <p><label>手机：</label><i>{$member['mobile']}</i></p>
+                        <!--{/if}-->
+                        <!--{if $member['qq']}-->
+                        <p><label>qq：</label><i>{$member['qq']}</i></p>
+                        <!--{/if}-->
+                        <p><label>介绍：</label><i><span>{if $member['signature']}{$member['signature']}{else}暂无介绍{/if}</span></i></p>
+                       
+                       
+                    </div>
+                </div>
+                </div>
+ <div class="operation-list operationList mar-t-2">
+
+
+                  <a class="btn-block" href="{url user/space/$member['uid']}">
+                      <i class="icon icon-home text-danger">TA的首页</i>
+                  </a>
+                    <a class="btn-block" href="{url user/space_ask/$member['uid']/1}">
+                        <i class="icon icon-question-sign text-danger">TA的提问</i>
+                    </a>
+                      <a class="btn-block" href="{url user/space_answer/$member['uid']}">
+                        <i class="icon icon-comments text-danger">TA的回答</i>
+                    </a>
+                   <a class="btn-block" href="{url topic/userxinzhi/$member['uid']}">
+                        <i class="icon icon-stack text-danger">TA的文章</i>
+                    </a>
+
+
+                </div>
+                <hr>
+              
+           

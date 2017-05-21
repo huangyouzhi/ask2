@@ -1,0 +1,10 @@
+﻿http://www.csai.cn/ask/k124-3-0-{#num}.html|
+.list_box dt a|
+.otheranswer .cont|
+.conts|
+.bestanswer .cont|
+#wd_detail .answerlist .name|
+#wd_detail .answerlist dt img|
+http://www.csai.cn/ask/|
+希财问答采集(<a href="http://www.csai.cn/ask/" target="_blank">http://www.csai.cn/ask/</a>)
+|0

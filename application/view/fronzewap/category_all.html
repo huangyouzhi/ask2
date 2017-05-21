@@ -1,0 +1,111 @@
+<!--{template header}-->
+<style>
+/* 话题列表 */
+.ztlist{
+	    margin-top: 10px;
+	padding: 0 10px;
+}
+.ztlist li
+{
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+	list-style:none;
+}
+.ztlist li .ztheader{position:relative;min-height:70px;padding:10px 10px 10px 70px;border-bottom: 1px solid #e6e6e6;}
+.ztlist li .ztheader .img{position: absolute;left: 10px;top: 10px;}
+.ztlist li .ztheader .img img{
+	border-radius: 4px;
+}
+.ztlist li .ztheader .topic-tag{float: none;display: block;margin: 0 0 5px;}
+.ztlist li .ztheader p{max-height: 44px;overflow: hidden;margin: 0;}
+.ztlist.active li .ztbody{padding:0 10px;}
+.ztlist li .ztbody ul li{padding:10px 0;border-top: 1px solid #e6e6e6;}
+.ztlist li .ztbody ul li:first-child{border-top: none;}
+.ztlist li .ztbody ul li a{color: #666;}
+ .topic-tag 
+{
+    float: none;
+    display: block;
+    margin: 0 0 5px;
+}
+ .topic-tag .text {
+ 	    border-radius: 4px;
+    display: inline-block;
+    height: 24px;
+    line-height: 22px;
+    padding: 1px 3px;
+    background-color: #979CA0;
+   
+font-family: "Helvetica Neue",Helvetica,Arial,'Microsoft YaHei',sans-serif;
+	font-size:12px;
+    color: #ffffff;
+}
+.pull-left {
+    float: left!important;
+}
+.c-hui {
+    color: #999999;
+}
+.font-14{
+	font-family: "Helvetica Neue",Helvetica,Arial,'Microsoft YaHei',sans-serif;
+	font-size:14px;
+}
+.ztlist li .ztfooter{border-top: none;}
+.ztlist li .ztfooter .btn{height: 24px;line-height: 24px;margin-top:4px;padding:0;color: #fff;}
+.ztlist li .ztfooter a {
+  padding: 0 10px;
+    color: #999999;
+    float: left;
+}
+.ztlist li .ztfooter {
+    height: 32px;
+    line-height: 32px;
+    padding: 0 10px 0 0;
+   
+    font-size: 14px;
+    color: #999;
+}
+</style>
+
+<section class="ui-container">
+ <div class="note-list">
+ <div class="top-title">话题广场</div> 
+</div>
+<div class="ztlist">
+<div class="ztbody">
+
+		<ul>
+		 <!--{loop $catlist  $category1}-->
+		<li>
+	<div class="ztheader ui-clear">
+		<a href="{url category/view/$category1['id']}" class="img">
+			<img src="{$category1['bigimage']}" alt="" width="50">
+		</a>
+		<div class="content">
+			<span class="topic-tag ui-clear">
+				<a href="{url category/view/$category1['id']}" class="text">{$category1['name']}</a>
+			</span>
+			<p class="c-hui font-14">
+				{$category1['miaosu']}			</p>
+		</div>
+	</div>
+	<div class="ztfooter active font-14">
+		<a>{$category1['questions']} 个问题</a>
+		<span class="pull-left"> • </span>
+		<a>{$category1['followers']} 个关注</a>
+	</div>
+</li>
+       <!--{/loop}--> 
+		</ul>
+</div>
+
+
+    <div class="pages">$departstr</div>
+</div>
+</section>
+ 
+ 
+
+<!--{template footer}-->

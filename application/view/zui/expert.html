@@ -1,0 +1,115 @@
+<!--{template header}-->
+
+
+<!--{eval $adlist = $this->fromcache("adlist");}-->
+<div class="container   mar-b-1">
+<div class="row" >
+<div class="col-sm-8 ">
+<!--广告位1-->
+        <!--{if (isset($adlist['common']['left1']) && trim($adlist['common']['left1']))}-->
+        <div style="margin-top:10px;">{$adlist['common']['left1']}</div>
+        <!--{/if}-->
+        
+          <div class="experts mar-t-1 side-box">
+          
+           <!--{loop $expertlist $expert}-->
+            <div class="expert row b-b-line mar-t-05">
+            <div class="col-sm-1 b-r-line">
+             <a class="pic" target="_blank" title="{$expert['username']}" href="{url user/space/$expert['uid']}">
+             <img width="45" height="45" class="img-rounded" src="{$expert['avatar']}" alt="{$expert['username']}">
+             </a>
+                
+            </div>
+            
+        <div class="col-sm-11">
+           <div class="user-info mar-b-1">
+            <a class="name" target="_blank" title="{$expert['username']}" href="{url user/space/$expert['uid']}">
+            {$expert['username']}
+            </a>
+            
+            <span>&nbsp;<!--{if $expert['introduction']}-->({$expert['introduction']})<!--{/if}-->
+            </span>
+           <a class="pull-right text-danger" href="{url question/add/$expert[uid]}">
+          {if $expert['mypay']>0}
+                                           付费{$expert['mypay']}元求助
+                    {else}
+                                          向TA求助
+                    
+                    {/if}
+           </a>
+           
+           </div>
+           
+               <div class="general">
+                    <span class="mar-r-03 pull-left">擅长领域：
+                        <!--{loop $expert['category'] $category}-->
+                        <a target="_blank" href="{url category/view/$category['cid']}">
+                       
+                        <label class="label"> {$category['categoryname']}</label>
+                        </a>
+                        <!--{/loop}-->
+                    </span>
+                    <span class=" pull-right font-10">
+                   <a href="{url user/space_answer/$expert['uid']}">
+                    <i class="icon icon-comments c-hui font-10">{$expert['answers']}回答</i>
+                   </a></span>
+                    <span class=" mar-r-1 pull-right font-10">
+                
+                    <i class="icon icon-thumbs-up c-hui font-10">{$expert['supports']}赞同</i>
+                   </span>
+                    <p class="clear">简介：{$expert['signature']}</p>
+                    <!--{if $expert['bestanswer']}-->
+                    <h4>精选解答:</h4>
+                    <ul class="nav navbar-nav expert-q-list clearfix font-10">	    		
+                        <!--{loop $expert['bestanswer'] $question}-->
+                        <li><a href="{url question/view/$question['qid']}" target='_blank' title="{$question['title']}">
+                        <i class="icon icon-question-sign text-danger"></i>{$question['title']}
+                        </a></li>
+                        <!--{/loop}-->
+                    </ul>
+                    <!--{/if}-->
+                </div>
+           
+           
+            </div>
+            
+            
+               
+            
+            </div>
+            <!--{/loop}-->
+            <div class="pages">{$departstr}</div>	
+          </div>
+</div>
+
+<div class="col-sm-4 ">
+   <div class="side-box">
+  <h3 class="font-15 mar-t-05">
+专家最新解答
+</h3>
+<hr>
+<ul class="nav">
+                <!--{loop $questionlist $index $question}-->
+                <li class="b-b-line font-10">  <i class="quan"></i> <a title="{$question['title']}" target="_blank" href="{url question/view/$question['qid']}">
+                 {$question['title']}
+                
+                </a></li>
+                <!--{/loop}-->
+            </ul>
+</div>
+ <!--广告位2-->
+        <!--{if (isset($adlist['common']['right1']) && trim($adlist['common']['right1']))}-->
+        <div class="mar-t-1">{$adlist['common']['right1']}</div>
+        <!--{/if}-->
+
+</div>
+
+
+
+
+
+</div>
+
+</div>
+
+<!--{template footer}-->

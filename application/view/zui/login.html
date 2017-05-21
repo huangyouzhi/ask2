@@ -1,0 +1,123 @@
+<!--{template header}-->
+<div id="wrapper">
+	<div class="xm-login-box">
+		<div class="mod-body clearfix">
+			<div class=" content pull-left">
+				
+				<h2>只需一个步骤就可以加入我们</h2>
+				<form id="login_form">
+					<input type="hidden"  id="forward" name="return_url" value="{$forward}">
+					  <input type="hidden" id="usersid" name="usersid" value='{$_SESSION["userid"]}'/>
+                <input type="hidden" id="apikey" name="apikey" value='{$_SESSION["apikey"]}'/>
+					<ul>
+						<li>
+							<input type="text" id="xm-login-user-name" class="form-control" placeholder="邮箱 / 用户名/手机号" name="user_name">
+						</li>
+						<li>
+							<input type="password" id="xm-login-user-password" class="form-control" placeholder="密码" name="password">
+						</li>
+						<li class="alert alert-danger collapse error_message">
+							<i class="icon icon-delete"></i> <em></em>
+						</li>
+						<li class="xm-register-verify hide">
+                    <img class="pull-right" src="{url user/code}" onclick="javascript:updatecode();" id="verifycode">
+
+                    <input type="text" class="form-control" id="seccode_verify" name="seccode_verify" placeholder="验证码">
+                </li>
+						<li class="last">
+							<a href="javascript:;"  id="login_submit" class="pull-right btn btn-large btn-success">登录</a>
+							<label>
+								<input type="checkbox" value="1" name="net_auto_login">
+								记住我							</label>
+							
+						</li>
+						  
+					</ul>
+				</form>
+			</div>
+			<div class="side-bar pull-left">
+				
+					
+					<h3>第三方账号登录</h3>
+											<a href="{SITE_URL}plugin/sinalogin/index.php" class="btn btn-block btn-weibo"><i class="icon icon-weibo"></i> 微博登录</a>
+					
+											<a href="{SITE_URL}plugin/qqlogin/index.php" class="btn btn-block btn-qq"><i class="icon icon-qq"></i> QQ 登录</a>
+					
+											
+					
+					
+					
+												</div>
+		</div>
+		<div class="mod-footer">
+			<span>还没有账号?</span>&nbsp;&nbsp;
+			<a href="{url user/register}">立即注册</a>&nbsp;&nbsp;•&nbsp;&nbsp;
+			<a href="{url user/getpass}">忘记密码</a>&nbsp;&nbsp;•&nbsp;&nbsp;
+			
+		</div>
+	</div>
+</div>
+ <script>
+$("#login_submit").click(function(){
+	 var _forward=$("#forward").val();
+    var _uname=$("#xm-login-user-name").val();
+    var _upwd=$("#xm-login-user-password").val();
+    var _apikey=$("#apikey").val();
+    var _code=$("#seccode_verify").val();
+    
+    $.ajax({
+        //提交数据的类型 POST GET
+        type:"POST",
+        //提交的网址
+        url:"{SITE_URL}/?api_user/loginapi",
+        //提交的数据
+        data:{uname:_uname,upwd:_upwd,apikey:_apikey,seccode_verify:_code},
+        //返回数据的格式
+        datatype: "text",//"xml", "html", "script", "json", "jsonp", "text".
+   beforeSend: function () {
+            
+            ajaxloading("提交中...");
+         },
+        //成功返回之后调用的函数
+        success:function(data){
+        	data=$.trim(data);
+
+            if(data=='login_ok'){
+            
+             	
+             	
+             	
+             	
+               window.location.href="{$forward}";
+               
+             
+            	
+            	
+            
+            }else{
+            	  switch(data){
+            	  case 'login_null':
+            		  alert("用户名或者密码为空");
+            		  break;
+ case 'login_user_or_pwd_error':
+	  alert("用户名或者密码错误");
+            		  break;
+default:
+	alert(data);
+	break;
+            	  }
+            }
+        }   ,
+        complete: function () {
+            removeajaxloading();
+         },
+        //调用出错执行的函数
+        error: function(){
+            //请求出错处理
+        }
+    });
+});
+
+
+</script>
+<!--{template footer}-->

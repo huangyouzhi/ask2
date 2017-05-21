@@ -1,0 +1,37 @@
+<!--{template header}-->
+
+<div class="container   mar-b-1 bg-white">
+
+<div class="row">
+<div class="col-sm-12">
+<ol class="breadcrumb">
+  <li><a class="first" href="{SITE_URL}">{$setting['site_name']}</a></li>
+
+  <li class="active">网站标签</li>
+</ol>
+
+
+<hr>
+
+<div class="row">
+ <!--{loop $taglist $index $tag}-->
+ <div class="col-sm-1">
+ {eval $tmtag=urlencode($tag['name']);}
+ <a target="_blank" style="margin:8px" title="$tag['name']" href="{url tag-$tmtag}">{$tag['name']}</a>
+</div>
+              
+              <!--{/loop}-->
+              
+
+
+</div>
+  <div class="pages">
+                        $departstr
+                        </div>
+</div>
+
+
+</div>
+
+</div>
+<!--{template footer}-->

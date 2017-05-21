@@ -1,0 +1,83 @@
+<!--{template header}-->
+
+<section class="ui-container">
+<!--{template user_title}-->
+
+  <!-- 内容页面 -->  
+    <div class="row">
+                 <div class="col-sm-12">
+                     <div class="dongtai">
+                         <p>
+                             <strong class="font-18 ui-txt-warning">
+                              <p class="qianbaotip">您当前的账户钱包：<font color="#FC6603">{eval echo $user['jine']/100}元</font></font></p>
+ 
+                             </strong>
+                         </p>
+                        
+                         <hr>
+                      
+
+ <form class="form-horizontal" action="" method="post" >
+
+        
+      <div class="ui-form-item ui-form-item-show  ui-border-b">
+            <label for="#">充值金额：</label>
+            <input type="text" id="money" name="jine"  value="" placeholder="必须为整数" >
+        </div>
+        
+       
+      <div class="ui-btn-wrap">
+    <button class="ui-btn-lg ui-btn-danger" type="button" onclick="check_form()" id="submit" name="submit" >
+       确认充值
+    </button>
+</div>
+ </form>
+                   
+                     </div>
+                 </div>
+
+
+             </div>
+  
+</section>
+<script type="text/javascript">
+function check(c)
+{
+    var r= /^[+-]?[1-9]?[0-9]*\.[0-9]*$/;
+    return r.test(c);
+}
+    function check_form(){
+        var money_reg = /\d{1,4}/;
+        var _money = $("#money").val();
+        if('' == _money || !money_reg.test(_money) || _money>20000 ||  _money<=0){
+         
+        
+            
+       	 el2=$.tips({
+	            content:'输入充值金额不正确!',
+	            stayTime:1500,
+	            type:"info"
+	        });
+       	 
+            return false;
+        }
+        
+        if(check(_money)){
+        	   
+          	 el2=$.tips({
+   	            content:'金额不能为小数!',
+   	            stayTime:1500,
+   	            type:"info"
+   	        });
+          	 
+               return false;
+        }
+        
+        
+       
+        
+        window.location.href=g_site_url+"?user/ajaxpayrecharge/"+_money;
+       
+    }
+</script>
+<!--{template footer}-->

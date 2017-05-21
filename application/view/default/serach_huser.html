@@ -1,0 +1,65 @@
+<!--{template header}-->
+<link rel="stylesheet" media="all" href="{SITE_URL}static/css/bianping/css/search.css" />
+<div class="container search">
+<div class="row">
+<div class="aside">
+<ul class="menu">
+<li class="">
+<a href="{url question/search/$word}"><div class="setting-icon">
+<i class="fa fa-question-circle-o"></i></div>
+ <span>问题</span>
+ </a>
+ </li>
+ <li class="">
+ <a href="{url topictag-$word}">
+ <div class="setting-icon">
+ <i class="fa fa-rss-square"></i>
+ </div> <span>文章</span>
+ </a></li>
+ <li class="active">
+ <a href="{url user/search/$word}">
+ <div class="setting-icon"><i class="fa fa-user"></i></div> <span>用户</span>
+ </a>
+ </li>
+ <li class="">
+ <a href="{url category/search/$word}">
+ <div class="setting-icon"><i class="fa fa-tag"></i></div> <span>专题</span>
+ </a>
+ </li>
+ </ul>
+ </div>
+  <div class="col-xs-16 col-xs-offset-8 main">
+ <div class="search-content"><!----> <div class="result">检索到{$rownum} 个结果</div> 
+ 
+  <!--{if $userlist}-->
+   <ul class="user-list">
+       <!--{loop $userlist $huser}-->
+<li><a href="{url user/space/$huser['uid']}" target="_blank" class="avatar"><img src="{$huser['avatar']}"></a> <div class="info"><a href="{url user/space/$huser['uid']}" target="_blank" class="name">
+      {$huser['username']}
+      </a> <div class="meta"><span>粉丝  {$huser['followers']}</span><span>文章  {$huser['articles']}</span><span>问题  {$huser['questions']}</span></div> <div class="meta"><span>
+        回答了 {$huser['answers']} 问题，获得了{$huser['supports']} 个喜欢
+        </span></div></div> <user-follow-button user-id="70473"></user-follow-button></li>
+          <!--{/loop}-->
+  
+        </ul> 
+   <!--{else}-->
+       <div id="no-result">
+                <p>抱歉，未找到和您搜索相关的内容。</p>
+                <strong>建议您：</strong>
+                <ul class="nav">
+                    <li><span>检查输入是否正确</span></li>
+                    <li><span>简化查询词或尝试其他相关词</span></li>
+                </ul>
+            </div>
+    <!--{/if}-->
+
+<div class="pages">  {$departstr}</div>
+        
+         </div>
+         </div>
+         </div>
+         </div>
+         <script>
+         $(".note-list em").addClass("search-result-highlight");
+         </script>
+<!--{template footer}-->

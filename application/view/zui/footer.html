@@ -1,0 +1,130 @@
+
+  <!--{if $user['uid']!=0}-->
+ <!--{eval  if($user['email']==null||$user['email']==''||$user['email']=='null') $spck=1;}-->
+  <!--{if $spck==1}-->
+<!--{template usercheck}-->
+ <!--{/if}-->
+  <!--{/if}-->
+<!--相关标签，友情链接，关键词搜索-->
+
+<div class="bg-white hidden-sm hidden-xs">
+
+    <div class="container">
+
+
+
+        <ul id="myTab2" class="nav nav-secondary">
+        {if $regular=='index/default'}
+            <li class="active">
+                <a href="#tab11" data-toggle="tab">友情链接</a>
+            </li>
+            {/if}
+               <li   {if $regular!='index/default'} class="active"{else} class=""  {/if}>
+                <a href="#tab33" data-toggle="tab">相关标签</a>
+            </li>
+            <li class="">
+                <a href="#tab22" data-toggle="tab">问答搜索词</a>
+            </li>
+         
+
+        </ul>
+        <hr>
+        <div class="tab-content">
+         {if $regular=='index/default'}
+            <div class="tab-pane in active" id="tab11">
+                <ul class="FLlist show">
+                  <!--{eval $links=$this->fromcache('link');}-->
+  <!--{loop $links $link}-->
+     <li id="foot_wdss_list" class="switchHide">
+            <a target="_blank" href="{$link['url']}" title="{$link['description']}">
+                <!--{if $link['logo']}-->
+                <img src="{$link['logo']}" style="width:140px;height:50px" alt="{$link['name']}" />
+                <!--{else}-->
+                {$link['name']}
+                <!--{/if}-->
+            </a>
+              </li>
+            <!--{/loop}-->
+                 
+                      
+                  
+
+
+                </ul>
+            </div>
+             {/if}
+              
+           <div {if $regular!='index/default'} class="tab-pane in active" {else} class="tab-pane" {/if} id="tab33">
+
+               <ul class="FLlist show">
+  <!--{eval $taglist=$this->fromcache('hosttaglist');}-->
+                    <!--{loop $taglist $tag}-->
+                      <li id="foot_zxjh_list" class="switchHide">
+                    <a target="_blank" title="$tag['name']" href="{url tag-$tag['name']}">{$tag['name']}</a>
+                     </li>
+                    <!--{/loop}-->
+                 
+                 
+
+               </ul>
+           </div>
+            
+            <div class="tab-pane" id="tab22">
+                <ul class="FLlist show">
+
+ <!--{eval $wordslist=$this->fromcache('hotwords');}-->
+                    <!--{loop $wordslist $word}-->
+                      <li id="foot_zxjh_list" class="switchHide">
+                    <a target="_blank" title="$word['w']" href="{url q={$word['w']}}">{$word['w']}</a>
+                     </li>
+                    <!--{/loop}-->
+                    
+                 
+
+                </ul>
+            </div>
+           
+        </div>
+
+    </div>
+</div>
+<!-- 用户信息 -->
+<div class="usercard" id="usercard"><div class="usercard_in clearfix"><div class="loading"><img src='{SITE_URL}css/default/loading.gif' align='absmiddle' />&nbsp;加载中...</div></div></div>
+<!-- 用户信息结束标签 -->
+
+<!--友情链接，关键词结束标记-->
+
+
+<!--页脚标签-->
+<div class="web-footer bg-silver">
+
+    <div class="container">
+  <div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+    <p class="mar-t-2 text-center">
+
+        <p class="copyright text-center">Powered by<a target="_blank" href="{SITE_URL}">Ask2V3.5</a>服务<a target="_blank" href="{url rss/list}">RSS订阅</a>{if $setting['wap_domain']}<a target="_blank" href="http://{$setting['wap_domain']}">手机版</a>{/if}<a target="_blank" href="{url tags}">网站标签</a><a target="_blank" href="{url new}">最新问题</a><a>{$setting['site_icp']}</a> <!--{if $setting['site_statcode']}--> <a> {eval echo str_replace('\\','',$setting['site_statcode']);}</a><!--{/if}--> </p>
+    </p>
+   
+</div>
+
+  </div>
+   
+    </div>
+
+</div>
+
+<!--页脚标签结束-->
+
+
+
+<script src="{SITE_URL}static/css/dist/js/zuicommon.js"></script>
+
+ 
+   <!--{if $setting['cancopy']==1}-->
+              <script src="{SITE_URL}static/js/nocopy.js"></script>
+                <!--{/if}-->
+                
+   <script src="{SITE_URL}static/js/ie.js"></script>
+</body>
+</html>

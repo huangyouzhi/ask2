@@ -1,0 +1,63 @@
+ <div class="row">
+         
+                <div class="col-sm-3 left-userinfo">
+                    
+
+                        
+                </div>
+                <div class="col-sm-9">
+                    <h1 class="tutor-name mar-t-1 text-center" data-tutor_id="84794273">{$user['username']}</h1>
+
+                    <p class="tutor-title text-center mar-t-05" id="tutorTitle">{$user['signature']}</p>
+
+                    <div class="user-statics mar-t-05 text-center text-danger">
+                        <ul class="tutor-detail tutorDetail">
+                            <li class="detail">
+                                <span class="icon icon-comment"></span>
+
+                                <span class="highlight">{$user['answers']}</span>回答
+
+                            </li>
+                            <li class="detail"><span class="icon icon-question-sign"></span>
+                                <span class="highlight">{$user['questions']}</span>提问
+                            </li>
+                            <li class="detail"><span class="icon icon-heart"></span>
+
+                                <span class="highlight">{$user['followers']}</span>粉丝
+
+                            </li>
+
+
+                            <li class="detail detail-more"><span class="highlight">高</span>接受率</li>
+
+
+
+
+
+                            <li><span class="icon icon-go btn-folding foldingBtn"></span></li>
+
+
+                        </ul>
+                    </div>
+
+                    <p class="text-center mar-t-05">
+                       <ol class="breadcrumb text-center">
+                       
+                       
+                    <li> 擅长:</li>
+                    
+                     <!--{loop $user['category'] $category}-->
+                      <li><a href="{url category/view/$category['cid']}">{$category['categoryname']}</a></li>
+                       
+                <!--{/loop}-->
+                <li>
+                         <a href="{url user/mycategory}"><i class="icon icon-plus text-danger"></i>擅长设置</a>
+                       </li>
+                  
+
+
+                </ol>
+                    </p>
+
+                </div>
+</div>

@@ -1,0 +1,113 @@
+<!--{template header}-->
+
+<section class="ui-container">
+<!--{template user_title}-->
+
+    <section class="user-content-list">
+        <div class="ui-tab" id="tab1">
+            <ul class="ui-tab-nav ui-border-b">
+                <li class="current">提问</li>
+                <li >回答</li>
+                <li>文章</li>
+               
+                <li>关注的人</li>
+            </ul>
+            <ul class="ui-tab-content" >
+                <li>
+                       <ul class="ui-list ui-list-text ui-border-tb">
+                         <!--{loop $questionlist $index $question}-->
+            <li class="ui-border-t">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">
+                  <a href="{url question/view/$question['id']}">{$question['title']}</a>
+                    </h4>
+                </div>
+                <div class="ui-arrowlink "></div>
+            </li>
+             <!--{/loop}-->         
+
+
+        </ul>
+                
+                </li>
+                <li>
+                 <ul class="ui-list ui-list-text ui-border-tb">
+                           <!--{loop $answerlist $index $question}-->
+            <li class="ui-border-t">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">
+                  <a href="{url question/view/$question['qid']}">{$question['title']}</a>
+                    </h4>
+                </div>
+                <div class="ui-arrowlink "></div>
+            </li>
+             <!--{/loop}-->         
+
+
+        </ul>
+                
+                </li>
+                <li>
+                      <ul class="ui-list ui-list-text ui-border-tb">
+                            <!--{loop $topiclist $index $topic}-->
+            <li class="ui-border-t">
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap">
+                <a href="{url article-$topic['id']}">{$topic['title']}</a>
+                    </h4>
+                </div>
+                <div class="ui-arrowlink "></div>
+            </li>
+             <!--{/loop}-->         
+
+
+        </ul>
+                
+                </li>
+               
+                <li>
+                              <ul class="ui-list ui-list-one ui-list-link ui-border-tb">
+                 {if $attentionlist==null}
+                
+               
+    <p class="user-p-tip ui-txt-warning">  暂无粉丝关注你,多写文章，多回答问题增加关注度。</p>
+
+                 {/if}
+                    <!--{loop $attentionlist $index $follower}-->
+    <li class="ui-border-t" onclick="window.location.href='{url user/space/$follower['uid']}'">
+    
+        <div class="ui-list-thumb">
+            <span style="background-image:url({$follower['avatar']})"></span>
+        </div>
+        <div class="ui-list-info">
+            <h4 class="ui-nowrap">{$follower['username']}</h4>
+            <div class="ui-txt-info">
+             <!--{if (1 == $follower['gender'])}--> 男 
+            
+             <!--{else}-->
+             女
+            <!--{/if}-->
+            </div>
+        </div>
+    </li>
+  <!--{/loop}-->    
+</ul>
+          
+                
+                </li>
+            </ul>
+        </div>
+    </section>
+</section>
+<section class="fixed-bar" id="fixed-bar">
+    <div class="bar-zhezao">
+
+    </div>
+    <div class="ui-row-flex ui-whitespace ui-row-flex-ver bar-items">
+   
+        <div class="ui-col"><i class="ui-icon-home"></i></div>
+        <div class="ui-col"><i class="ui-icon-gototop"></i></div>
+    </div>
+</section>
+
+<!--{template footer}-->

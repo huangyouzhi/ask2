@@ -1,0 +1,34 @@
+<!--{template header}-->
+
+<!--{template header}-->
+<link rel="stylesheet" media="all" href="{SITE_URL}static/css/bianping/css/category.css" />
+<div class="container collection index" style="padding-top:10px;">
+
+<div class="row" style="padding-top:0px;margin-top:0px">
+<div class="col-xs-24 col-sm-16 main" style="padding-top:10px;">
+  <div class="recommend-collection">
+             网站标签
+          </div>
+    <div class="split-line"></div>
+<div class="row" style="padding-top:10px;">
+ <!--{loop $taglist $index $tag}-->
+ <div class="col-sm-4" style="margin:10px">
+ {eval $tmtag=urlencode($tag['name']);}
+ <a target="_blank"  title="$tag['name']" href="{url tag-$tmtag}">{$tag['name']}</a>
+</div>
+              
+              <!--{/loop}-->
+              
+
+
+</div>
+  <div class="pages">
+                        $departstr
+                        </div>
+</div>
+
+
+</div>
+
+</div>
+<!--{template footer}-->

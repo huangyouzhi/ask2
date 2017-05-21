@@ -1,0 +1,339 @@
+<!--{template header}-->
+
+
+<!--用户中心-->
+
+<div class="user-home bg-white">
+    <div class="container">
+ <form class="form-horizontal mar-t-1" action="{url user/addxinzhi}"  method="post" enctype="multipart/form-data">
+    <div class="row">
+                 <div class="col-md-16">
+                     <div class="dongtai">
+                         <p>
+                             <strong class="font-18">发表文章</strong>
+                         </p>
+                         <hr>
+                      
+                       <input type="hidden" name="topicclass" value="{$topic['articleclassid']}" id="topicclass"/>
+       <input type="hidden" name="upimg" id="upimg" value="{$topic['image']}"/>
+             <input type="hidden" name="views" value="{$topic['views']}"/>
+     {if isset($topic['id'])}
+    <input type="hidden" value="{$topic['id']}" name="id" />
+     <input type="hidden" value="{$topic['isphone']}" name="isphone" />
+    <input type="hidden" value="{$topic['image']}" name="image" />
+    {/if}              
+                     
+         <div class="form-group">
+         
+          <div class="col-md-24 has-error">
+            <input type="text" name="title" value="{$topic['title']}" size="50" class="title" placeholder="文章标题不能为空">
+            <div class="help-block alert alert-primary ">
+           
+   
+     <div class="bar_l">
+                     
+                        <span><a  class="btn btn-success"   id="changecategory" href="javascript:showcategory()">选择文章分类</a>
+                     <span id="selectedcate" class="selectedcate mar-lr-1">$catmodel['name']</span>
+ </span>
+   </div>
+            </div>
+          </div>
+        </div>
+         <div class="form-group">
+          <p class="col-md-24  text-left fl">  文章标签,多个用英文逗号隔开,最多5个:</p>
+          <div class="col-md-24 has-error">
+            <input type="text" data-toggle="tooltip" data-placement="bottom" title="" placeholder="标签之间英文逗号隔开" data-original-title="英文逗号隔开,最多5个" name="topic_tag" value="{$topic['topic_tag']}"  class="txt_tag" >
+         
+          </div>
+        </div>
+                       <div class="form-group">
+          <p class="col-md-24  text-left fl">文章描述:</p>
+          <div class="col-md-24 has-error">
+          
+<!--{template editor}-->
+
+            
+        
+
+          </div>
+        </div>
+       
+        
+      
+                    
+                    
+                    
+                     </div>
+               
+               
+                 </div>
+ <div class="col-md-8">
+ 
+ <div class="fixedright">
+
+<p>封面图:</p>
+  <div class="form-group">
+        
+        <div class="col-md-24">
+         <div id="preview" style="overflow:visible">
+  <!--{if isset($topic['image'])}-->
+   {eval $index=strpos($topic['image'],'http');}
+                     {if $index==0 }
+                            
+                           <img class="img-thumbnail" data-toggle="lightbox"  data-image="{$topic['image']}" data-caption="{$topic['title']}"  id="imghead" src="{$topic['image']}" width="489" height="240"/>&nbsp;&nbsp;&nbsp;
+                            {else}
+                        <img class="img-thumbnail" data-toggle="lightbox"  data-image="{SITE_URL}{$topic['image']}" data-caption="{$topic['title']}"  id="imghead" src="{SITE_URL}{$topic['image']}" width="489" height="240"/>&nbsp;&nbsp;&nbsp;
+                            
+                            {/if}
+  
+  
+  <!--{else}-->
+  
+    <img class="img-thumbnail" data-toggle="lightbox"  data-image="{SITE_URL}static/css/dist/css/images/default.jpg" data-caption="{$topic['title']}" id="imghead" width="489" height="240" border=0 src='{SITE_URL}static/css/dist/css/images/default.jpg'>
+    <!--{/if}-->
+  
+</div>
+  <div class="add-img-box row">
+  <div class="col-sm-24">
+    <span class="add-img" >
+  <a id="layerUploadButton"></a></span>
+  <div class="add-img-html5" style=""><span>
+  </span><a class="text-danger" href="###" text="网页提问浮层添加图片点击">点击这选择封面图片，大小建议288px*192px,或者填封面图外部链接
+  <input type="file" id="layer_upload" onchange="previewImage(this)" name="image" title="请选择图片" accept="image/*" style="opacity: 0;height: 40px;position:relative;top:-2rem;">
+  </a>
+  </div>
+  </div>
+
+  </div>
+ 
+    <div class="add-img-box row">
+
+     <div class="col-sm-24">
+     外部封面图地址:(<a class="text-danger" href="javascript:getimg()">点击内容提取</a>)
+     <input type="text" AUTOCOMPLETE="OFF" id="outimgurl" name="outimgurl" value="{$topic['image']}" size="350" class="form-control" placeholder="如果不上传可以选择外部封面图片地址">
+        
+   </div>     
+   </div> 
+        </div>
+        </div>
+        <!-- -待续 -->
+        
+          <div class="form-group">
+        <div class=" col-md-20">
+        
+          <input type="hidden" name="usersid" value='{$_SESSION["userid"]}'/>
+          
+  <input type="submit" id='article_btn' class="btn btn-success width-120" name="submit"  value="提 交">
+   <input type="button" onclick="getimg()" class="btn btn-default width-120 mar-ly-1" name="submit"  value="内容提取封面图">
+          
+        </div>
+        </div>
+                   
+                        <div class="modal fade" id="myLgModal" style="z-index:999999999">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+          <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+        <h4 class="modal-title">选择分类</h4>
+      </div>
+        <div class="modal-body">
+      <div id="dialogcate">
+        <form name="editcategoryForm" action="{url question/movecategory}" method="post">
+            <input type="hidden" name="qid" value="{$question['id']}" />
+            <input type="hidden" name="category" id="categoryid" />
+            <input type="hidden" name="selectcid1" id="selectcid1" value="{$question['cid1']}" />
+            <input type="hidden" name="selectcid2" id="selectcid2" value="{$question['cid2']}" />
+            <input type="hidden" name="selectcid3" id="selectcid3" value="{$question['cid3']}" />
+            <table class="table table-striped">
+                <tr valign="top">
+                    <td width="125px">
+                        <select  id="category1" class="catselect" size="8" name="category1" ></select>
+                    </td>
+                    <td align="center" valign="middle" width="25px"><div style="display: none;" id="jiantou1">>></div></td>
+                    <td width="125px">                                        
+                        <select  id="category2"  class="catselect" size="8" name="category2" ></select>                                        
+                    </td>
+                    <td align="center" valign="middle" width="25px"><div style="display: none;" id="jiantou2">>>&nbsp;</div></td>
+                    <td width="125px">
+                        <select id="category3"  class="catselect" size="8"  name="category3" ></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5">
+                    <span>
+                    <input  type="button" id="layer-submit" class="btn btn-success" value="确&nbsp;认" onclick="selectcate();"/></span>
+                    <span>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    </span>
+                    </td>
+                   
+                </tr>
+            </table>
+        </form>
+    </div>
+    </div>
+    </div>
+  </div>
+</div>
+ </div>
+ </div>
+
+             </div>
+               </form>  
+           
+            </div>
+           
+            
+        </div>
+
+  
+
+<!--用户中心结束-->
+<script type="text/javascript">
+window.onload=function(){
+	$(".dongtai .title").focus();
+
+}
+function getimg(){
+	var _html =editor.getContent();
+	
+	
+	var firstimg=$(_html).find("img");
+	
+	if(firstimg!=null)
+	$("#outimgurl").val(firstimg[0].src);
+}
+    var category1 = {$categoryjs[category1]};
+    var category2 = {$categoryjs[category2]};
+    var category3 = {$categoryjs[category3]};
+        $(document).ready(function() {
+        initcategory(category1);
+       
+
+
+
+        });
+        function selectcate() {
+            var selectedcatestr = '';
+            var category1 = $("#category1 option:selected").val();
+            var category2 = $("#category2 option:selected").val();
+            var category3 = $("#category3 option:selected").val();
+            if (category1 > 0) {
+                selectedcatestr = $("#category1 option:selected").html();
+                $("#topicclass").val(category1);
+               
+            }
+            if (category2 > 0) {
+                selectedcatestr += " > " + $("#category2 option:selected").html();
+                $("#topicclass").val(category2);
+               
+            }
+            if (category3 > 0) {
+                selectedcatestr += " > " + $("#category3 option:selected").html();
+                $("#topicclass").val(category3);
+              
+            }
+            $("#selectedcate").html(selectedcatestr);
+            $("#changecategory").html("更改");
+            $("#myLgModal").modal("hide");
+        }
+</script>
+
+
+
+<script type="text/javascript">
+$("#myLgModal .modal-dialog").css("width","460px");
+ function showcategory(){
+	 $('#myLgModal').modal({
+		 position    :50,  
+		    moveable : true,
+		    show     : true
+		})
+ }
+$("#article_btn").click(function(){
+	 var v=$("#topicclass").val();
+	var fv=$("#layer_upload").val();
+	var upfv=$("#outimgurl").val();
+	 if(v==''){
+		 alert("请选择文章分类");
+		 showcategory();
+		 return false;
+	 }
+	if(fv==''&&upfv==''){
+		 
+		 
+		 alert("请选择文章封面图");
+		 return false;
+	 }
+})
+ 
+ function checkarticle(){
+	 if($("#topicclass")==''){
+		 alert("请选择文章分类");
+		 return false;
+	 }
+ }
+                //图片上传预览    IE是用了滤镜。
+        function previewImage(file)
+        {
+          var MAXWIDTH  = 260; 
+          var MAXHEIGHT = 180;
+          var div = document.getElementById('preview');
+          if (file.files && file.files[0])
+          {
+              div.innerHTML =' <a target="_blank" id="imgshowlink" href="" data-toggle="lightbox" data-group="image-group-1"><img class="img-thumbnail" id=imghead></a>';
+              var img = document.getElementById('imghead');
+              img.onload = function(){
+                var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+                img.width  =  rect.width;
+                img.height =  rect.height;
+//                 img.style.marginLeft = rect.left+'px';
+                img.style.marginTop = rect.top+'px';
+              }
+              var reader = new FileReader();
+              reader.onload = function(evt){
+            	  img.src = evt.target.result;
+            	  $("#imghead").attr("data-img",evt.target.result);
+            	  $("#imgshowlink").attr("href",evt.target.result);
+            	  
+              }
+              reader.readAsDataURL(file.files[0]);
+          }
+          else //兼容IE
+          {
+            var sFilter='filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+            file.select();
+            var src = document.selection.createRange().text;
+            div.innerHTML = '<img class="img-thumbnail" data-caption="" data-toggle="lightbox" id=imghead>';
+            var img = document.getElementById('imghead');
+            img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+            var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth, img.offsetHeight);
+            status =('rect:'+rect.top+','+rect.left+','+rect.width+','+rect.height);
+            div.innerHTML = "<div id=divhead style='width:"+rect.width+"px;height:"+rect.height+"px;margin-top:"+rect.top+"px;"+sFilter+src+"\"'></div>";
+          }
+        }
+        function clacImgZoomParam( maxWidth, maxHeight, width, height ){
+            var param = {top:0, left:0, width:width, height:height};
+            if( width>maxWidth || height>maxHeight )
+            {
+                rateWidth = width / maxWidth;
+                rateHeight = height / maxHeight;
+                 
+                if( rateWidth > rateHeight )
+                {
+                    param.width =  maxWidth;
+                    param.height = Math.round(height / rateWidth);
+                }else
+                {
+                    param.width = Math.round(width / rateHeight);
+                    param.height = maxHeight;
+                }
+            }
+             
+            param.left = Math.round((maxWidth - param.width) / 2);
+            param.top = Math.round((maxHeight - param.height) / 2);
+            return param;
+        }
+</script>  
+
+

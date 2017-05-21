@@ -1,0 +1,113 @@
+<!--{template header}-->
+
+
+
+<!--用户中心大背景结束标记-->
+
+<!--用户中心-->
+
+<div class="user-home bg-white">
+    <div class="container">
+
+        <div class="row ">
+            <div class="col-sm-9">
+              <!-- 用户title部分导航 -->
+              <!--{template space_title}-->
+             <!-- title结束标记 -->
+            <!-- 内容页面 --> 
+    <div class="row">
+                 <div class="col-sm-12">
+                     <div class="dongtai">
+                         <p>
+                             <strong class="font-18">{$member['username']}的动态</strong>
+                         </p>
+                         <hr>
+                         <div class="answer_contents">
+                         
+                           <ul class="nav">
+            
+  <!--{loop $doinglist $doing}-->
+        <li>
+            <div class="row">
+                <div class="col-sm-1">
+                    <a class="aw-user-name hidden-xs" data-id="7300"
+                       href="{url user/space/$doing['authorid']}" rel="nofollow"><img
+                            src="{$doing['avatar']}" width="55px" height="55px" alt="{$doing['author']}"></a>
+
+                </div>
+                <div class="col-sm-9">
+                    <h4>
+                        <a href="{url question/view/$doing['questionid']}">{$doing['title']}</a>
+                    </h4>
+
+                    <p>
+                        <a href="{url user/space/$doing['authorid']}" class="aw-user-name"
+                           data-id="26025">{$doing['author']}</a> <span
+                            class="text-color-999">{$doing['actiondesc']} • {$doing['attentions']}人关注 • {$doing['answers']}  个回复 • {$doing['views']} 次浏览 • {$doing['question_time']}			</span>
+                        <span class="text-color-999 related-topic collapse"> • 来自相关话题</span>
+                    </p>
+
+                   
+                </div>
+                <div class="col-sm-2">
+
+                    <p>贡献</p>
+
+                    <div>
+                      <!--{loop $doing['followerlist'] $follow}-->
+                        <a class="ms_username" data-id="8609" href="{url user/space/$follow['followerid']}"
+                           rel="nofollow"><img width="32px" height="32px" class="mar-lr-03 mar-b-05 img-rounded" src="{$follow['avatar']}" alt="{$follow['follower']}"></a>
+                      
+                                                <!--{/loop}-->
+
+                    </div>
+
+                </div>
+            </div>
+            <hr>
+
+        </li>
+
+   <!--{/loop}-->
+
+        </ul>
+
+
+                         </div>
+                     </div>
+                 </div>
+
+
+             </div>
+            </div>
+           
+            <!--右侧栏目-->
+            <div class="col-sm-3 ">
+
+
+                
+
+                <!--导航列表-->
+
+               <!--{template space_menu}-->
+
+                <!--结束导航标记-->
+
+
+                <div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--用户中心结束-->
+
+<!--{template footer}-->

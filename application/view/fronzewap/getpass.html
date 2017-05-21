@@ -1,0 +1,75 @@
+<!--{template header}-->
+
+
+
+<section class="ui-container mar-t-01">
+    <div class="ui-form ui-border-t">
+       <form class="am-form" name="getpassform"  action="{url user/getpass}" method="post">
+        <input type="hidden"  id="forward" name="return_url" value="{$forward}">
+            <div class="ui-form-item ui-form-item-pure ui-border-b">
+                <input name="username" id="username" type="text" placeholder="请输入账号">
+                <a href="#" class="ui-icon-close"></a>
+            </div>
+              <div class="ui-form-item ui-form-item-pure ui-border-b">
+                <input id="email" name="email" placeholder="输入注册时邮箱号"  type="email" >
+                <a href="#" class="ui-icon-close"></a>
+            </div>
+            <div class="ui-form-item ui-form-item-r ui-border-b">
+                <input type="text" id="code" name="code" onblur="check_code();" placeholder="输入验证码">
+              
+                <button type="button" class="ui-border-l"><img class="ui-border-l" src="{url user/code}" onclick="javascript:updatecode();" id="verifycode"></button>
+
+                <a href="#" class="ui-icon-close"></a>
+            </div>
+           
+            <div class="ui-btn-wrap">
+              <!-- 若按钮不可点击则添加 disabled 类 -->
+                <button type="submit" name="submit" class="ui-btn-lg ui-btn-primary">
+                    确定
+                </button>
+            </div>
+        </form>
+    </div>
+   <ul class="ui-row mar-t-05">
+    <li class="ui-col ui-col-67">
+    <a class="mar-lr-05" href="{url user/register}">立即注册</a>
+    </li>
+    <li class="ui-col ui-col-33">
+
+<div class="ui-flex ui-flex-pack-end">
+    <div><a class="mar-lr-05" href="{url user/login}">登录网站</a></div>
+</div>
+   </li>
+    </ul>
+     <div class="ui-flex ui-flex-pack-start">
+     <!--{if $setting['sinalogin_open']}-->
+        <div class="mar-lr-05">
+            <a href="{SITE_URL}plugin/sinalogin/index.php"><img src="http://m.ask2.cn/static/css/default/sina_login_btn.png" alt="Connect_logo_3.png"></a>
+        </div>
+         <!--{/if}-->
+                <!--{if $setting['qqlogin_open']}-->
+        <div class="mar-lr-05">
+         <!--{if $setting['wap_domain']}-->
+          <a href="{SITE_URL}plugin/wapqqlogin/index.php"><img src="http://m.ask2.cn/static/css/default/qq_login_btn.png" alt="Connect_logo_3.png"></a>
+           <!--{else}-->
+            <a href="{SITE_URL}plugin/qqlogin/index.php"><img src="http://m.ask2.cn/static/css/default/qq_login_btn.png" alt="Connect_logo_3.png"></a>
+             <!--{/if}-->
+           
+        </div>
+          <!--{/if}-->
+            <!--{if $wxbrower}-->
+          <div class="mar-lr-05">
+        
+                <a href="{SITE_URL}?plugin_weixin/wxauth"><img src="{SITE_URL}static/css/default/wx.jpg" style="width:24px;height:24px;margin-left:10px;" alt="微信登录"></a>
+              
+               
+          </div>
+             <!--{/if}-->
+    </div>
+
+
+</section>
+
+
+
+<!--{template footer}-->

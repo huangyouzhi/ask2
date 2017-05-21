@@ -1,0 +1,49 @@
+
+  <!--{if $hidefooter!='hidefooter'}-->
+<div class="web-footer ">
+ <div class="">
+  <div class="row">
+<div class="col-sm-24 ">
+    <p class="mar-t-2 text-center">
+
+        <p class="copyright text-center">
+        Powered by<a target="_blank" href="https://www.ask2.cn">Ask2V3.5</a>服务
+        <a target="_blank" href="{url rss/list}">问题RSS订阅</a>
+              <a target="_blank" href="{url rss/articlelist}">文章RSS订阅</a>
+        {if $setting['wap_domain']}<a target="_blank" href="http://{$setting['wap_domain']}">手机版</a>{/if}
+        <a target="_blank" href="{url tags}">网站标签</a>
+        <a target="_blank" href="{url new}">最新问题</a>
+        <span class="icp">{$setting['site_icp']}</span>
+       
+        </p>
+    </p>
+   
+</div>
+
+  </div>
+   
+    </div>
+    </div>
+ 
+  <!--{/if}-->
+  
+                
+   <!--{if $setting['cancopy']==1}-->
+              <script src="{SITE_URL}static/js/nocopy.js"></script>
+                <!--{/if}-->
+                
+<script src="{SITE_URL}static/js/jquery.lazyload.min.js"></script>
+<script>
+$(function(){
+	 $("img").addClass("lazy");
+	$("img.lazy").fadeIn("2000");
+})
+
+</script>
+<div class="display:none;">
+ <!--{if $setting['site_statcode']}--> {eval echo str_replace('\\','',$setting['site_statcode']);}<!--{/if}--> 
+ 
+</div>
+
+</body>
+</html>

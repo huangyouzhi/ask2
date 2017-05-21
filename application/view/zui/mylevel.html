@@ -1,0 +1,90 @@
+<!--{template header}-->
+<!--用户中心大背景--->
+<div class="row nopadding nomargin">
+  <!--{template user_banner}-->
+
+</div>
+
+
+<!--用户中心大背景结束标记-->
+
+<!--用户中心-->
+
+<div class="user-home bg-white">
+    <div class="container">
+
+        <div class="row ">
+            <div class="col-sm-9">
+            <!-- 用户title部分导航 -->
+              <!--{template user_title}-->
+             <!-- title结束标记 -->
+       <!-- 内容页面 -->  
+    <div class="row">
+                 <div class="col-sm-12">
+                     <div class="dongtai">
+                         <p>
+                             <strong class="font-18">我的等级</strong>
+                         </p>
+                        
+                         <hr>
+                      
+<table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>等级</th>
+            <th>头衔</th>
+            <th>经验值</th>
+          </tr>
+        </thead>
+        <tbody>
+        <!--{loop $usergroup $index $group}-->
+                        <!--{if $group['grouptype']==2}-->
+          <tr>
+            <td>$index</td>
+            <td><span class="user-level">LV{$group['level']}{if $group['groupid']==$user['groupid']}（我在这里）{/if}</span></td>
+                            <td>{$group['grouptitle']}</td>
+                            <td>{$group['creditslower']} - {$group['creditshigher']}</td>
+          </tr>
+          <!--{/if}-->
+                        <!--{/loop}-->
+        </tbody>
+      </table>
+                   
+                     </div>
+                 </div>
+
+
+             </div>
+            </div>
+           
+            <!--右侧栏目-->
+            <div class="col-sm-3 mar-t-2">
+
+
+              
+
+                <!--导航列表-->
+
+               <!--{template user_menu}-->
+
+                <!--结束导航标记-->
+
+
+                <div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--用户中心结束-->
+
+<!--{template footer}-->

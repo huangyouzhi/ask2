@@ -1,0 +1,124 @@
+
+<div class="row">
+<div class="col-md-4 text-center">
+<button data-placement="bottom" title="打赏0.1元" data-toggle="tooltip" data-original-title="打赏0.1元" class="btn  btn-pay defaultpay" val="0.1">0.1元</button>
+</div>
+<div class="col-md-4 text-center">
+<button data-placement="bottom" title="打赏0.5元" data-toggle="tooltip" data-original-title="打赏0.5元"  class="btn btn-pay defaultpay" val="0.5">0.5元</button>
+</div>
+<div class="col-md-4 text-center">
+<button data-placement="bottom" title="打赏1元" data-toggle="tooltip" data-original-title="打赏1元"  class="btn btn-pay defaultpay" val="1">1元</button>
+</div>
+<div class="col-md-4 text-center mar-t-05">
+<button data-placement="bottom" title="打赏5元" data-toggle="tooltip" data-original-title="打赏5元"  class="btn btn-pay defaultpay" val="5">5元</button>
+</div>
+<div class="col-md-4 text-center mar-t-05">
+<button data-placement="bottom" title="打赏10元" data-toggle="tooltip" data-original-title="打赏10元"  class="btn btn-pay defaultpay" val="10">10元</button>
+</div>
+<div class="col-md-4 text-center mar-t-05">
+<button data-placement="bottom" title="输入其它金额打赏" data-toggle="tooltip" data-original-title="输入其它金额打赏"  class="btn btn-pay btn-other">其它</button>
+</div>
+</div>
+<div class="row text-center inputmoney">
+
+   
+    <input type="number" oninput="change()" onpropertychange="change()" class="form-control" id="inputmoney" placeholder="请输入金额">
+
+  
+</div>
+<div class="row text-center">
+<input type="hidden" value="{$type}" id="txt_type" />
+<input type="hidden" value="{$typevalue}" id="txt_typevalue" />
+<input type="hidden" value="{$touser}" id="txt_touser" />
+<button class=" btn-dashang">微信打赏</button>
+<img src="" class="dasahngqrcode" />
+</div>
+<script>
+$('[data-toggle="tooltip"]').tooltip('hide');
+
+var _val=0;
+var _input=0;
+function change(){
+	var re=/^\d+(\.\d+)?$/;
+	var moy=$("#inputmoney").val();
+	  if (!re.test(moy))  
+	    {  
+			new $.zui.Messager('请输入正确的金额。', {
+			    icon: 'heart',
+			    placement: 'bottom' // 定义显示位置
+			}).show();
+			_input=0;
+			return false;
+	    }else{
+	    	_input=moy;
+	    	$(".btn-dashang").html('打赏('+_input+'元)');
+	    }
+	
+}
+$(".inputmoney").hide();
+$(".btn-other").click(function(){
+	$(".inputmoney").show();
+});
+$(".defaultpay").click(function(){
+	$(".inputmoney").hide();
+	_val=$(this).attr("val");
+	$(".btn-dashang").html('打赏('+_val+'元)');
+})
+function isInteger(obj) {
+    reg = /^[-+]?\d+$/;
+    if (!reg.test(obj)) {
+        return false;
+    } else {
+ 
+//这里加入
+if(obj*1>0)
+return true;
+else
+return false;
+ 
+        //return true;
+    }
+}
+$(".btn-dashang").click(function(){
+	
+	if(_val==0&&_input==0){
+		
+	
+		new $.zui.Messager('请输入正确的金额。', {
+		    icon: 'heart',
+		    placement: 'bottom' // 定义显示位置
+		}).show();
+	}else{
+		var tmvalue=_input==0? _val:_input;
+		
+		 var _type=$("#txt_type").val();
+		    var _typevalue=$("#txt_typevalue").val();
+		    var _touser=$("#txt_touser").val();
+		   
+		    
+		   $.ajax({
+		        //提交数据的类型 POST GET
+		        type:"POST",
+		        //提交的网址
+		        url:"{SITE_URL}/?user/ajaxgetpaycode",
+		        //提交的数据
+		        data:{type:_type,typevalue:_typevalue,touser:_touser,money:tmvalue},
+		        //返回数据的格式
+		        datatype: "text",//"xml", "html", "script", "json", "jsonp", "text".
+
+		        //成功返回之后调用的函数
+		        success:function(data){
+		          
+		        	 var url=g_site_url+'lib/getqrcode.php?data='+data;
+                        $(".dasahngqrcode").attr("src",url).css({"display":"block"});
+		          
+		        }   ,
+		       
+		        //调用出错执行的函数
+		        error: function(){
+		            //请求出错处理
+		        }
+		    });
+	}
+})
+</script>

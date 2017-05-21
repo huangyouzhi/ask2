@@ -1,0 +1,66 @@
+<!--{template header}-->
+
+<!--{template searchinput}-->
+    <section class="sec-result">
+      <ul class="ui-tab-nav ui-border-b">
+        <li class="current">  <a href="{url question/search/$word}">问题</a></li>
+        <li > <a href="{url topictag-$word}">文章</a></li>
+      
+    </ul>
+     <!--{if $questionlist}-->
+   <ul class="note-list">
+       <!--{loop $questionlist $question}-->
+ <li><div class="content"><div class="author"><a href="{url user/space/$question['authorid']}" target="_blank" class="avatar">
+ <img src=" {$question['avatar']}">
+ </a> <div class="name"><a href="{url user/space/$question['authorid']}">{$question['author']}</a> <span class="time">
+            {$question['format_time']}
+          </span></div></div> <a href="{url question/view/$question['id']}" target="_blank" class="title">
+{$question['title']}
+          </a> 
+          <p class="abstract">
+          {$question['description']}
+          </p> <div class="meta"><a href="{url question/view/$question['id']}" target="_blank"><i class="fa fa-eye"></i> {$question['views']}
+        </a> <a href="{url question/view/$question['id']}#comments" target="_blank"><i class="fa fa-comment-o"></i>  {$question['answers']}
+        </a> <span><i class=" fa fa-heart-o"></i> {$question['attentions']}
+        </span> <!----></div></div></li>
+          <!--{/loop}-->
+  
+        </ul> 
+           <div class="pages ">{$departstr}</div>
+       <!--{else}-->
+         <div id="no-result">
+            <p>抱歉，未找到和 <span>"</span><em>{$word}</em><span>"</span>相关的内容。</p>
+            <strong>建议您：</strong>
+            <ul class="am-list">
+                <li><span>检查输入是否正确</span></li>
+                <li><span>简化查询词或尝试其他相关词</span></li>
+            </ul>
+        </div>
+          <!--{/if}-->
+          
+           
+
+     
+    
+   </section>
+   
+   <section class="fixed-bar" id="fixed-bar">
+    <div class="bar-zhezao">
+
+    </div>
+    <div class="ui-row-flex ui-whitespace ui-row-flex-ver bar-items">
+  
+        <div class="ui-col"><i class="ui-icon-home"></i></div>
+        <div class="ui-col"><i class="ui-icon-gototop"></i></div>
+    </div>
+</section>
+   </section>
+   <script>
+   
+   el2=$.tips({
+        content:' 为您找到相关结果约{$rownum}个',
+        stayTime:3000,
+        type:"info"
+    });
+   </script>
+<!--{template footer}-->

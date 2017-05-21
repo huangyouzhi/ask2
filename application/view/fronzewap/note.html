@@ -1,0 +1,170 @@
+<!--{template header}-->
+
+<section class="ui-container ">
+<article class="article">
+    <h1 class="title">{$note['title']}</h1>
+    <div class="article-info ui-clear">
+
+        <ul class="ui-row">
+
+            <li class="ui-col ui-col-80">
+
+                <span class="ui-txt-highlight">{$note['author']}</span><span class="pad-lr-05"> {$note['format_time']}</span>
+
+            </li>
+            <li class="ui-col ui-col-20">
+                <span class="f-size-set ui-fr ui-txt-warning">大</span>
+                <i class="ui-icon-hall"></i>
+
+            </li>
+
+        </ul>
+
+
+
+    </div>
+    <div class="article-content">
+       
+           {eval    echo replacewords($note['content']);    }
+       
+      
+    </div>
+</article>
+ <!--回答-->
+   <!--{if $commentlist}-->
+    <section class="answerlist">
+     <div class="ans-title">
+         <span>全部评论</span>
+     </div>
+        <div class="answers">
+            <div class="answer-items">
+            
+             
+                 <!--{loop $commentlist $index $comment}-->
+                <div class="answer-item">
+                          <ul class="ui-row">
+                              <li class="ui-col ui-col-80">
+                                  <span class="ui-avatar-s">
+                         <span style="background-image:url({$comment['avatar']})"></span>
+                     </span>
+
+                                  <span class="ui-txt-highlight u-name">{$comment['author']}</span>
+                              </li>
+                              
+                          </ul>
+                    <div class="ans-content">
+{$comment['content']}
+                    </div>
+                    <div class="ans-footer">
+                        <ul class="ui-row">
+                            <li class="ui-col ui-col-50 ui-txt-muted ans-time">
+                                评论于 {$comment['format_time']}
+                            </li>
+                             <!--{if  ($user['grouptype']==1)}-->
+                            <li onclick="delete_comment('{$note['id']}', '{$comment['id']}')" class="ui-col ui-col-50 ui-txt-muted">
+                              
+                                <span class="ans-comment-num">
+                                                                    删除
+                                </span>
+                            </li>
+                             <!--{/if}-->
+                            </ul>
+                       
+                    </div>
+                </div>
+                  <!--{/loop}-->    
+            </div>
+        </div>
+        <div class="pages">{$departstr}</div>
+    </section>
+      <!--{/if}-->
+    <section class="article-jingxuan ui-panel">
+        <h2 class="ui-txt-warning">最新公告</h2>
+        <ul class="ui-list ui-list-link ui-border-tb">
+          <!--{eval $notelist=$this->fromcache('notelist');}-->
+                <!--{loop $notelist $nindex $note}-->
+            <li class="ui-border-t" >
+             
+                <div class="ui-list-info">
+                    <h4 class="ui-nowrap"><a class="ui-txt-default" {if $note['url']}href="{$note['url']}"{else}href="{url note/view/$note['id']}"{/if}>{$note['title']}</a></h4>
+                   
+                </div>
+            </li>
+             <!--{/loop}-->
+           
+        </ul>
+    </section>
+    <div class="ui-dialog">
+    <i class="ui-icon-close" style="font-size:75px;position:fixed;top:10px;right:-10px;color:red"></i>
+    <div  id="codetip" class="ui-txt-warning " style="font-size:12px;position:fixed;bottom:28px;left:2px;">验证码不能为空</div>
+    <form  name="commentForm" action="{url note/addcomment}" method="post" onsubmit="return check()">
+       <input type="hidden" value="{$note['id']}" name="noteid">
+    <textarea id="content" name="content" placeholder="评论尽量详细，说明要点" style="border-radius:5px;width:100%;hegiht:300px;position:fixed;bottom:50px;left:0px;border:none;padding-top:10px;padding-bottom:40px;"></textarea>
+   
+    <div class="ui-row-flex ui-whitespace">
+    <div class="ui-col ui-col-2">
+     {if $signPackage==null&&$setting['code_ask']&&$setting['jingyan']<=0}
+     <input type="text"  id="code" name="code" onblur="check_code();"  value="" style="border:none;width:100px;heigth:40px;position:fixed;bottom:10px;left:2px;">
+     <img class="hand" src="{url user/code}" onclick="javascript:updatecode();" id="verifycode" style="width:50px;heigth:40px;position:fixed;bottom:10px;left:110px;">
+    {/if}
+    </div>
+    <div class="ui-col">
+     <button  type="submit" name="submit" id="submit" class="ui-btn ui-btn-primary" style="position:fixed;bottom:10px;right:10px;">
+        确定
+    </button>
+    </div>
+</div>
+    </form>
+   
+        
+</div>
+</section>
+<section class="fixed-bar">
+    <div class="bar-zhezao">
+
+    </div>
+    <div class="ui-row-flex ui-whitespace ui-row-flex-ver bar-items">
+        <div id="comment-note" class="ui-col"><i class="ui-icon-commented"></i> </div>
+        <div class="ui-col"><i class="ui-icon-home"></i></div>
+        <div class="ui-col"><i class="ui-icon-gototop"></i></div>
+    </div>
+</section>
+
+<script>
+function  check(){
+	if($.trim($("#content").val())==''){
+		 el2=$.tips({
+	         content:'评论不能为空',
+	         stayTime:2000,
+	         type:"info"
+	     });
+		 return false;
+	}
+	
+}
+<!--{if  ($user['grouptype']==1)}-->
+function delete_comment(noteid, commentid) {
+if (confirm('确定删除改评论？') === true) {
+document.location.href = g_site_url + '' + query + 'note/deletecomment/' + noteid + '/' + commentid + g_suffix;
+}
+}
+<!--{/if}-->
+    $(".f-size-set").bind("click",function(event){
+
+        $(".article-content").toggleClass("art-font");
+        if( $(".article-content").hasClass("art-font")){
+            $(this).html("小");
+        }else{
+            $(this).html("大");
+        }
+    })
+    $("#comment-note").tap(function(){
+    	
+    var dia2=$(".ui-dialog").dialog("show");
+ 
+    $(".ui-dialog .ui-icon-close").tap(function(){
+    	$(".ui-dialog").dialog("hide");
+    })
+})
+</script>
+<!--{template footer}-->

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ask2问答系统</title>
+    <link href="dist/css/normalize.css" rel="stylesheet">
+    <!-- zui -->
+    <link href="dist/css/zui.min.css" rel="stylesheet">
+    <link href="dist/css/animate.min.css" rel="stylesheet">
+
+    <link href="dist/css/main.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="dist/lib/ieonly/html5shiv.js"></script>
+    <script src="dist/lib/ieonly/respond.js"></script>
+    <![endif]-->
+
+</head>
+<body class="bg-white">
+<!--[if lt IE 8]>
+<div class="alert alert-danger">您正在使用 <strong>过时的</strong> 浏览器. 是时候 <a href="http://browsehappy.com/">更换一个更好的浏览器</a>
+    来提升用户体验.
+</div>
+<![endif]-->
+<div class="header row bg-green-deep">
+    <div class="bg-green-deep col-sm-2 left-offest">
+
+    </div>
+    <div class="col-sm-8  header-wrap bg-green-deep">
+
+        <div class="col-sm-2 bg-green-deep">
+            <a class="navbar-brand slideInLeft animated" href="your/nice/url"><img
+                    src="http://www.ask2.cn/css/soso/logo.png"></a>
+        </div>
+        <div class="col-sm-6 hidden-sm hidden-xs">
+            <!-- 一般导航项目 -->
+            <ul class="nav navbar-nav ">
+                <li class="active"><a href="your/nice/url">首页</a></li>
+                <li><a href="your/nice/url">问题库</a></li>
+
+                <li><a href="your/nice/url">问题系统建议</a></li>
+                <li><a href="your/nice/url">网友博客</a></li>
+                <li class="active"><a href="your/nice/url">首页</a></li>
+                <li><a href="your/nice/url">问题库</a></li>
+
+
+            </ul>
+        </div>
+        <div class="col-sm-4 header-search">
+
+            <div class="row">
+                <div class="col-sm-8">
+                    <input type="text" class="form-control"/>
+                </div>
+                <div class="col-sm-2">
+
+                    <button class="btn btn-success pull-right "><i class="icon icon-search color-white"></i>搜索</button>
+                </div>
+
+                <div class="col-sm-2">
+
+                    <button class="btn btn-success pull-right"> 提问</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="col-sm-2 bg-green-deep">
+        <img width="50px" height="50px" class="img-circle"
+             src="http://wenda.wecenter.com/uploads/avatar/000/00/73/00_avatar_max.jpg">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="your/nice/url">黄小米 <span class="caret"></span></a>
+        <ul class="dropdown-menu pull-right">
+            <li><a href="your/nice/url"><i class="icon icon-diamond text-success mar-ly-05"></i>后台管理</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-user text-success mar-ly-05"></i>个人主页</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-inbox text-success mar-ly-05"></i>系统信息</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-rss text-success mar-ly-05"></i>向我推荐</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-question-sign text-success mar-ly-05"></i>我的问题</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-comment text-success mar-ly-05"></i>我的回答</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-info-sign text-success mar-ly-05"></i>我的关注</a></li>
+            <li><a href="your/nice/url"><i class="icon icon-asterisk text-success mar-ly-05"></i>我的收藏</a></li>
+        </ul>
+    </div>
+</div>
+
+<!--用户中心大背景--->
+<div class="row nopadding nomargin">
+    <div class="col-sm-12 nopadding nomargin">
+
+        <div class="cover">
+            <div class="cover-image" style="background-image : url('dist/css/images/userbg.jpg')"></div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--用户中心大背景结束标记-->
+
+<!--用户中心-->
+
+<div class="user-home bg-white">
+    <div class="container">
+
+        <div class="row ">
+            <div class="col-sm-9">
+                <div class="col-sm-3">
+                    <img src="http://hangjia.qiniudn.com/FpaIrP7ONHXRMm53peNqHW_2pCi345!avatar" width="150" height="150"
+                         class="img-circle user-avatar"/>
+
+                </div>
+                <div class="col-sm-9">
+                    <h1 class="tutor-name mar-t-1 text-center" data-tutor_id="84794273">董鸿英</h1>
+
+                    <p class="tutor-title text-center mar-t-05" id="tutorTitle">清华大学博士后，点石微投行创始合伙人</p>
+
+                    <div class="user-statics mar-t-05 text-center text-danger">
+                        <ul class="tutor-detail tutorDetail">
+                            <li class="detail">
+                                <span class="icon icon-time"></span>
+
+                                <span class="highlight">半天</span>内回应
+
+                            </li>
+                            <li class="detail"><span class="icon icon-eye-open"></span>
+                                <span class="highlight">21</span>人见过
+                            </li>
+                            <li class="detail"><span class="icon icon-heart"></span>
+
+                                <span class="highlight">194</span>人想见
+
+                            </li>
+
+
+                            <li class="detail detail-more"><span class="highlight">高</span>接受率</li>
+
+
+
+
+
+                            <li><span class="icon icon-go btn-folding foldingBtn"></span></li>
+
+
+                        </ul>
+                    </div>
+
+                    <p class="text-center mar-t-05">
+                       <ol class="breadcrumb text-center">
+                    <li> 擅长:</li>
+                    <li><a href="#">打牌</a></li>
+                    <li><a href="#">泡妹子</a></li>
+                    <li><a href="#">啪啪啪</a></li>
+
+
+                </ol>
+                    </p>
+
+                </div>
+
+             <div class="row">
+                 <div class="col-sm-12">
+                     <div class="dongtai">
+                         <p>
+                             <strong class="font-18">我的提问</strong>
+                         </p>
+                         <hr>
+                         <div class="answer_contents">
+
+                             <ul class="answer_content ">
+                                 <li class="answer_num">
+                                     <span class="span_01">1</span>
+                                     <span class="span_02">回答</span>
+                                 </li>
+                                 <li class="answer_con">
+                                     <ul>
+                                         <li class="question_li">
+
+                                             <a href="http://ask.17house.com/q-771722.html" target="_blank" title="L&amp;V软包软包和欧尚软包软包哪个好？">
+                                                 <h2><i class="icon icon-question-sign text-danger mar-r-03" ></i>L&amp;V软包软包和欧尚软包软包哪个好？</h2></a>
+                                         </li>
+
+                                         <li class="answer_li">A：深圳佩蕾斯特寝俱软包事业部自成立以来，一直致力于打造全球软包行业第一品牌，产品在国内外富有盛名，在同行中具有广泛影响力，佩蕾斯特寝俱软包事业部明确以“人无我有，人有我优，人优我精，人精我创新”的创新宗旨，不断的从材质，设计造型，安装工艺上进取，不断的完善，持续稳步发展。 | 深圳佩蕾斯特寝俱有限公司生产的L&amp;V软包有别于传统软包和锯齿型条软包，L&amp;V软包突破了传统中受外形设计，工艺，材料，定制生产，安装等因素的影响，已经形成成品化，规格化，具备了可批量生产，设计感强，工艺细腻，不损伤外表，阻燃，吸音，耐磨，易装，易拆便于打理等特点。 L&amp;V软包的优势：AUSHEN 诞生于20 世纪 80 年代末，那正是生活化的软包品牌向贵族式的巴黎高级软包传统挑战之时， AUSHEN 品牌创造出了奢华理念。 AUSHEN 品牌是巴黎高级软包界的变色龙，它虽相当频繁地聘用各国名师，但品牌的风格框架并未因设计师的更迭而改变，一直保持着法兰西风格的色彩特征和优雅情调。其所聘设计师的个性投入，加上 AUSHEN 生产经营体系的保证使 AUSHEN 品牌风格保持与时代潮流同步。 |1989年第一个欧尚软包诞生，二十多年来,欧尚成功足迹遍布全球，业务亦蒸蒸日上，2009年更达到176亿欧元的辉煌成绩，傲视同群！|aushen 欧尚软包虽然成立了仅仅三十年时间，在讲求悠久传统的名牌世界里，也不算得上老资格。可是，三十年间， aushen 欧尚软包已建立起一个庞大的软包王国。|故事是这样开始的。 1989 年，四位法国的设计爱好者 aushen, Art Ortenberg, Leonard Boxer 和 Jerome Chazen 基于对家居设计的热忱，便一起成立了 aushen Inc. 。其中 aushen 就是在四个创业者中的灵魂人物。 aushen 原名 Elisabeth Claiborne Ortenberg ，在 1929 年出生于比利时的布鲁塞尔，幼时随家人移居法国，在巴黎市 (Paris) 长大。在完成了高中课程后，毅然到欧洲设计学院进修艺术。学成回到了巴黎市当设计师，一做便廿五年。累积了这么丰富的设计经验后，自立门户，尽情发挥自己的设计风格，为一生事业下一个漂亮的注脚。这似乎是每个出色设计师必然会走上的路。 aushen 也自然不例外。|公司最初以设计现代家居用品为主，在深受欢迎、大获成功后，便开始向高档豪华软包的生产设计进发。在建立了一定的影响力后，如其他走红的品牌一般， aushen 开始推出宫廷软包、奢华软包和家居软包等系列。更进一步， aushen 开始包揽和收购其他知名的软包品牌，如 Bora Bora 、 Mexx 等，由此开始， aushen Inc. 已成为法国一个具规模的软包集团之一。在往后数年，发展更上一层楼，取得其他大品牌的部份产品的生产权，为他们生产软包。最有名的莫过于为 DKNY Jeans 生产顶级豪华软包。在这个商业范畴上， aushen Inc. 获利甚丰。|发展至今， aushen Inc. 已包揽了十多个知名品牌，生意额亦以几十亿元 ( 美金 ) 计。而其中主力 aushen 欧尚软包更凭着奢华的设计风格，在法国广受欢迎。</li>
+                                         <li class="answer_label">
+                                             <span class="answer_time text-success ">一小时前</span>
+                                         </li>
+                                     </ul>
+                                 </li>
+                             </ul>
+
+                             <ul class="answer_content ">
+                                 <li class="answer_num">
+                                     <span class="span_01">1</span>
+                                     <span class="span_02">回答</span>
+                                 </li>
+                                 <li class="answer_con">
+                                     <ul>
+                                         <li class="question_li">
+                                             <a href="http://ask.17house.com/q-759502.html" target="_blank"
+                                                title="雅琪诺软包和L&amp;V软包软包哪个好？">
+                                                 <h2>
+                                                     <i class="icon icon-check-sign text-danger mar-r-03" ></i>雅琪诺软包和L&amp;V软包软包哪个好？</h2></a></li>
+
+                                         <li class="answer_li">A：浙江雅琪诺装饰材料有限公司，创立于2007年，专注于墙面装饰艺术的研究和发展，以墙纸、墙布、软包的开发、生产、销售为核心。 |浙江雅琪诺装饰材料有限公司，前身为绍兴唯美壁纸有限公司，是首批近入墙纸行业的企业之一，公司总部位于国家级经济开发区绍兴县滨海工业区，占地面积十余万平方，同时在北京、广州、成都、武汉、长沙，沈阳等地设有分公司，销售网络遍布全国；同时产品远销韩国、日本、欧美等国，深受广大客户的一致好评。 |公司具有多种自主研发设计的产品，旗下现拥有雅琪诺、美琪和诺维琪三大知名品牌、十一条先进的全自动壁纸流水生产线，近百套版本、上千种花色，产品结构丰富，品质稳定，已成功通过ISO9001-2000质量体系认证，并获得《无毒害（绿色）室内装饰装修材料证书》|为实现成为中国壁纸行业最具品牌价值的壁纸企业愿景，雅琪诺人坚持以“品质第一、顾客至上、团队协作、勇于负责”的核心价值观和客户零距离的服务宗旨，凭借对墙纸行业的深刻理解，把领先业界的产品理念和丰富的产品研发经验相结合，竭诚为广大用户提供优质的产品和服务。深圳佩蕾斯特寝俱软包事业部自成立以来，一直致力于打造全球软包行业第一品牌，产品在国内外富有盛名，在同行中具有广泛影响力，佩蕾斯特寝俱软包事业部明确以“人无我有，人有我优，人优我精，人精我创新”的创新宗旨，不断的从材质，设计造型，安装工艺上进取，不断的完善，持续稳步发展。 | 深圳佩蕾斯特寝俱有限公司生产的L&amp;V软包有别于传统软包和锯齿型条软包，L&amp;V软包突破了传统中受外形设计，工艺，材料，定制生产，安装等因素的影响，已经形成成品化，规格化，具备了可批量生产，设计感强，工艺细腻，不损伤外表，阻燃，吸音，耐磨，易装，易拆便于打理等特点。 L&amp;V软包的优势：</li>
+                                         <li class="answer_label">
+                                             <span class="answer_time"></span>
+                                         </li>
+                                     </ul>
+                                 </li>
+                             </ul>
+
+                             <ul class="answer_content ">
+                                 <li class="answer_num">
+                                     <span class="span_01">1</span>
+                                     <span class="span_02">回答</span>
+                                 </li>
+                                 <li class="answer_con">
+                                     <ul>
+                                         <li class="question_li"><a href="http://ask.17house.com/q-760140.html" target="_blank" title="皇朝德美软包和L&amp;V软包软包哪个好？"><h2>皇朝德美软包和L&amp;V软包软包哪个好？</h2></a></li>
+
+                                         <li class="answer_li">A：成立于1992年的皇朝·德美是目前河南规模最大、档次最高、品种最全的布艺墙纸公司之一，旗下代理品牌有摩力克、伊莎莱、欧博莱、阳光海风、美克维拉、维多丽雅等以及英国、德国、法国、意大利、西班牙、土耳其等各国产品。08年底在郑州市黄河路开业的营业面积近3000平方米的郑州市皇朝·德美布艺墙纸饰品生活馆是河南省首家星级布艺墙纸家居饰品生活馆，公司旗下还有皇朝·德美郑汴路店、盛世华庭布艺生活馆、德美墙纸概念馆、摩力克旗舰店等省内外10多家布艺生活体验馆。|拥有四家专卖店，经营面积超过1800平方米的郑州摩力克已经是家喻户晓，深得社会的认可，在摩力克专卖体系中，郑州摩力克一直成为其他专卖店学习的榜样。|多年来一直倍受客户好评，都因其技术力量雄厚，专业化生产管理和过硬的产品质量以及良好的售后服务，令顾客满意、放心！|公司服务宗旨： 以信为本，以质取胜，以价回报。|皇朝德美壁纸立足长远，相信只有规范经营，诚信经商，为消费者提供高品质的产品和服务，和经销商共同发展，共享果实才是长久之道。|皇朝德美壁纸将以创新高端内墙装饰品质为己任，以开放、合作、追求完美的企业注重产品设计、强化管理，努力为高档酒店、商务办公楼、别墅、公寓和娱乐装饰等场所提供高品质的产品和服务。|虚席以待有志于整体高档家居事业、熟悉窗帘、壁纸、软包等整体软装空间设计、展示设计、卖场导购、连锁拓展的人士共同合作！深圳佩蕾斯特寝俱软包事业部自成立以来，一直致力于打造全球软包行业第一品牌，产品在国内外富有盛名，在同行中具有广泛影响力，佩蕾斯特寝俱软包事业部明确以“人无我有，人有我优，人优我精，人精我创新”的创新宗旨，不断的从材质，设计造型，安装工艺上进取，不断的完善，持续稳步发展。 | 深圳佩蕾斯特寝俱有限公司生产的L&amp;V软包有别于传统软包和锯齿型条软包，L&amp;V软包突破了传统中受外形设计，工艺，材料，定制生产，安装等因素的影响，已经形成成品化，规格化，具备了可批量生产，设计感强，工艺细腻，不损伤外表，阻燃，吸音，耐磨，易装，易拆便于打理等特点。 L&amp;V软包的优势：</li>
+                                         <li class="answer_label">
+                                             <span class="answer_time"></span>
+                                         </li>
+                                     </ul>
+                                 </li>
+                             </ul>
+
+                             <ul class="answer_content ">
+                                 <li class="answer_num">
+                                     <span class="span_01">1</span>
+                                     <span class="span_02">回答</span>
+                                 </li>
+                                 <li class="answer_con">
+                                     <ul>
+                                         <li class="question_li"><a href="http://ask.17house.com/q-761163.html" target="_blank" title="亚华世家软包和L&amp;V软包软包哪个好？"><h2>亚华世家软包和L&amp;V软包软包哪个好？</h2></a></li>
+
+                                         <li class="answer_li">A：亚华世家成立于1993年，自1997年重庆成立直辖市以来，亚华世家伴随着重庆的高速发展不断成长壮大，其整体家居艺术设计营销能力独树一帜，目前拥有各类直营卖场二十余家，分布于重庆市各大装建卖场黄金口岸，总经营面积上万平米，卖场形象大气磅礴、靓丽时尚，已成为重庆乃至全国整体家居装建行业的标杆旗帜。二十年风雨历程，企业秉承“家文化”的团队精神，除建立起强大的终端销售、施工、安装、售后服务团队外，还顺应市场环境和满足公司自身发展的需求，进而相继成立了：亚华世家批发公司、亚华世家整体软装饰工程设计公司、亚华世家软装创意研究设计院、欧美莱装饰公司、盖博进出口贸易公司，形成了亚华集团性的经营模式。如今的亚华世家，内部组织构建完善，运作效率快捷精准，荣获中国“墙纸&amp;布艺”组合营销第一品牌、中国“墙纸&amp;布艺”组合营销流通领域唯一“著名商标”、中国“整体软装设计营销”倡导者与实践者、中国墙纸杰出品牌、中国家纺杰出营销“金销奖”等国内多项重量级奖项，其美誉度及行业品牌倡导力日益增强。 亚华世家对整体家居环境的营造始终坚持艺术与实用兼具的设计理念，经营项目包括装建前期的主题方案确定、图纸设计制作、墙纸、布艺、软包、硅藻泥、家具、饰品、地毯、灯饰、油画等全方位软装产品及窗帘拆洗服务。产品线完整丰富，产品品质优良环保，符合国家相关标准，能充分满足消费者的需求。亚华世家二十年来，顾客用户上百万家，是西南城市主流人群购买品牌墙纸及家居产品的首选，在党界、政界、军界、商界、教育界、媒体界等人士中有非常高的指定购买率和影响力，并先后成为龙湖、金科、中海、保利、招商、融侨、华润、东原、光华等一线地产品牌样板房装饰指定软装合作商。在重庆各大型楼盘中覆盖率达百分百，除了完整覆盖重庆各区各县外，还广泛辐射到北京、上海、天津、香港、深圳、青岛、烟台、长沙、成都、贵阳、昆明、襄樊等重点城市。 亚华世家不仅以强大的整体实力为消费者提供了众多的商品资源和时尚经典的设计理念，更以专业的职业操守及一流的服务赢得了更多消费者的认同和喜爱。2007年，亚华世家被认定为“和谐消费•质量信用年示范单位”“重质量•守信誉•优质服务先进单位”及“消费者喜爱的建材品牌”。2008年，亚华世家成为重庆八大家居卖场联合推荐的“责任家居品牌”。2009年，亚华世家荣获装建行业“杰出贡献品牌”“重庆典范行业代言品牌”以及“重庆最具影响力家居品牌”等殊荣。2010年，亚华世家荣获“2010年度重庆市建材行业十大推荐品牌”。 当年7月，“亚华”被认定为“重庆市著名商标”&nbsp; 成为在重庆乃至全国行业内目前唯一获此殊荣的行业品牌。2011年，亚华世家荣获“重庆市建材商会理事会副会长单位”“重庆家居•十年跨越 时代家居典范企业”“重庆家居公信力软装品牌”“百万女性最爱整体软装品牌”“2010-2011年度诚信私营企业及“时代家居典范企业”等称号。2012年，亚华世家又相继荣获“2010-2011年度诚信私营企业”、 “2011-2012最值得信赖建材品牌”及“2012中国家纺杰出营销人「金销奖」”称号。自2006年起，亚华世家已经发展成为国内最大的墙纸零售企业之一，产品的研发设计时尚超群，生产能力稳定突出。深圳佩蕾斯特寝俱软包事业部自成立以来，一直致力于打造全球软包行业第一品牌，产品在国内外富有盛名，在同行中具有广泛影响力，佩蕾斯特寝俱软包事业部明确以“人无我有，人有我优，人优我精，人精我创新”的创新宗旨，不断的从材质，设计造型，安装工艺上进取，不断的完善，持续稳步发展。 | 深圳佩蕾斯特寝俱有限公司生产的L&amp;V软包有别于传统软包和锯齿型条软包，L&amp;V软包突破了传统中受外形设计，工艺，材料，定制生产，安装等因素的影响，已经形成成品化，规格化，具备了可批量生产，设计感强，工艺细腻，不损伤外表，阻燃，吸音，耐磨，易装，易拆便于打理等特点。 L&amp;V软包的优势：</li>
+                                         <li class="answer_label">
+                                             <span class="answer_time"></span>
+                                         </li>
+                                     </ul>
+                                 </li>
+                             </ul>
+
+                             <ul class="answer_content ">
+                                 <li class="answer_num">
+                                     <span class="span_01">1</span>
+                                     <span class="span_02">回答</span>
+                                 </li>
+                                 <li class="answer_con">
+                                     <ul>
+                                         <li class="question_li"><a href="http://ask.17house.com/q-771667.html" target="_blank" title="金达莱软包和L&amp;V软包软包哪个好？"><h2>金达莱软包和L&amp;V软包软包哪个好？</h2></a></li>
+
+                                         <li class="answer_li">A：金达莱皮雕制品有限公司坐落于经济发达、风景秀丽的长三角地区。本公司是集皮雕软包、皮雕吊顶的研发、生产、销售为一体的综合型企业，目前公司拥有20000平米的生产车间以及领先的生产设备、精湛的制造工艺和完善的管理体系。金达莱秉持品质与品位的经营理念，以创造完美家居环境的企业愿景，整合全球顶尖资源进行产品重整，依托强大的企业研发系统，不断推崇出新，产品远销世界各地。 | 金达莱专注皮雕领域20年，现已成为全球家居皮雕装饰产品设计、生产及销售为一体，开拓并引领行业不断前行的领导者；金达莱配备全球最先进皮雕生产设备，申请国家专利技术多达30项；企业经过近20年发展，已成为全球唯一自主研发制造机械，模具独家创制的皮雕装饰生产企业；企业已连续9年通过ISO-9001-2000国际质量管理体系认证。 | 金达莱皮雕历经岁月沉积，厚积薄发，把科技创新融入企业血脉，以艺术的创造让家居环境变得更加多元、舒适而美好。深圳佩蕾斯特寝俱软包事业部自成立以来，一直致力于打造全球软包行业第一品牌，产品在国内外富有盛名，在同行中具有广泛影响力，佩蕾斯特寝俱软包事业部明确以“人无我有，人有我优，人优我精，人精我创新”的创新宗旨，不断的从材质，设计造型，安装工艺上进取，不断的完善，持续稳步发展。 | 深圳佩蕾斯特寝俱有限公司生产的L&amp;V软包有别于传统软包和锯齿型条软包，L&amp;V软包突破了传统中受外形设计，工艺，材料，定制生产，安装等因素的影响，已经形成成品化，规格化，具备了可批量生产，设计感强，工艺细腻，不损伤外表，阻燃，吸音，耐磨，易装，易拆便于打理等特点。 L&amp;V软包的优势：</li>
+                                         <li class="answer_label">
+                                             <span class="answer_time"></span>
+                                         </li>
+                                     </ul>
+                                 </li>
+                             </ul>
+
+                             <ul class="answer_content ">
+                                 <li class="answer_num">
+                                     <span class="span_01">1</span>
+                                     <span class="span_02">回答</span>
+                                 </li>
+                                 <li class="answer_con">
+                                     <ul>
+                                         <li class="question_li"><a href="http://ask.17house.com/q-771684.html" target="_blank" title="龙庭软包和L&amp;V软包软包哪个好？"><h2>龙庭软包和L&amp;V软包软包哪个好？</h2></a></li>
+
+                                         <li class="answer_li">A：海宁市博盛装饰有限公司旗下品牌“龙庭”软包， 凭借独特的研发优势、国际化的设计视野、众多设计机构的支持及企业专业的设计研发中心，开发出的系列软包产品全部采用顶级环保、阻燃型材料，采用标准化生产工艺和专业化施工安装流程，产品融合现代美学原理，设计精巧、创意独特，做工精益求精，力求完美， 不仅美观、大方、卫生，还给人一种温馨的感觉，而且有很好的隔音隔热效果，是墙纸的换代产品，广泛应用于KTV、酒店、宾馆、别墅、写字楼、会所、展厅、办公室、屏风、电视背景、床头背景、婚房、专卖店等场所，为客户源源不断地提供着集成了软包装饰的典雅、高贵的生活空间， 及不断的灵感和惊喜。 | 海宁市博盛装饰有限公司座落于具有“皮革之都，经编之乡”美誉的浙江省海宁市。是一家集软体家具设计研发、生产销售及售后服务为一体的综合性企业， 依托海宁经济皮革、经编、家纺三大支柱产业优势，近年来积极开拓软包装饰行业领域，引进了先进的软包生产加工设备，设立了专门的软包研发和安装施工专业团队，已形成了集软包研发、设计、生产、销售、施工为一体的软包装饰品牌企业。 | 龙庭软包立足中国，放眼世界，依托强大的背景资源和国际业务关系，叠合国际国内多位顶级软包设计师，将全球最流行的软包装饰引入中国，时尚环保龙庭软包专卖，采用「品牌 + 时尚 + 环保」的先进专卖店销售模式，努力打造人气最旺、品种最多、销售最快、利润最高的销售网络，为国人带来最时尚、最热门、最顶级的软包新潮流。 | 多年来，我们一直以质量求生存，以创新求发展，努力为客户提供量身定做的创意设计，深受各界好评。我们的成长，全赖众多客户及机构长期不断的支持。在未来，我们将以更好的产品，真诚服务的带给顾客朋友。深圳佩蕾斯特寝俱软包事业部自成立以来，一直致力于打造全球软包行业第一品牌，产品在国内外富有盛名，在同行中具有广泛影响力，佩蕾斯特寝俱软包事业部明确以“人无我有，人有我优，人优我精，人精我创新”的创新宗旨，不断的从材质，设计造型，安装工艺上进取，不断的完善，持续稳步发展。 | 深圳佩蕾斯特寝俱有限公司生产的L&amp;V软包有别于传统软包和锯齿型条软包，L&amp;V软包突破了传统中受外形设计，工艺，材料，定制生产，安装等因素的影响，已经形成成品化，规格化，具备了可批量生产，设计感强，工艺细腻，不损伤外表，阻燃，吸音，耐磨，易装，易拆便于打理等特点。 L&amp;V软包的优势：</li>
+                                         <li class="answer_label">
+                                             <span class="answer_time"></span>
+                                         </li>
+                                     </ul>
+                                 </li>
+                             </ul>
+
+                         </div>
+                     </div>
+                 </div>
+
+
+             </div>
+
+            </div>
+
+            <!--右侧栏目-->
+            <div class="col-sm-3 mar-t-2">
+
+
+                <!--分享-->
+                <div class="row">
+                    <div class="col-sm-3 font-20">
+                        分享
+                    </div>
+                    <div class="col-sm-9 mar-t-05">
+                        <i class="icon icon-weibo text-danger font-20 mar-r-03 hand"></i>
+                        <i class="icon icon-weixin text-danger font-20 mar-ly-1 hand"></i>
+                    </div>
+                </div>
+
+                <!--导航列表-->
+
+                <div class="operation-list operationList mar-t-2">
+
+
+                  <a class="btn-block" href="#">
+                      <i class="icon icon-heart text-danger">我的主页</i>
+                  </a>
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-dollar text-danger">我要充值</i>
+                    </a>
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-user text-danger">个信息</i>
+                    </a>
+
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-question-sign text-danger">我的问题</i>
+                    </a>
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-comments text-danger">我的回答</i>
+                    </a>
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-info-sign text-danger">我的关注</i>
+                    </a>
+
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-star text-danger">我的收藏</i>
+                    </a>
+
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-lightbulb text-danger">为我推荐</i>
+                    </a>
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-stack text-danger">我的文章</i>
+                    </a>
+                    <a class="btn-block" href="#">
+                        <i class="icon icon-level-up text-danger">我的等级</i>
+                    </a>
+
+
+                </div>
+
+                <!--结束导航标记-->
+
+
+                <div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--用户中心结束-->
+
+
+<!--页脚标签-->
+<div class="web-footer bg-silver">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <p class="mar-t-2 text-center">
+
+                    Copyright ask2问答系统官网 服务 手机版 网站标签 最新问题 京ICP备15032243号-1
+                </p>
+
+                <p class="text-center">
+                    ©2016 Baidu&nbsp;&nbsp; <a rel="nofollow" href="http://www.baidu.com/duty/"
+                                               target="_blank">使用百度前必读</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a rel="nofollow"
+                                                                                                      href="http://help.baidu.com/question?prod_en=zhidao&amp;class=597&amp;id=1001104"
+                                                                                                      target="_blank">知道协议</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+                        rel="nofollow" href="/special/view/cooperation" target="_blank">百度知道品牌合作</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!--页脚标签结束-->
+<!-- jQuery -->
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<!-- ZUI Javascript组件 -->
+<script src="dist/js/zui.min.js"></script>
+<script src="dist/js/zuicommon.js"></script>
+<script src="dist/js/gundong.js"></script>
+
+</body>
+</html>

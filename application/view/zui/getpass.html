@@ -1,0 +1,67 @@
+<!--{template header}-->
+<div id="wrapper">
+	<div class="xm-login-box">
+		<div class="mod-body clearfix">
+			<div class="content pull-left">
+		
+				<h2>找回密码</h2>
+				<form name="getpassform"  action="{url user/getpass}" method="post">
+					
+              
+					<ul>
+						<li>
+						 <input type="text" class="form-control" id="username" name="username" placeholder="用户名"/>
+
+						</li>
+						<li>
+							 <input type="text" class="form-control" id="email" name="email" placeholder="邮箱"/>
+						</li>
+						
+						
+						 
+						 <li>
+							 <input type="text" class="form-control" id="code" name="code" placeholder="输入验证码" onblur="check_code();"/>
+							 
+						</li>
+						<li>
+						 <div class="code-bar mar-b-05">
+                        <span class="verifycode"><img  src="{url user/code}" onclick="javascript:updatecode();" id="verifycode"></span><a class="changecode" href="javascript:updatecode();">&nbsp;看不清?</a>
+                    </div>  
+                    <span id="codetip" class="alert alert-danger hide "></span>
+						</li>
+						<li class="last">
+
+					
+							 <input type="submit" value="提&nbsp;交" class="pull-right btn btn-large btn-success" name="submit" />
+						</li>
+					</ul>
+				</form>
+			</div>
+			<div class="side-bar pull-left">
+				
+					
+					<h3>第三方账号登录</h3>
+											<a href="{SITE_URL}plugin/sinalogin/index.php" class="btn btn-block btn-weibo"><i class="icon icon-weibo"></i> 微博登录</a>
+					
+											<a href="{SITE_URL}plugin/qqlogin/index.php" class="btn btn-block btn-qq"><i class="icon icon-qq"></i> QQ 登录</a>
+					
+											
+					
+					
+					
+												</div>
+		</div>
+		<div class="mod-pass-footer">
+			<ul class="nav ">
+			<li class="mar-t-1">
+			忘记帐号？试试您的常用邮箱、用户名或手机号。
+			</li>
+			<li>
+			如果还有问题请及时联系我们
+			</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<!--{template footer}-->
